@@ -1,0 +1,175 @@
+import { useState } from 'react';
+import {
+  NextPage,
+  GetServerSideProps,
+  GetStaticPaths,
+  GetStaticProps,
+} from 'next';
+import { Box, Button, Chip, Grid, Typography } from '@mui/material';
+
+import { ShopLayout } from '../../components/layout';
+import { ProductSlideshow, SizeSelector } from '../../components/products';
+import { ItemCounter } from '../../components/ui';
+import { dbProducts } from '../../database';
+import { ICartProduct, IProduct, ISize } from '../../interfaces';
+import { useRouter } from 'next/router';
+import { useCart } from '../../store';
+
+interface Props {
+  product: IProduct;
+}
+
+const ProductPage: NextPage<Props> = ({ product }) => {
+  const router = useRouter();
+  const { addProductToCart } = useCart();
+  const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
+    _id: product._id,
+    image: product.images[0],
+    price: product.price,
+    size: undefined,
+    slug: product.slug,
+    title: product.title,
+    gender: product.gender,
+    quantity: 1,
+  });
+
+  const selectedSize = (size: ISize) => {
+    setTempCartProduct((prevState) => ({ ...prevState, size }));
+  };
+
+  const updateQuantity = (action: string) => {
+    if (tempCartProduct.quantity === 1 && action === 'remove') return;
+
+    if (tempCartProduct.quantity > 1 && action === 'remove') {
+      return setTempCartProduct((currentState) => ({
+        ...currentState,
+        quantity: currentState.quantity - 1,
+      }));
+    }
+
+    if (tempCartProduct.quantity >= product.inStock) return;
+
+    return setTempCartProduct((currentState) => ({
+      ...currentState,
+      quantity: currentState.quantity + 1,
+    }));
+  };
+
+  const onAddProduct = () => {
+    if (!tempCartProduct.size) return;
+
+    // TODO: agregar al carrito (state)
+
+    console.log({ tempCartProduct });
+    addProductToCart(tempCartProduct);
+    // router.push('/cart');
+  };
+
+  return (
+    <ShopLayout title={product.title} pageDescription={product.description}>
+      <Grid container spacing={3} mt={2} justifyContent="center">
+        <Grid item xs={10} md={7}>
+          <ProductSlideshow images={product.images} />
+        </Grid>
+        <Grid item xs={10} md={5}>
+          <Box display="flex" flexDirection="column">
+            <Typography variant="h1" component="h1">
+              {product.title}
+            </Typography>
+
+            <Typography variant="subtitle1" component="h1">
+              ${product.price}
+            </Typography>
+
+            <Box sx={{ my: 2 }}>
+              <Typography variant="subtitle2">Quantity</Typography>
+              <ItemCounter
+                currentValue={tempCartProduct.quantity}
+                updateQuantity={updateQuantity}
+              />
+              <SizeSelector
+                selectedSize={tempCartProduct.size}
+                sizes={product.sizes}
+                onSelectedSize={selectedSize}
+              />
+            </Box>
+
+            {product.inStock > 0 ? (
+              <Button
+                onClick={onAddProduct}
+                color="secondary"
+                className="circular-btn"
+              >
+                {tempCartProduct.size ? 'Add to cart' : 'Choose a size'}
+              </Button>
+            ) : (
+              <Chip label="Sold out" color="error" variant="outlined" />
+            )}
+
+            <Box sx={{ mt: 3 }}>
+              <Typography variant="subtitle2">Description</Typography>
+              <Typography variant="body2">{product.description}</Typography>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </ShopLayout>
+  );
+};
+
+// export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+//   const { slug = '' } = params as { slug: string };
+//   const product = await dbProducts.getProductBySlug(slug);
+
+//   if (!product) {
+//     return {
+//       redirect: {
+//         destination: '/',
+//         permanent: false,
+//       },
+//     };
+//   }
+
+//   return {
+//     props: {
+//       product,
+//     },
+//   };
+// };
+
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const data = await dbProducts.getAllProductSlugs();
+
+  return {
+    paths: data.map((item) => {
+      const slug = item.slug;
+      return {
+        params: { slug },
+      };
+    }),
+    fallback: 'blocking',
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug = '' } = params as { slug: string };
+  const product = await dbProducts.getProductBySlug(slug);
+
+  if (!product) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      product,
+    },
+    revalidate: 86400,
+  };
+};
+
+export default ProductPage;
