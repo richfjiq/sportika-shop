@@ -20,7 +20,7 @@ import {
 } from '@mui/icons-material';
 import { useRouter } from 'next/router';
 import { useCart, useUi } from '../../store';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
 export const Navbar = () => {
@@ -29,7 +29,7 @@ export const Navbar = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const router = useRouter();
   const { asPath, push } = router;
-  const { addCartFromCookies, cart } = useCart();
+  const { addCartFromCookies, numberOfItems } = useCart();
 
   useEffect(() => {
     const cartFromCookies = Cookies.get('cart')
@@ -154,7 +154,10 @@ export const Navbar = () => {
         <NextLink href="/cart" passHref>
           <Link>
             <IconButton>
-              <Badge badgeContent={2} color="secondary">
+              <Badge
+                badgeContent={numberOfItems > 9 ? '+9' : numberOfItems}
+                color="secondary"
+              >
                 <ShoppingCartOutlined />
               </Badge>
             </IconButton>

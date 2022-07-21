@@ -1,6 +1,5 @@
 import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
-import { useDispatch } from 'react-redux';
 
 import {
   addProductToCart,
@@ -11,7 +10,6 @@ import {
 import { CartState } from './cart/reducer';
 import { uiReducer } from './ui';
 import { UiState } from './ui/reducer';
-import { useAppDispatch } from './types/appTypes';
 
 interface rootState {
   ui: UiState;

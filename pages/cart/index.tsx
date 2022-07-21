@@ -7,19 +7,11 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
-import { useEffect } from 'react';
 import { CartList, OrderSummary } from '../../components/cart';
 
 import { ShopLayout } from '../../components/layout';
-import { useCart } from '../../store';
 
 const CartPage = () => {
-  const { addOrderSummary, cart } = useCart();
-
-  useEffect(() => {
-    addOrderSummary();
-  }, [addOrderSummary, cart]);
-
   return (
     <ShopLayout title={'Cart - 3'} pageDescription={'Shopping cart'}>
       <Typography variant="h1" component="h1">

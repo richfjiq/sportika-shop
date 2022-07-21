@@ -13,9 +13,14 @@ export const useCart = () => {
   const cartState = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
+  // const addOrderSummary = useCallback(() => {
+  //   dispatch(addOrderSummaryAction());
+  // }, [dispatch]);
+
   const addProductToCart = useCallback(
     (product: ICartProduct) => {
       dispatch(addProductToCartAction(product));
+      dispatch(addOrderSummaryAction());
     },
     [dispatch]
   );
@@ -23,6 +28,7 @@ export const useCart = () => {
   const addCartFromCookies = useCallback(
     (cart: ICartProduct[]) => {
       dispatch(addCartFromCookiesAction(cart));
+      dispatch(addOrderSummaryAction());
     },
     [dispatch]
   );
@@ -30,6 +36,7 @@ export const useCart = () => {
   const updateCartQuantity = useCallback(
     (product: ICartProduct, newQuantity: number) => {
       dispatch(updateCartQuantityAction(product, newQuantity));
+      dispatch(addOrderSummaryAction());
     },
     [dispatch]
   );
@@ -37,13 +44,10 @@ export const useCart = () => {
   const removeProductFromCart = useCallback(
     (product: ICartProduct) => {
       dispatch(removeProductFromCartAction(product));
+      dispatch(addOrderSummaryAction());
     },
     [dispatch]
   );
-
-  const addOrderSummary = useCallback(() => {
-    dispatch(addOrderSummaryAction());
-  }, [dispatch]);
 
   return {
     ...cartState,
@@ -51,6 +55,6 @@ export const useCart = () => {
     addCartFromCookies,
     updateCartQuantity,
     removeProductFromCart,
-    addOrderSummary,
+    // addOrderSummary,
   };
 };

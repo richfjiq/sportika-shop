@@ -80,11 +80,33 @@ type ValidSizes =
   | ShoesAdultsSizes
   | ShoesKidsSizes;
 
+interface SeedUser {
+  name: string;
+  email: string;
+  password: string;
+  role: 'admin' | 'client';
+}
+
 interface InitialData {
+  users: SeedUser[];
   products: InitialProducts[];
 }
 
 export const initialData: InitialData = {
+  users: [
+    {
+      name: 'Ricardo Flores',
+      email: 'rfjiq1986@gmail.com',
+      password: '123456',
+      role: 'admin',
+    },
+    {
+      name: 'Billy the kiii',
+      email: 'billy@gmail.com',
+      password: '123456',
+      role: 'client',
+    },
+  ],
   products: [
     {
       description:
