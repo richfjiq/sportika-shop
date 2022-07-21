@@ -6,9 +6,9 @@ export interface IProduct {
   price: number;
   sizes: ISize[];
   slug: string;
-  type: IType;
   tags: string[];
   title: string;
+  type: IType;
   gender: 'men' | 'women' | 'boys' | 'girls';
 
   // TODO: agregar createdAt y updatedAt

@@ -1,9 +1,9 @@
 import mongoose, { model, Model, Schema } from 'mongoose';
 import { IProduct } from '../interfaces';
 
-const ProductSchema = new Schema<IProduct>(
+const ProductSchema = new Schema(
   {
-    description: { type: String, required: true, default: '' },
+    description: { type: String, required: true },
     images: [{ type: String }],
     inStock: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
@@ -82,28 +82,24 @@ const ProductSchema = new Schema<IProduct>(
       },
     ],
     slug: { type: String, required: true, unique: true },
+    tags: [{ type: String }],
+    title: { type: String, required: true },
     type: {
       type: String,
       enum: {
         values: ['clothing', 'shoes'],
         message: '{VALUE} is not a valid type',
       },
-      default: 'clothing',
     },
-    tags: [{ type: String }],
-    title: { type: String, required: true, default: '' },
     gender: {
       type: String,
       enum: {
         values: ['men', 'women', 'girls', 'boys'],
         message: '{VALUE} is not a valid gender',
       },
-      default: 'men',
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 ProductSchema.index({ title: 'text', tags: 'text' });

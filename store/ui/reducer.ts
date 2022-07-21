@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface UiState {
+export interface UiState {
   isMenuOpen: boolean;
   isFocused: boolean;
 }

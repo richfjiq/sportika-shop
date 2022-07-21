@@ -7,7 +7,7 @@ export const OrderSummary = () => {
         <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>Items</Typography>
       </Grid>
       <Grid item xs={6} display="flex" justifyContent="end">
-        <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>3</Typography>
+        <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>3 items</Typography>
       </Grid>
 
       <Grid item xs={6}>

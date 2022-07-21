@@ -19,8 +19,9 @@ import {
   ShoppingCartOutlined,
 } from '@mui/icons-material';
 import { useRouter } from 'next/router';
-import { useUi } from '../../store';
-import { useState } from 'react';
+import { useCart, useUi } from '../../store';
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 
 export const Navbar = () => {
   const { setMenuOpen, setAutoFocus } = useUi();
@@ -28,6 +29,16 @@ export const Navbar = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const router = useRouter();
   const { asPath, push } = router;
+  const { addCartFromCookies, cart } = useCart();
+
+  useEffect(() => {
+    const cartFromCookies = Cookies.get('cart')
+      ? JSON.parse(Cookies.get('cart')!)
+      : [];
+
+    addCartFromCookies(cartFromCookies);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const setInputSearchFocused = () => {
     setMenuOpen();

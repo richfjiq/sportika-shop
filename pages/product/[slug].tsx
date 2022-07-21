@@ -37,32 +37,17 @@ const ProductPage: NextPage<Props> = ({ product }) => {
     setTempCartProduct((prevState) => ({ ...prevState, size }));
   };
 
-  const updateQuantity = (action: string) => {
-    if (tempCartProduct.quantity === 1 && action === 'remove') return;
-
-    if (tempCartProduct.quantity > 1 && action === 'remove') {
-      return setTempCartProduct((currentState) => ({
-        ...currentState,
-        quantity: currentState.quantity - 1,
-      }));
-    }
-
-    if (tempCartProduct.quantity >= product.inStock) return;
-
-    return setTempCartProduct((currentState) => ({
-      ...currentState,
-      quantity: currentState.quantity + 1,
+  const onUpdateQuantity = (quantity: number) => {
+    setTempCartProduct((currentProduct) => ({
+      ...currentProduct,
+      quantity,
     }));
   };
 
   const onAddProduct = () => {
     if (!tempCartProduct.size) return;
-
-    // TODO: agregar al carrito (state)
-
-    console.log({ tempCartProduct });
     addProductToCart(tempCartProduct);
-    // router.push('/cart');
+    router.push('/cart');
   };
 
   return (
@@ -85,7 +70,8 @@ const ProductPage: NextPage<Props> = ({ product }) => {
               <Typography variant="subtitle2">Quantity</Typography>
               <ItemCounter
                 currentValue={tempCartProduct.quantity}
-                updateQuantity={updateQuantity}
+                updatedQuantity={onUpdateQuantity}
+                maxValue={product.inStock}
               />
               <SizeSelector
                 selectedSize={tempCartProduct.size}

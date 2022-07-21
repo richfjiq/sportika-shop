@@ -128,7 +128,7 @@ export const initialData: InitialData = {
         'swimming_suit_rich_mnisi_women_02.jpg',
         'swimming_suit_rich_mnisi_women_03.jpg',
       ],
-      inStock: 9,
+      inStock: 0,
       price: 59.95,
       sizes: ['XS', 'S', 'M', 'L', 'XL'],
       slug: 'rich_mnisi_swimming_suit_women',
@@ -368,7 +368,7 @@ export const initialData: InitialData = {
         'zx_5k_boost_blanco_men_02.jpg',
         'zx_5k_boost_blanco_men_03.jpg',
       ],
-      inStock: 80,
+      inStock: 0,
       price: 189.95,
       sizes: [
         '5',
@@ -574,7 +574,7 @@ export const initialData: InitialData = {
         'adidas_x_disney_mickey_mouse_t_shirt_02.jpg',
         'adidas_x_disney_mickey_mouse_t_shirt_03.jpg',
       ],
-      inStock: 66,
+      inStock: 0,
       price: 32.45,
       sizes: [
         '2 years',
