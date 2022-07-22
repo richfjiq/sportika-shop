@@ -1,3 +1,5 @@
+import bcrypt from 'bcryptjs';
+
 interface InitialProducts {
   description: string;
   images: string[];
@@ -97,13 +99,13 @@ export const initialData: InitialData = {
     {
       name: 'Ricardo Flores',
       email: 'rfjiq1986@gmail.com',
-      password: '123456',
+      password: bcrypt.hashSync('123456'),
       role: 'admin',
     },
     {
       name: 'Billy the kiii',
       email: 'billy@gmail.com',
-      password: '123456',
+      password: bcrypt.hashSync('123456'),
       role: 'client',
     },
   ],
