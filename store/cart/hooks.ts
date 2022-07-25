@@ -8,7 +8,11 @@ import {
   removeProductFromCart as removeProductFromCartAction,
   addOrderSummary as addOrderSummaryAction,
   updateCartInCookies as updateCartInCookiesAction,
+  loadAddressFromCookies as loadAddressFromCookiesAction,
+  addAddress as addAddressAction,
+  IAddAddress,
 } from './actions';
+import { ShippingAddress } from './reducer';
 
 export const useCart = () => {
   const cartState = useAppSelector((state) => state.cart);
@@ -49,11 +53,24 @@ export const useCart = () => {
     [dispatch]
   );
 
+  const loadAddressFromCookies = useCallback(() => {
+    dispatch(loadAddressFromCookiesAction());
+  }, [dispatch]);
+
+  const addAddress = useCallback(
+    ({ address, country, code }: IAddAddress) => {
+      dispatch(addAddressAction({ address, country, code }));
+    },
+    [dispatch]
+  );
+
   return {
     ...cartState,
     addProductToCart,
     addCartFromCookies,
     updateCartQuantity,
     removeProductFromCart,
+    loadAddressFromCookies,
+    addAddress,
   };
 };

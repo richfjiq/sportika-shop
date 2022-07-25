@@ -5,16 +5,6 @@ export async function middleware(request: NextRequest, event: NextFetchEvent) {
   if (request.nextUrl.pathname.startsWith('/checkout/address')) {
     const token = request.cookies.get('token');
 
-    // const userAuth = await fetch(
-    //   `${request.nextUrl.origin}/api/user/validate-token`,
-    //   {
-    //     method: 'GET',
-    //     headers: {
-    //       Cookie: token || '',
-    //     },
-    //   }
-    // );
-
     if (!token) {
       return NextResponse.redirect(
         new URL('/auth/login?p=/checkout/address', request.url)
@@ -24,11 +14,35 @@ export async function middleware(request: NextRequest, event: NextFetchEvent) {
 
   if (request.nextUrl.pathname.startsWith('/checkout/summary')) {
     const token = request.cookies.get('token');
+    const cart = request.cookies.get('cart');
+    const address = request.cookies.get('address');
+    const firstName = request.cookies.get('firstName');
+    const lastName = request.cookies.get('lastName');
+    const zip = request.cookies.get('zip');
+    const city = request.cookies.get('city');
+    const phone = request.cookies.get('phone');
+    const country = request.cookies.get('country');
+    const code = request.cookies.get('code');
 
     if (!token) {
       return NextResponse.redirect(
         new URL('/auth/login?p=/checkout/summary', request.url)
       );
+    }
+    if (
+      !address ||
+      !firstName ||
+      !lastName ||
+      !zip ||
+      !city ||
+      !phone ||
+      !code ||
+      !country
+    ) {
+      return NextResponse.redirect(new URL('/checkout/address', request.url));
+    }
+    if (!cart) {
+      return NextResponse.redirect(new URL('/', request.url));
     }
   }
 }

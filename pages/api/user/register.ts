@@ -43,8 +43,6 @@ const registerUser = async (
     name = '',
   } = req.body as { email: string; password: string; name: string };
 
-  console.log(req.body);
-
   if (password.length < 6) {
     return res.status(400).json({
       message: 'Password must have at least 6 characters',

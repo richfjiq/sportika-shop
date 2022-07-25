@@ -9,6 +9,85 @@ const UPDATE_CART_QUANTITY = 'UPDATE_CART_QUANTITY';
 const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
 const ADD_ORDER_SUMMARY = 'ADD_ORDER_SUMMARY';
 const UPDATE_CART_IN_COOKIES = 'UPDATE_CART_IN_COOKIES';
+const LOAD_ADDRESS_FROM_COOKIES = 'LOAD_ADDRESS_FROM_COOKIES';
+const ADD_ADDRESS = 'ADD_ADDRESS';
+
+export interface IAddAddress {
+  address: {
+    firstName: string;
+    lastName: string;
+    address: string;
+    address2?: string;
+    zip: string;
+    city: string;
+    country: string;
+    code: string;
+    phone: string;
+  };
+  country: string;
+  code: string;
+}
+
+export const addAddress = createAction(
+  ADD_ADDRESS,
+  ({ address, country, code }: IAddAddress) => {
+    Cookies.set('firstName', address.firstName);
+    Cookies.set('lastName', address.lastName);
+    Cookies.set('address', address.address);
+    Cookies.set('address2', address.address2 || '');
+    Cookies.set('zip', address.zip);
+    Cookies.set('city', address.city);
+    Cookies.set('country', country);
+    Cookies.set('code', code);
+    Cookies.set('phone', address.phone);
+
+    return {
+      payload: {
+        ...address,
+        country,
+        code,
+      },
+    };
+  }
+);
+
+export const loadAddressFromCookies = createAction(
+  LOAD_ADDRESS_FROM_COOKIES,
+  () => {
+    const firstName = Cookies.get('firstName');
+
+    if (!firstName) {
+      return {
+        payload: undefined,
+      };
+    }
+
+    const lastName = Cookies.get('lastName') || '';
+    const address = Cookies.get('address') || '';
+    const address2 = Cookies.get('address2') || '';
+    const zip = Cookies.get('zip') || '';
+    const city = Cookies.get('city') || '';
+    const country = Cookies.get('country') || '';
+    const code = Cookies.get('code') || '';
+    const phone = Cookies.get('phone') || '';
+
+    const shippingAddress = {
+      firstName,
+      lastName,
+      address,
+      address2,
+      zip,
+      city,
+      country,
+      code,
+      phone,
+    };
+
+    return {
+      payload: shippingAddress,
+    };
+  }
+);
 
 export const updateCartInCookies = createAction(UPDATE_CART_IN_COOKIES, () => {
   const state = store.getState();

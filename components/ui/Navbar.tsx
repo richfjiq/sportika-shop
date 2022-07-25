@@ -30,8 +30,14 @@ export const Navbar = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const router = useRouter();
   const { asPath, push } = router;
-  const { addCartFromCookies, numberOfItems } = useCart();
+  const { addCartFromCookies, numberOfItems, loadAddressFromCookies } =
+    useCart();
   const { checkToken } = useAuth();
+
+  useEffect(() => {
+    loadAddressFromCookies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const token = Cookies.get('token');

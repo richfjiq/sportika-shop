@@ -12,8 +12,11 @@ import {
 
 import { CartList, OrderSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layout';
+import { useCart } from '../../store';
 
 const SummaryPage = () => {
+  const { shippingAddress, numberOfItems } = useCart();
+
   return (
     <ShopLayout title={'Order summary'} pageDescription={'Order summary'}>
       <Typography
@@ -38,7 +41,10 @@ const SummaryPage = () => {
                 }}
                 variant="h2"
               >
-                Summary (3 items)
+                Summary{' '}
+                {numberOfItems === 1
+                  ? `${numberOfItems} item`
+                  : `${numberOfItems} items`}
               </Typography>
 
               <Divider sx={{ my: 1 }} />
@@ -62,19 +68,19 @@ const SummaryPage = () => {
               </Box>
 
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                Ricardo Flores
+                {`${shippingAddress?.firstName} ${shippingAddress?.lastName}`}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                323 Some place
+                {shippingAddress?.address} {shippingAddress?.address2}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                Stittsville, HYA 23S
+                {shippingAddress?.city} {shippingAddress?.zip}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                Canada
+                {shippingAddress?.country}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                +1 1234 1134 54
+                {`${shippingAddress?.code} ${shippingAddress?.phone}`}
               </Typography>
 
               <Divider sx={{ my: 1 }} />
