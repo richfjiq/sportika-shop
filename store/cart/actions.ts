@@ -1,4 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 import { store } from '..';
 import { ICartProduct } from '../../interfaces';
 
@@ -7,6 +8,15 @@ const ADD_CART_FROM_COOKIES = 'ADD_CART_FROM_COOKIES';
 const UPDATE_CART_QUANTITY = 'UPDATE_CART_QUANTITY';
 const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
 const ADD_ORDER_SUMMARY = 'ADD_ORDER_SUMMARY';
+const UPDATE_CART_IN_COOKIES = 'UPDATE_CART_IN_COOKIES';
+
+export const updateCartInCookies = createAction(UPDATE_CART_IN_COOKIES, () => {
+  const state = store.getState();
+  Cookies.set('cart', JSON.stringify(state.cart.cart));
+  return {
+    payload: '',
+  };
+});
 
 export const addProductToCart = createAction(
   ADD_PRODUCT_TO_CART,

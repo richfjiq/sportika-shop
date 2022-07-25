@@ -7,20 +7,18 @@ import {
   updateCartQuantity as updateCartQuantityAction,
   removeProductFromCart as removeProductFromCartAction,
   addOrderSummary as addOrderSummaryAction,
+  updateCartInCookies as updateCartInCookiesAction,
 } from './actions';
 
 export const useCart = () => {
   const cartState = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
-  // const addOrderSummary = useCallback(() => {
-  //   dispatch(addOrderSummaryAction());
-  // }, [dispatch]);
-
   const addProductToCart = useCallback(
     (product: ICartProduct) => {
       dispatch(addProductToCartAction(product));
       dispatch(addOrderSummaryAction());
+      dispatch(updateCartInCookiesAction());
     },
     [dispatch]
   );
@@ -37,6 +35,7 @@ export const useCart = () => {
     (product: ICartProduct, newQuantity: number) => {
       dispatch(updateCartQuantityAction(product, newQuantity));
       dispatch(addOrderSummaryAction());
+      dispatch(updateCartInCookiesAction());
     },
     [dispatch]
   );
@@ -45,6 +44,7 @@ export const useCart = () => {
     (product: ICartProduct) => {
       dispatch(removeProductFromCartAction(product));
       dispatch(addOrderSummaryAction());
+      dispatch(updateCartInCookiesAction());
     },
     [dispatch]
   );
@@ -55,6 +55,5 @@ export const useCart = () => {
     addCartFromCookies,
     updateCartQuantity,
     removeProductFromCart,
-    // addOrderSummary,
   };
 };

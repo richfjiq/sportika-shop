@@ -9,19 +9,19 @@ import { store } from '../store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <SWRConfig
-      value={{
-        fetcher: (resource, init) =>
-          fetch(resource, init).then((res) => res.json()),
-      }}
-    >
-      <Provider store={store}>
+    <Provider store={store}>
+      <SWRConfig
+        value={{
+          fetcher: (resource, init) =>
+            fetch(resource, init).then((res) => res.json()),
+        }}
+      >
         <ThemeProvider theme={lightTheme}>
           <CssBaseline />
           <Component {...pageProps} />
         </ThemeProvider>
-      </Provider>
-    </SWRConfig>
+      </SWRConfig>
+    </Provider>
   );
 }
 

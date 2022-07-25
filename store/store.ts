@@ -1,51 +1,16 @@
 import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit';
-import Cookies from 'js-cookie';
 
-import {
-  addProductToCart,
-  cartReducer,
-  updateCartQuantity,
-  removeProductFromCart,
-} from './cart';
-import { CartState } from './cart/reducer';
+import { cartReducer } from './cart';
 import { uiReducer } from './ui';
-import { UiState } from './ui/reducer';
-
-interface rootState {
-  ui: UiState;
-  cart: CartState;
-}
+import { authReducer } from './auth';
 
 const listenerMiddleware = createListenerMiddleware();
-
-listenerMiddleware.startListening({
-  actionCreator: addProductToCart,
-  effect: (action, listenerApi) => {
-    const { cart } = listenerApi.getState() as rootState;
-    Cookies.set('cart', JSON.stringify(cart.cart));
-  },
-});
-
-listenerMiddleware.startListening({
-  actionCreator: updateCartQuantity,
-  effect: (action, listenerApi) => {
-    const { cart } = listenerApi.getState() as rootState;
-    Cookies.set('cart', JSON.stringify(cart.cart));
-  },
-});
-
-listenerMiddleware.startListening({
-  actionCreator: removeProductFromCart,
-  effect: (action, listenerApi) => {
-    const { cart } = listenerApi.getState() as rootState;
-    Cookies.set('cart', JSON.stringify(cart.cart));
-  },
-});
 
 export const store = configureStore({
   reducer: {
     ui: uiReducer,
     cart: cartReducer,
+    auth: authReducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware().prepend(listenerMiddleware.middleware);

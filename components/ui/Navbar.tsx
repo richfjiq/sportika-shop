@@ -15,12 +15,13 @@ import {
 import {
   ClearOutlined,
   MenuOutlined,
+  PersonOutlineOutlined,
   SearchOutlined,
   ShoppingCartOutlined,
 } from '@mui/icons-material';
 import { useRouter } from 'next/router';
-import { useCart, useUi } from '../../store';
-import { useCallback, useEffect, useState } from 'react';
+import { useAuth, useCart, useUi } from '../../store';
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
 export const Navbar = () => {
@@ -30,6 +31,15 @@ export const Navbar = () => {
   const router = useRouter();
   const { asPath, push } = router;
   const { addCartFromCookies, numberOfItems } = useCart();
+  const { checkToken } = useAuth();
+
+  useEffect(() => {
+    const token = Cookies.get('token');
+    if (token) {
+      checkToken();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const cartFromCookies = Cookies.get('cart')
@@ -150,6 +160,14 @@ export const Navbar = () => {
         >
           <SearchOutlined />
         </IconButton>
+
+        <NextLink href={`/auth/login?p=${router.asPath}`} passHref>
+          <Link>
+            <IconButton>
+              <PersonOutlineOutlined />
+            </IconButton>
+          </Link>
+        </NextLink>
 
         <NextLink href="/cart" passHref>
           <Link>

@@ -28,11 +28,12 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/router';
 
-import { useUi } from '../../store';
+import { useAuth, useUi } from '../../store';
 
 export const SideMenu = () => {
-  const { isMenuOpen, setMenuOpen, isFocused } = useUi();
   const router = useRouter();
+  const { isLoggedIn, user, userLogout } = useAuth();
+  const { isMenuOpen, setMenuOpen, isFocused } = useUi();
   const [searchTerm, setSearchTerm] = useState('');
 
   const onSearchTerm = () => {
@@ -43,6 +44,11 @@ export const SideMenu = () => {
   const navigateTo = (url: string) => {
     setMenuOpen();
     router.push(url);
+  };
+
+  const onLogout = () => {
+    userLogout();
+    router.reload();
   };
 
   return (
@@ -72,19 +78,23 @@ export const SideMenu = () => {
             />
           </ListItem>
 
-          <ListItemButton>
-            <ListItemIcon>
-              <AccountCircleOutlined />
-            </ListItemIcon>
-            <ListItemText primary={'Profile'} />
-          </ListItemButton>
+          {isLoggedIn && (
+            <>
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountCircleOutlined />
+                </ListItemIcon>
+                <ListItemText primary={'Profile'} />
+              </ListItemButton>
 
-          <ListItemButton>
-            <ListItemIcon>
-              <ListAltOutlined />
-            </ListItemIcon>
-            <ListItemText primary={'Orders'} />
-          </ListItemButton>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ListAltOutlined />
+                </ListItemIcon>
+                <ListItemText primary={'Orders'} />
+              </ListItemButton>
+            </>
+          )}
 
           <ListItemButton
             onClick={() => navigateTo('/category/men')}
@@ -126,44 +136,52 @@ export const SideMenu = () => {
             <ListItemText primary={'Girls'} />
           </ListItemButton>
 
-          <ListItemButton>
-            <ListItemIcon>
-              <VpnKeyOutlined />
-            </ListItemIcon>
-            <ListItemText primary={'Log In'} />
-          </ListItemButton>
+          {isLoggedIn ? (
+            <ListItemButton onClick={onLogout}>
+              <ListItemIcon>
+                <LogoutOutlined />
+              </ListItemIcon>
+              <ListItemText primary={'Log Out'} />
+            </ListItemButton>
+          ) : (
+            <ListItemButton
+              onClick={() => navigateTo(`/auth/login?p=${router.asPath}`)}
+            >
+              <ListItemIcon>
+                <VpnKeyOutlined />
+              </ListItemIcon>
+              <ListItemText primary={'Log In'} />
+            </ListItemButton>
+          )}
 
-          <ListItemButton>
-            <ListItemIcon>
-              <LogoutOutlined />
-            </ListItemIcon>
-            <ListItemText primary={'Log Out'} />
-          </ListItemButton>
+          {isLoggedIn && user?.user.role === 'admin' && (
+            <>
+              <Divider />
 
-          <Divider />
+              <ListSubheader>Admin Panel</ListSubheader>
 
-          <ListSubheader>Admin Panel</ListSubheader>
+              <ListItemButton>
+                <ListItemIcon>
+                  <CategoryOutlined />
+                </ListItemIcon>
+                <ListItemText primary={'Products'} />
+              </ListItemButton>
 
-          <ListItemButton>
-            <ListItemIcon>
-              <CategoryOutlined />
-            </ListItemIcon>
-            <ListItemText primary={'Products'} />
-          </ListItemButton>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ListAltOutlined />
+                </ListItemIcon>
+                <ListItemText primary={'Orders'} />
+              </ListItemButton>
 
-          <ListItemButton>
-            <ListItemIcon>
-              <ListAltOutlined />
-            </ListItemIcon>
-            <ListItemText primary={'Orders'} />
-          </ListItemButton>
-
-          <ListItemButton>
-            <ListItemIcon>
-              <GroupOutlined />
-            </ListItemIcon>
-            <ListItemText primary={'Users'} />
-          </ListItemButton>
+              <ListItemButton>
+                <ListItemIcon>
+                  <GroupOutlined />
+                </ListItemIcon>
+                <ListItemText primary={'Users'} />
+              </ListItemButton>
+            </>
+          )}
         </List>
       </Box>
     </Drawer>

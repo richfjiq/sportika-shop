@@ -10,6 +10,7 @@ import {
 } from './actions';
 
 export interface CartState {
+  isCartLoaded: boolean;
   cart: ICartProduct[];
   numberOfItems: number;
   subTotal: number;
@@ -18,6 +19,7 @@ export interface CartState {
 }
 
 const initialState: CartState = {
+  isCartLoaded: false,
   cart: [],
   numberOfItems: 0,
   subTotal: 0,
@@ -47,6 +49,7 @@ const cartStore = createSlice({
     });
     builder.addCase(addCartFromCookies, (state, action) => {
       state.cart = action.payload;
+      state.isCartLoaded = true;
     });
     builder.addCase(updateCartQuantity, (state, action) => {
       const cart = state.cart.map((product) => {

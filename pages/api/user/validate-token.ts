@@ -34,6 +34,7 @@ export default function handler(
 
 const checkJWT = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const { token = '' } = req.cookies;
+  console.log('==========================', req.cookies);
 
   let userId = '';
 
