@@ -9,9 +9,32 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   const { origin } = req.nextUrl;
 
   if (req.nextUrl.pathname.startsWith('/checkout')) {
-    console.log('++++++++++++++++++++++', { session });
     if (!session) {
       return NextResponse.redirect(`${origin}/auth/login?p=${requestedPage}`);
+    }
+  }
+
+  if (req.nextUrl.pathname.startsWith('/checkout/address')) {
+    const cart = req.cookies.get('cart');
+    if (!cart) {
+      return NextResponse.redirect(`${origin}/`);
+    }
+  }
+
+  if (req.nextUrl.pathname.startsWith('/checkout/summary')) {
+    const firstName = req.cookies.get('firstName');
+    const lastName = req.cookies.get('lastName');
+    const address = req.cookies.get('address');
+    const zip = req.cookies.get('zip');
+    const city = req.cookies.get('city');
+    const phone = req.cookies.get('phone');
+    const cart = req.cookies.get('cart');
+
+    if (
+      (!firstName || !lastName || !address || !zip || !city || !phone) &&
+      cart
+    ) {
+      return NextResponse.redirect(`${origin}/checkout/address`);
     }
   }
 

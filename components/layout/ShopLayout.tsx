@@ -33,7 +33,6 @@ export const ShopLayout: FC<Props> = ({
 
   useEffect(() => {
     if (status === 'authenticated') {
-      console.log(data);
       loginNextAuth(data.user as AuthUser);
     }
   }, [data, status, loginNextAuth]);

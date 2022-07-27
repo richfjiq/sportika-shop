@@ -2,14 +2,9 @@ import NextLink from 'next/link';
 import { RemoveShoppingCartOutlined } from '@mui/icons-material';
 import { Box, Link, Typography } from '@mui/material';
 
-import { ShopLayout } from '../../components/layout';
-
-const EmptyPage = () => {
+export const EmptyPage = () => {
   return (
-    <ShopLayout
-      title="Empty cart"
-      pageDescription="There is no items in the cart."
-    >
+    <>
       <Box
         display="flex"
         height="calc(100vh - 200px)"
@@ -27,8 +22,6 @@ const EmptyPage = () => {
           </NextLink>
         </Box>
       </Box>
-    </ShopLayout>
+    </>
   );
 };
-
-export default EmptyPage;

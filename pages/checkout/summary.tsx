@@ -20,17 +20,17 @@ import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 const SummaryPage = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const { shippingAddress, numberOfItems } = useCart();
 
-  useEffect(() => {
-    if (!Cookies.get('firstName') && !Cookies.get('cart')) {
-      router.push('/');
-    }
-    if (!Cookies.get('firstName') && Cookies.get('cart')) {
-      router.push('/checkout/address');
-    }
-  }, [router]);
+  // useEffect(() => {
+  //   if (!Cookies.get('firstName') && !Cookies.get('cart')) {
+  //     router.push('/');
+  //   }
+  //   if (!Cookies.get('firstName') && Cookies.get('cart')) {
+  //     router.push('/checkout/address');
+  //   }
+  // }, [router]);
 
   if (!shippingAddress) {
     return <></>;
