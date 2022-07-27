@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import NextLink from 'next/link';
+import { GetServerSideProps } from 'next';
+import { getProviders, getSession, signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import {
   Box,
   Button,
   Chip,
+  Divider,
   Grid,
   Link,
   TextField,
@@ -14,8 +18,7 @@ import { ErrorOutline } from '@mui/icons-material';
 
 import { ShopLayout } from '../../components/layout';
 import { validations } from '../../utils';
-import { useAuth } from '../../store';
-import { useRouter } from 'next/router';
+// import { useAuth } from '../../store';
 
 type FormData = {
   email: string;
@@ -24,40 +27,46 @@ type FormData = {
 
 const LoginPage = () => {
   const router = useRouter();
-  const [showError, setShowError] = useState(false);
-  const { userLogin, loading, error, isLoggedIn } = useAuth();
+  const [providers, setProviders] = useState<any>({});
+  // const [showError, setShowError] = useState(false);
+  // const { userLogin, loading, error, isLoggedIn } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
+  useEffect(() => {
+    getProviders().then((prov) => {
+      setProviders(prov);
+    });
+  }, []);
+
   const destination = router.query.p?.toString() || '/';
 
-  useEffect(() => {
-    if (error) {
-      setShowError(true);
-      setTimeout(() => {
-        setShowError(false);
-      }, 3000);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     setShowError(true);
+  //     setTimeout(() => {
+  //       setShowError(false);
+  //     }, 3000);
+  //   }
+  // }, [error]);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      const destination = router.query.p?.toString() || '/';
-      router.replace(destination);
-    }
-  }, [isLoggedIn, router]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     const destination = router.query.p?.toString() || '/';
+  //     router.replace(destination);
+  //   }
+  // }, [isLoggedIn, router]);
 
   const onLoginUser = async ({ email, password }: FormData) => {
-    const data = {
-      email,
-      password,
-    };
-
-    userLogin(data);
-
+    await signIn('credentials', { email, password });
+    // const data = {
+    //   email,
+    //   password,
+    // };
+    // userLogin(data);
     // setShowError(false);
     // try {
     //   const { data } = await sportikaApi.post('/user/login', {
@@ -107,7 +116,8 @@ const LoginPage = () => {
                   sx={{
                     width: '100%',
                     mt: 1,
-                    display: showError ? 'flex' : 'none',
+                    // display: showError ? 'flex' : 'none',
+                    display: 'none',
                   }}
                   variant="filled"
                 />
@@ -150,7 +160,7 @@ const LoginPage = () => {
                   className="circular-btn"
                   size="large"
                   fullWidth
-                  disabled={loading}
+                  // disabled={loading}
                 >
                   Log in
                 </Button>
@@ -161,12 +171,59 @@ const LoginPage = () => {
                   <Link underline="always">Do you have an account?</Link>
                 </NextLink>
               </Grid>
+
+              <Grid
+                item
+                xs={12}
+                display="flex"
+                flexDirection="column"
+                justifyContent="end"
+              >
+                <Divider sx={{ width: '100%', mb: 2, mt: 1 }} />
+                {Object.values(providers).map((provider: any) => {
+                  if (provider.id === 'credentials') return;
+
+                  return (
+                    <Button
+                      key={provider.id}
+                      variant="outlined"
+                      fullWidth
+                      color="primary"
+                      sx={{ mb: 1 }}
+                      onClick={() => signIn(provider.id)}
+                    >
+                      {provider.name}
+                    </Button>
+                  );
+                })}
+              </Grid>
             </Grid>
           </Box>
         </Box>
       </form>
     </ShopLayout>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  query,
+}) => {
+  const session = await getSession({ req });
+  const { p = '/' } = query;
+
+  if (session) {
+    return {
+      redirect: {
+        destination: `${p.toString()}`,
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 };
 
 export default LoginPage;

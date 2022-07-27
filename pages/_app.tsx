@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
+import { SessionProvider } from 'next-auth/react';
 import { SWRConfig } from 'swr';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
@@ -9,19 +10,21 @@ import { store } from '../store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
+    <SessionProvider>
       <SWRConfig
         value={{
           fetcher: (resource, init) =>
             fetch(resource, init).then((res) => res.json()),
         }}
       >
-        <ThemeProvider theme={lightTheme}>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <Provider store={store}>
+          <ThemeProvider theme={lightTheme}>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </Provider>
       </SWRConfig>
-    </Provider>
+    </SessionProvider>
   );
 }
 

@@ -32,20 +32,20 @@ export const Navbar = () => {
   const { asPath, push } = router;
   const { addCartFromCookies, numberOfItems, loadAddressFromCookies } =
     useCart();
-  const { checkToken } = useAuth();
+  // const { checkToken } = useAuth();
 
   useEffect(() => {
     loadAddressFromCookies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const token = Cookies.get('token');
-    if (token) {
-      checkToken();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   const token = Cookies.get('token');
+  //   if (token) {
+  //     checkToken();
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   useEffect(() => {
     const cartFromCookies = Cookies.get('cart')
@@ -55,6 +55,10 @@ export const Navbar = () => {
     addCartFromCookies(cartFromCookies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const navigateTo = (url: string) => {
+    router.push(url);
+  };
 
   const setInputSearchFocused = () => {
     setMenuOpen();
@@ -167,13 +171,15 @@ export const Navbar = () => {
           <SearchOutlined />
         </IconButton>
 
-        <NextLink href={`/auth/login?p=${router.asPath}`} passHref>
-          <Link>
-            <IconButton>
-              <PersonOutlineOutlined />
-            </IconButton>
-          </Link>
-        </NextLink>
+        {/* <NextLink href={`/auth/login?p=${router.asPath}`} passHref>
+          <Link> */}
+        <IconButton
+          onClick={() => navigateTo(`/auth/login?p=${router.asPath}`)}
+        >
+          <PersonOutlineOutlined />
+        </IconButton>
+        {/* </Link>
+        </NextLink> */}
 
         <NextLink href="/cart" passHref>
           <Link>

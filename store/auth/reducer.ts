@@ -1,15 +1,19 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import { IUser } from '../../interfaces';
-import { checkToken, createUser, userLogin } from './actions';
+import {
+  checkToken,
+  createUser,
+  loginNextAuth,
+  logoutNextAuth,
+  userLogin,
+} from './actions';
 
 export interface AuthUser {
-  token: string;
-  user: {
-    email: string;
-    role: string;
-    name: string;
-  };
+  email: string;
+  role: string;
+  name: string;
+  _id?: string;
 }
 
 export interface AuthState {
@@ -31,6 +35,14 @@ const authStore = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(loginNextAuth, (state, { payload }) => {
+      state.user = payload;
+      state.isLoggedIn = true;
+    });
+    builder.addCase(logoutNextAuth, (state, { payload }) => {
+      state.user = payload;
+      state.isLoggedIn = false;
+    });
     builder.addCase(userLogin.pending, (state) => {
       state.loading = true;
       state.error = false;

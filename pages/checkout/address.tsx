@@ -1,12 +1,14 @@
 import { GetServerSideProps } from 'next';
+import { getSession } from 'next-auth/react';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
-import { ShopLayout } from '../../components/layout';
 import { useForm } from 'react-hook-form';
 import { ChangeEvent, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
+
 import { countries, getCodeCountry } from '../../utils';
 import { useCart } from '../../store';
+import { ShopLayout } from '../../components/layout';
 
 type FormData = {
   firstName: string;
@@ -223,6 +225,23 @@ const AddressPage = () => {
     </ShopLayout>
   );
 };
+
+// export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+//   const session = await getSession({ req });
+
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: '/auth/login?p=/checkout/address',
+//         permanent: false,
+//       },
+//     };
+//   }
+
+//   return {
+//     props: {},
+//   };
+// };
 
 // export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 //   const { token = '' } = req.cookies;

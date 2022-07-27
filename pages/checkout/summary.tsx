@@ -9,13 +9,44 @@ import {
   Link,
   Typography,
 } from '@mui/material';
+import { GetServerSideProps } from 'next';
+import { getSession } from 'next-auth/react';
 
 import { CartList, OrderSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layout';
 import { useCart } from '../../store';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 const SummaryPage = () => {
+  const router = useRouter();
   const { shippingAddress, numberOfItems } = useCart();
+
+  useEffect(() => {
+    if (!Cookies.get('firstName') && !Cookies.get('cart')) {
+      router.push('/');
+    }
+    if (!Cookies.get('firstName') && Cookies.get('cart')) {
+      router.push('/checkout/address');
+    }
+  }, [router]);
+
+  if (!shippingAddress) {
+    return <></>;
+  }
+
+  const {
+    firstName,
+    lastName,
+    address,
+    address2,
+    city,
+    zip,
+    country,
+    phone,
+    code,
+  } = shippingAddress;
 
   return (
     <ShopLayout title={'Order summary'} pageDescription={'Order summary'}>
@@ -68,19 +99,19 @@ const SummaryPage = () => {
               </Box>
 
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {`${shippingAddress?.firstName} ${shippingAddress?.lastName}`}
+                {`${firstName} ${lastName}`}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {shippingAddress?.address} {shippingAddress?.address2}
+                {address} {address2}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {shippingAddress?.city} {shippingAddress?.zip}
+                {city} {zip}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {shippingAddress?.country}
+                {country}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {`${shippingAddress?.code} ${shippingAddress?.phone}`}
+                {`${code} ${phone}`}
               </Typography>
 
               <Divider sx={{ my: 1 }} />
@@ -110,5 +141,22 @@ const SummaryPage = () => {
     </ShopLayout>
   );
 };
+
+// export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+//   const session = await getSession({ req });
+
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: '/auth/login?p=/checkout/summary',
+//         permanent: false,
+//       },
+//     };
+//   }
+
+//   return {
+//     props: {},
+//   };
+// };
 
 export default SummaryPage;

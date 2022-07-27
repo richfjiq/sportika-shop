@@ -1,16 +1,11 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useEffect } from 'react';
 import Head from 'next/head';
+import { useSession } from 'next-auth/react';
 
 import { Navbar, SideMenu } from '../ui';
-import {
-  Box,
-  Card,
-  CardActionArea,
-  CardMedia,
-  Grid,
-  Typography,
-} from '@mui/material';
 import { ProductSlideshow } from '../products';
+import { useAuth } from '../../store';
+import { AuthUser } from '../../store/auth/reducer';
 
 interface Props {
   children: ReactNode;
@@ -33,6 +28,16 @@ export const ShopLayout: FC<Props> = ({
   imageFullUrl,
   fromHome,
 }) => {
+  const { data, status } = useSession();
+  const { loginNextAuth } = useAuth();
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      console.log(data);
+      loginNextAuth(data.user as AuthUser);
+    }
+  }, [data, status, loginNextAuth]);
+
   return (
     <>
       <Head>

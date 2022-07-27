@@ -32,7 +32,7 @@ import { useAuth, useUi } from '../../store';
 
 export const SideMenu = () => {
   const router = useRouter();
-  const { isLoggedIn, user, userLogout } = useAuth();
+  const { isLoggedIn, user, userLogout, logoutNextAuth } = useAuth();
   const { isMenuOpen, setMenuOpen, isFocused } = useUi();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -137,7 +137,7 @@ export const SideMenu = () => {
           </ListItemButton>
 
           {isLoggedIn ? (
-            <ListItemButton onClick={onLogout}>
+            <ListItemButton onClick={logoutNextAuth}>
               <ListItemIcon>
                 <LogoutOutlined />
               </ListItemIcon>
@@ -154,7 +154,7 @@ export const SideMenu = () => {
             </ListItemButton>
           )}
 
-          {isLoggedIn && user?.user.role === 'admin' && (
+          {isLoggedIn && user?.role === 'admin' && (
             <>
               <Divider />
 
