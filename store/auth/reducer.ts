@@ -1,6 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
-import { IUser } from '../../interfaces';
 import {
   checkToken,
   createUser,

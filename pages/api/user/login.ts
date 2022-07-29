@@ -45,7 +45,7 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       .json({ message: 'Email / Password not valid - Email' });
   }
 
-  if (!bcrypt.compareSync(password, user.password)) {
+  if (!bcrypt.compareSync(password, user.password!)) {
     return res
       .status(400)
       .json({ message: 'Email / Password not valid - Password' });

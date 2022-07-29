@@ -1,7 +1,9 @@
-import { createAction } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import axios, { AxiosError } from 'axios';
 import Cookies from 'js-cookie';
 import { store } from '..';
-import { ICartProduct } from '../../interfaces';
+import { sportikaApi } from '../../api';
+import { ICartProduct, IOrder } from '../../interfaces';
 
 const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
 const ADD_CART_FROM_COOKIES = 'ADD_CART_FROM_COOKIES';
@@ -11,6 +13,8 @@ const ADD_ORDER_SUMMARY = 'ADD_ORDER_SUMMARY';
 const UPDATE_CART_IN_COOKIES = 'UPDATE_CART_IN_COOKIES';
 const LOAD_ADDRESS_FROM_COOKIES = 'LOAD_ADDRESS_FROM_COOKIES';
 const ADD_ADDRESS = 'ADD_ADDRESS';
+const CREATE_ORDER = 'CREATE_ORDER';
+const SET_ORDER_CREATED = 'SET_ORDER_CREATED';
 
 export interface IAddAddress {
   address: {
@@ -90,8 +94,8 @@ export const loadAddressFromCookies = createAction(
 );
 
 export const updateCartInCookies = createAction(UPDATE_CART_IN_COOKIES, () => {
-  const state = store.getState();
-  Cookies.set('cart', JSON.stringify(state.cart.cart));
+  const { cart } = store.getState();
+  Cookies.set('cart', JSON.stringify(cart.cart));
   return {
     payload: '',
   };
@@ -159,3 +163,47 @@ export const addOrderSummary = createAction(ADD_ORDER_SUMMARY, () => {
     payload: orderSummary,
   };
 });
+
+export const orderCreated = createAction(
+  SET_ORDER_CREATED,
+  (orderId: string) => {
+    Cookies.remove('cart');
+
+    return {
+      payload: orderId,
+    };
+  }
+);
+
+export const createOrder = createAsyncThunk(
+  CREATE_ORDER,
+  async (_, thunkApi) => {
+    const { cart, auth } = store.getState();
+
+    if (!cart.shippingAddress) {
+      throw new Error('There is not shipping address');
+    }
+
+    const body = {
+      orderItems: cart.cart,
+      shippingAddress: cart.shippingAddress,
+      numberOfItems: cart.numberOfItems,
+      subTotal: cart.subTotal,
+      tax: cart.tax,
+      total: cart.total,
+      isPaid: false,
+    };
+
+    try {
+      const { data } = await sportikaApi.post<IOrder>('/orders', body);
+      return data._id || '';
+    } catch (error) {
+      console.log(error);
+      if (axios.isAxiosError(error) && error instanceof AxiosError) {
+        return thunkApi.rejectWithValue(error.response?.data.message);
+      }
+
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);

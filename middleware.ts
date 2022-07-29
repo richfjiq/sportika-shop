@@ -36,6 +36,17 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
     ) {
       return NextResponse.redirect(`${origin}/checkout/address`);
     }
+
+    if (
+      (!firstName || !lastName || !address || !zip || !city || !phone) &&
+      !cart
+    ) {
+      return NextResponse.redirect(`${origin}/`);
+    }
+
+    if (!cart) {
+      return NextResponse.redirect(`${origin}/`);
+    }
   }
 
   return NextResponse.next();

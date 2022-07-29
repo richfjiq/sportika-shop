@@ -139,6 +139,7 @@ export const logoutNextAuth = createAction(LOGOUT_NEXT_AUTH, () => {
   Cookies.remove('city');
   Cookies.remove('country');
   Cookies.remove('phone');
+  Cookies.remove('code');
 
   signOut();
 

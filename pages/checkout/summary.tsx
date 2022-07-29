@@ -1,4 +1,5 @@
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Box,
   Button,
@@ -15,38 +16,30 @@ import { getSession } from 'next-auth/react';
 import { CartList, OrderSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layout';
 import { useCart } from '../../store';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
 
 const SummaryPage = () => {
-  // const router = useRouter();
-  const { shippingAddress, numberOfItems } = useCart();
-
-  // useEffect(() => {
-  //   if (!Cookies.get('firstName') && !Cookies.get('cart')) {
-  //     router.push('/');
-  //   }
-  //   if (!Cookies.get('firstName') && Cookies.get('cart')) {
-  //     router.push('/checkout/address');
-  //   }
-  // }, [router]);
-
-  if (!shippingAddress) {
-    return <></>;
-  }
-
+  const router = useRouter();
   const {
-    firstName,
-    lastName,
-    address,
-    address2,
-    city,
-    zip,
-    country,
-    phone,
-    code,
-  } = shippingAddress;
+    shippingAddress,
+    numberOfItems,
+    createOrder,
+    loading,
+    orderCreated,
+    setOrderCreated,
+  } = useCart();
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    if (orderCreated) {
+      setOrderCreated('');
+      router.replace(`/orders/${orderCreated}`);
+    }
+  }, [orderCreated, router, setOrderCreated]);
+
+  const onCreateOrder = () => {
+    createOrder();
+  };
 
   return (
     <ShopLayout title={'Order summary'} pageDescription={'Order summary'}>
@@ -99,19 +92,19 @@ const SummaryPage = () => {
               </Box>
 
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {`${firstName} ${lastName}`}
+                {`${shippingAddress?.firstName} ${shippingAddress?.lastName}`}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {address} {address2}
+                {shippingAddress?.address} {shippingAddress?.address2}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {city} {zip}
+                {shippingAddress?.city} {shippingAddress?.zip}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {country}
+                {shippingAddress?.country}
               </Typography>
               <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                {`${code} ${phone}`}
+                {`${shippingAddress?.code} ${shippingAddress?.phone}`}
               </Typography>
 
               <Divider sx={{ my: 1 }} />
@@ -130,7 +123,13 @@ const SummaryPage = () => {
               <OrderSummary />
 
               <Box sx={{ mt: 3 }}>
-                <Button color="secondary" className="circular-btn" fullWidth>
+                <Button
+                  color="secondary"
+                  className="circular-btn"
+                  fullWidth
+                  onClick={onCreateOrder}
+                  disabled={loading}
+                >
                   Confirm Order
                 </Button>
               </Box>

@@ -16,7 +16,7 @@ const GirlsPage = () => {
       <Typography variant="h1" component="h1">
         Girls
       </Typography>
-      <Typography variant="h2" sx={{ mb: 2 }}>
+      <Typography variant="h2" sx={{ mb: 2, mt: 1 }}>
         All Products for girls
       </Typography>
 

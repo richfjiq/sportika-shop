@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf, PayloadAction } from '@reduxjs/toolkit';
 
 import { ICartProduct } from '../../interfaces';
 import {
@@ -6,12 +6,17 @@ import {
   addCartFromCookies,
   addOrderSummary,
   addProductToCart,
+  createOrder,
   loadAddressFromCookies,
   removeProductFromCart,
+  orderCreated,
   updateCartQuantity,
 } from './actions';
 
 export interface CartState {
+  loading: boolean;
+  error?: boolean | string;
+  orderCreated: string;
   isCartLoaded: boolean;
   cart: ICartProduct[];
   numberOfItems: number;
@@ -25,7 +30,7 @@ export interface ShippingAddress {
   firstName: string;
   lastName: string;
   address: string;
-  address2?: string;
+  address2?: string | undefined;
   zip: string;
   city: string;
   country: string;
@@ -34,6 +39,9 @@ export interface ShippingAddress {
 }
 
 const initialState: CartState = {
+  loading: false,
+  error: undefined,
+  orderCreated: '',
   isCartLoaded: false,
   cart: [],
   numberOfItems: 0,
@@ -102,6 +110,28 @@ const cartStore = createSlice({
     });
     builder.addCase(addAddress, (state, action) => {
       state.shippingAddress = action.payload;
+    });
+    builder.addCase(orderCreated, (state, action) => {
+      state.orderCreated = action.payload;
+      state.cart = [];
+      state.numberOfItems = 0;
+      state.subTotal = 0;
+      state.tax = 0;
+      state.total = 0;
+    });
+    builder.addCase(createOrder.pending, (state, action) => {
+      state.loading = true;
+      state.error = false;
+    });
+    builder.addCase(createOrder.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.error = false;
+      state.orderCreated = payload;
+    });
+    builder.addMatcher(isAnyOf(createOrder.rejected), (state, action) => {
+      const message: string = action.payload as string;
+      state.loading = false;
+      state.error = message || true;
     });
   },
 });

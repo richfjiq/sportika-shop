@@ -10,9 +10,10 @@ import {
   updateCartInCookies as updateCartInCookiesAction,
   loadAddressFromCookies as loadAddressFromCookiesAction,
   addAddress as addAddressAction,
+  createOrder as createOrderAction,
+  orderCreated as orderCreatedAction,
   IAddAddress,
 } from './actions';
-import { ShippingAddress } from './reducer';
 
 export const useCart = () => {
   const cartState = useAppSelector((state) => state.cart);
@@ -64,6 +65,17 @@ export const useCart = () => {
     [dispatch]
   );
 
+  const createOrder = useCallback(() => {
+    dispatch(createOrderAction());
+  }, [dispatch]);
+
+  const setOrderCreated = useCallback(
+    (id: string) => {
+      dispatch(orderCreatedAction(id));
+    },
+    [dispatch]
+  );
+
   return {
     ...cartState,
     addProductToCart,
@@ -72,5 +84,7 @@ export const useCart = () => {
     removeProductFromCart,
     loadAddressFromCookies,
     addAddress,
+    createOrder,
+    setOrderCreated,
   };
 };

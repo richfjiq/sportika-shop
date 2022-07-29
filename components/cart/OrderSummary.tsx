@@ -1,8 +1,24 @@
+import { FC } from 'react';
 import { Grid, Typography } from '@mui/material';
+
 import { useCart } from '../../store';
 import { currency } from '../../utils';
 
-export const OrderSummary = () => {
+interface Props {
+  numberOfItemsOrder?: number;
+  subTotalOrder?: number;
+  totalOrder?: number;
+  taxOrder?: number;
+  fromOrder?: boolean;
+}
+
+export const OrderSummary: FC<Props> = ({
+  numberOfItemsOrder = 0,
+  subTotalOrder = 0,
+  totalOrder = 0,
+  taxOrder = 0,
+  fromOrder = false,
+}) => {
   const { numberOfItems, subTotal, total, tax } = useCart();
 
   return (
@@ -12,7 +28,12 @@ export const OrderSummary = () => {
       </Grid>
       <Grid item xs={6} display="flex" justifyContent="end">
         <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-          {numberOfItems} {numberOfItems === 1 ? 'item' : 'items'}
+          {fromOrder ? numberOfItemsOrder : numberOfItems}{' '}
+          {fromOrder
+            ? numberOfItemsOrder
+            : numberOfItems === 1
+            ? 'item'
+            : 'items'}
         </Typography>
       </Grid>
 
@@ -21,7 +42,9 @@ export const OrderSummary = () => {
       </Grid>
       <Grid item xs={6} display="flex" justifyContent="end">
         <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-          {currency.format(subTotal)}
+          {fromOrder
+            ? currency.format(subTotalOrder)
+            : currency.format(subTotal)}
         </Typography>
       </Grid>
 
@@ -32,7 +55,7 @@ export const OrderSummary = () => {
       </Grid>
       <Grid item xs={6} display="flex" justifyContent="end">
         <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-          {currency.format(tax)}
+          {fromOrder ? currency.format(taxOrder) : currency.format(tax)}
         </Typography>
       </Grid>
 
@@ -45,7 +68,7 @@ export const OrderSummary = () => {
         <Typography
           sx={{ fontSize: { xs: 14, sm: 18 }, fontWeight: { xs: 'bold' } }}
         >
-          {currency.format(total)}
+          {fromOrder ? currency.format(totalOrder) : currency.format(total)}
         </Typography>
       </Grid>
     </Grid>
