@@ -1,8 +1,9 @@
+import React, { useEffect, useState } from 'react';
+import useSWR from 'swr';
 import {
   AccessTimeOutlined,
   AttachMoneyOutlined,
   CancelPresentationOutlined,
-  CancelPresentationTwoTone,
   CategoryOutlined,
   CreditCardOffOutlined,
   CreditCardOutlined,
@@ -10,12 +11,76 @@ import {
   GroupOutlined,
   ProductionQuantityLimitsOutlined,
 } from '@mui/icons-material';
-import { Card, CardContent, Grid, Typography } from '@mui/material';
-import React from 'react';
+import { Box, CircularProgress, Grid, Typography } from '@mui/material';
+
 import { SummaryTile } from '../../components/admin';
 import { AdminLayout } from '../../components/layout';
+import { DashboardSummaryResponse } from '../../interfaces';
 
 const DashboardPage = () => {
+  const [refreshIn, setRefreshIn] = useState(30);
+  const { data, error } = useSWR<DashboardSummaryResponse>(
+    '/api/admin/dashboard',
+    {
+      refreshInterval: 30000,
+    }
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRefreshIn((refreshIn) => (refreshIn > 0 ? refreshIn - 1 : 30));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!error && !data) {
+    return (
+      <Box
+        sx={{
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <CircularProgress size={80} />
+        <Typography variant="h5" sx={{ mt: 2 }}>
+          Loading...
+        </Typography>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box
+        sx={{
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="h5" sx={{ mt: 2 }}>
+          Error loading information.
+        </Typography>
+      </Box>
+    );
+  }
+
+  const {
+    numberOfOrders,
+    paidOrders,
+    notPaidOrders,
+    numberOfClients,
+    numberOfProducts,
+    productsWithNoInventory,
+    lowInventory,
+  } = data!;
+
   return (
     <AdminLayout
       title="Dashboard"
@@ -24,37 +89,37 @@ const DashboardPage = () => {
     >
       <Grid container spacing={2}>
         <SummaryTile
-          title={1}
+          title={numberOfOrders}
           subTitle="Total orders"
           icon={<CreditCardOutlined color="secondary" sx={{ fontSize: 40 }} />}
         />
 
         <SummaryTile
-          title={2}
+          title={paidOrders}
           subTitle="Paid orders"
           icon={<AttachMoneyOutlined color="success" sx={{ fontSize: 40 }} />}
         />
 
         <SummaryTile
-          title={3}
+          title={notPaidOrders}
           subTitle="Pending orders"
           icon={<CreditCardOffOutlined color="error" sx={{ fontSize: 40 }} />}
         />
 
         <SummaryTile
-          title={4}
+          title={numberOfClients}
           subTitle="Clients"
           icon={<GroupOutlined color="primary" sx={{ fontSize: 40 }} />}
         />
 
         <SummaryTile
-          title={5}
+          title={numberOfProducts}
           subTitle="Products"
           icon={<CategoryOutlined color="warning" sx={{ fontSize: 40 }} />}
         />
 
         <SummaryTile
-          title={6}
+          title={productsWithNoInventory}
           subTitle="Out of Stock"
           icon={
             <CancelPresentationOutlined color="error" sx={{ fontSize: 40 }} />
@@ -62,7 +127,7 @@ const DashboardPage = () => {
         />
 
         <SummaryTile
-          title={7}
+          title={lowInventory}
           subTitle="Low inventory"
           icon={
             <ProductionQuantityLimitsOutlined
@@ -73,7 +138,7 @@ const DashboardPage = () => {
         />
 
         <SummaryTile
-          title={8}
+          title={refreshIn}
           subTitle="Updates in:"
           icon={<AccessTimeOutlined color="secondary" sx={{ fontSize: 40 }} />}
         />
