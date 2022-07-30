@@ -17,7 +17,7 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
     }
 
     if (session.user.role === 'client') {
-      return NextResponse.redirect(`${origin}/orders/history}`);
+      return NextResponse.redirect(`${origin}/`);
     }
   }
 
