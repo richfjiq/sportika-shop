@@ -30,7 +30,9 @@ export const OrderSummary: FC<Props> = ({
         <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
           {fromOrder ? numberOfItemsOrder : numberOfItems}{' '}
           {fromOrder
-            ? numberOfItemsOrder
+            ? numberOfItemsOrder === 1
+              ? 'item'
+              : 'items'
             : numberOfItems === 1
             ? 'item'
             : 'items'}

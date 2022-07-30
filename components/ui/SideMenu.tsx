@@ -3,6 +3,7 @@ import {
   AccountCircleOutlined,
   BoyOutlined,
   CategoryOutlined,
+  DashboardOutlined,
   GirlOutlined,
   GroupOutlined,
   ListAltOutlined,
@@ -160,11 +161,11 @@ export const SideMenu = () => {
 
               <ListSubheader>Admin Panel</ListSubheader>
 
-              <ListItemButton>
+              <ListItemButton onClick={() => navigateTo('/admin')}>
                 <ListItemIcon>
-                  <CategoryOutlined />
+                  <DashboardOutlined />
                 </ListItemIcon>
-                <ListItemText primary={'Products'} />
+                <ListItemText primary={'Dashboard'} />
               </ListItemButton>
 
               <ListItemButton>

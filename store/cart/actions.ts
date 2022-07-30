@@ -15,6 +15,7 @@ const LOAD_ADDRESS_FROM_COOKIES = 'LOAD_ADDRESS_FROM_COOKIES';
 const ADD_ADDRESS = 'ADD_ADDRESS';
 const CREATE_ORDER = 'CREATE_ORDER';
 const SET_ORDER_CREATED = 'SET_ORDER_CREATED';
+const NEW_ORDER_CREATED = 'NEW_ORDER_CREATED';
 
 export interface IAddAddress {
   address: {
@@ -171,6 +172,15 @@ export const orderCreated = createAction(
 
     return {
       payload: orderId,
+    };
+  }
+);
+
+export const newOrderCreated = createAction(
+  NEW_ORDER_CREATED,
+  (value: boolean) => {
+    return {
+      payload: value,
     };
   }
 );

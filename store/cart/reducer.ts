@@ -11,12 +11,14 @@ import {
   removeProductFromCart,
   orderCreated,
   updateCartQuantity,
+  newOrderCreated,
 } from './actions';
 
 export interface CartState {
   loading: boolean;
   error?: boolean | string;
   orderCreated: string;
+  newOrder: boolean;
   isCartLoaded: boolean;
   cart: ICartProduct[];
   numberOfItems: number;
@@ -42,6 +44,7 @@ const initialState: CartState = {
   loading: false,
   error: undefined,
   orderCreated: '',
+  newOrder: false,
   isCartLoaded: false,
   cart: [],
   numberOfItems: 0,
@@ -119,9 +122,13 @@ const cartStore = createSlice({
       state.tax = 0;
       state.total = 0;
     });
+    builder.addCase(newOrderCreated, (state, action) => {
+      state.newOrder = action.payload;
+    });
     builder.addCase(createOrder.pending, (state, action) => {
       state.loading = true;
       state.error = false;
+      state.newOrder = true;
     });
     builder.addCase(createOrder.fulfilled, (state, { payload }) => {
       state.loading = false;
@@ -132,6 +139,7 @@ const cartStore = createSlice({
       const message: string = action.payload as string;
       state.loading = false;
       state.error = message || true;
+      state.newOrder = false;
     });
   },
 });
