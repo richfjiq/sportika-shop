@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import {
   DriveFileRenameOutline,
@@ -20,11 +20,18 @@ import {
   FormGroup,
   FormLabel,
   Grid,
+  InputLabel,
   ListItem,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
   Paper,
   Radio,
   RadioGroup,
+  Select,
+  SelectChangeEvent,
   TextField,
+  Typography,
 } from '@mui/material';
 
 import { dbProducts } from '../../../database';
@@ -32,10 +39,6 @@ import { IProduct, ISize, IType } from '../../../interfaces';
 import { AdminLayout } from '../../../components/layout';
 import { useForm } from 'react-hook-form';
 import { products } from '../../../utils';
-
-const validTypes = ['shirts', 'pants', 'hoodies', 'hats'];
-const validGender = ['men', 'women', 'kid', 'unisex'];
-const validSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
 interface FormData {
   _id?: string;
@@ -55,9 +58,21 @@ interface Props {
   product: IProduct;
 }
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 const ProductAdminPage: FC<Props> = ({ product }) => {
   const [type, setType] = useState('clothing');
   const [gender, setGender] = useState('men');
+  const [sizes, setSizes] = useState<string[]>([]);
   const {
     register,
     handleSubmit,
@@ -65,6 +80,19 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
   } = useForm({
     defaultValues: product,
   });
+
+  console.log({ errors });
+
+  useEffect(() => {
+    if (product.sizes) {
+      setSizes(product.sizes);
+    }
+  }, [product]);
+
+  const handleSizeChange = (event: SelectChangeEvent<typeof sizes>) => {
+    const value = event.target.value;
+    setSizes(typeof value === 'string' ? value.split(',') : value);
+  };
 
   const onDeleteTag = (tag: string) => {};
 
@@ -74,30 +102,29 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
   return (
     <AdminLayout
-      title={'Producto'}
-      subTitle={`Editando: ${product.title}`}
+      title={'Product'}
+      subTitle={`Edit: ${product.title}`}
       icon={<DriveFileRenameOutline />}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Box display="flex" justifyContent="end" sx={{ mb: 1 }}>
+        <Box display="flex" justifyContent="end" sx={{ mt: 1, mb: 3 }}>
           <Button
             color="secondary"
             startIcon={<SaveOutlined />}
             sx={{ width: '150px' }}
             type="submit"
           >
-            Guardar
+            Save
           </Button>
         </Box>
 
         <Grid container spacing={2}>
-          {/* Data */}
           <Grid item xs={12} sm={6}>
             <TextField
               label="Title"
               variant="outlined"
               fullWidth
-              sx={{ mb: 1 }}
+              sx={{ mb: 3 }}
               {...register('title', {
                 required: 'This field is required.',
                 minLength: { value: 2, message: 'At least 2 characters' },
@@ -112,7 +139,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
               fullWidth
               multiline
               rows={8}
-              sx={{ mb: 1 }}
+              sx={{ mb: 3 }}
               {...register('description', {
                 required: 'This field is required.',
               })}
@@ -125,7 +152,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
               type="number"
               variant="outlined"
               fullWidth
-              sx={{ mb: 1 }}
+              sx={{ mb: 3 }}
               {...register('inStock', {
                 required: 'This field is required.',
                 min: { value: 0, message: 'Minimal value zero.' },
@@ -156,7 +183,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             <Grid
               mt={4}
               container
-              //   xs={12}
               display="flex"
               flexDirection="row"
               justifyContent="space-around"
@@ -168,12 +194,16 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                   label="Type"
                   value={type}
                   {...register('type')}
-                  onChange={(e) => setType(e.target.value)}
+                  onChange={(e) => {
+                    setType(e.target.value);
+                    setSizes([]);
+                  }}
                   SelectProps={{
                     native: true,
                   }}
                   fullWidth
                   helperText="Select a type."
+                  // onClickCapture={() => setSizes([])}
                 >
                   <option key={'clothing'} value={'clothing'}>
                     Clothing
@@ -183,7 +213,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                   </option>
                 </TextField>
               </Grid>
-              <Grid item xs={12} sm={5}>
+              <Grid item xs={12} sm={5} sx={{ mt: { xs: 4, sm: 0 } }}>
                 <TextField
                   select
                   variant="outlined"
@@ -202,62 +232,63 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                       {capitalize(val)}
                     </option>
                   ))}
-                  {/* <option key={'clothing'} value={'clothing'}>
-                    Clothing
-                  </option>
-                  <option key={'shoes'} value={'shoes'}>
-                    Shoes
-                  </option> */}
                 </TextField>
               </Grid>
             </Grid>
 
-            <FormControl sx={{ mb: 1 }}>
-              <FormLabel>Tipo</FormLabel>
-              <RadioGroup
-                row
-                // value={ status }
-                // onChange={ onStatusChanged }
-              >
-                {validTypes.map((option) => (
-                  <FormControlLabel
-                    key={option}
-                    value={option}
-                    control={<Radio color="secondary" />}
-                    label={capitalize(option)}
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-
-            <FormControl sx={{ mb: 1 }}>
-              <FormLabel>Género</FormLabel>
-              <RadioGroup
-                row
-                // value={ status }
-                // onChange={ onStatusChanged }
-              >
-                {validGender.map((option) => (
-                  <FormControlLabel
-                    key={option}
-                    value={option}
-                    control={<Radio color="secondary" />}
-                    label={capitalize(option)}
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-
-            <FormGroup>
-              <FormLabel>Tallas</FormLabel>
-              {validSizes.map((size) => (
-                <FormControlLabel
-                  key={size}
-                  control={<Checkbox />}
-                  label={size}
-                />
-              ))}
-            </FormGroup>
+            <Grid
+              container
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              sx={{ mt: { xs: 3, sm: 3 } }}
+            >
+              <Grid item display="flex" flex={1} xs={12}>
+                <FormControl sx={{ m: 1, flex: 1 }}>
+                  <InputLabel id="demo-multiple-checkbox-label">
+                    Sizes
+                  </InputLabel>
+                  <Select
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    multiple
+                    value={sizes}
+                    {...register('sizes', {
+                      required: 'This field is required.',
+                    })}
+                    error={!!errors.sizes}
+                    // helperText={errors.sizes?.message}
+                    onChange={handleSizeChange}
+                    input={<OutlinedInput label="Tag" />}
+                    renderValue={(selected) => selected.join(', ')}
+                    MenuProps={MenuProps}
+                  >
+                    {type === 'clothing'
+                      ? products.clothesSizes.map((val) => (
+                          <MenuItem key={val} value={val}>
+                            <Checkbox checked={sizes.indexOf(val) > -1} />
+                            <ListItemText primary={val} />
+                          </MenuItem>
+                        ))
+                      : products.shoesSizes.map((val) => (
+                          <MenuItem key={val} value={val}>
+                            <Checkbox checked={sizes.indexOf(val) > -1} />
+                            <ListItemText primary={val} />
+                          </MenuItem>
+                        ))}
+                  </Select>
+                  {errors.sizes && (
+                    <Typography
+                      variant="caption"
+                      sx={{ ml: 1, mt: 1 }}
+                      color="error"
+                    >
+                      {errors.sizes.message}
+                    </Typography>
+                  )}
+                </FormControl>
+              </Grid>
+            </Grid>
           </Grid>
 
           {/* Tags e imagenes */}
@@ -266,7 +297,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
               label="Slug - URL"
               variant="outlined"
               fullWidth
-              sx={{ mb: 1 }}
+              sx={{ mb: 3, mt: { xs: 2, sm: 0 } }}
               {...register('slug', {
                 required: 'This field is required.',
                 validate: (val) =>
@@ -282,7 +313,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
               label="Etiquetas"
               variant="outlined"
               fullWidth
-              sx={{ mb: 1 }}
+              sx={{ mb: 1, mt: { xs: 3, sm: 0 } }}
               helperText="Presiona [spacebar] para agregar"
             />
 

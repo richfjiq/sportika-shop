@@ -12,8 +12,8 @@ import {
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import useSWR from 'swr';
 
-import { AdminLayout } from '../../components/layout';
-import { IProduct, IUser } from '../../interfaces';
+import { AdminLayout } from '../../../components/layout';
+import { IProduct, IUser } from '../../../interfaces';
 
 const columns: GridColDef[] = [
   {
