@@ -1,7 +1,8 @@
 import NextLink from 'next/link';
-import { CategoryOutlined } from '@mui/icons-material';
+import { AddOutlined, CategoryOutlined } from '@mui/icons-material';
 import {
   Box,
+  Button,
   CardMedia,
   Chip,
   CircularProgress,
@@ -91,6 +92,16 @@ const ProductsPage = () => {
       subTitle="Products management"
       icon={<CategoryOutlined />}
     >
+      <Box display="flex" justifyContent="end" sx={{ mb: 2 }}>
+        <Button
+          startIcon={<AddOutlined />}
+          color="secondary"
+          href="/admin/products/new"
+        >
+          Create product
+        </Button>
+      </Box>
+
       <Grid container className="fadeIn">
         <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
           <DataGrid

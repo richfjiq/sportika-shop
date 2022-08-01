@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, KeyboardEvent, useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import {
   DriveFileRenameOutline,
@@ -14,6 +14,7 @@ import {
   CardMedia,
   Checkbox,
   Chip,
+  CircularProgress,
   Divider,
   FormControl,
   FormControlLabel,
@@ -35,24 +36,13 @@ import {
 } from '@mui/material';
 
 import { dbProducts } from '../../../database';
-import { IProduct, ISize, IType } from '../../../interfaces';
+import { FormProduct, IProduct, ISize, IType } from '../../../interfaces';
 import { AdminLayout } from '../../../components/layout';
 import { useForm } from 'react-hook-form';
 import { products } from '../../../utils';
-
-interface FormData {
-  _id?: string;
-  description: string;
-  images: string[];
-  inStock: number;
-  price: number;
-  sizes: ISize[];
-  slug: string;
-  tags: string[];
-  title: string;
-  type: IType;
-  gender: 'men' | 'women' | 'boys' | 'girls';
-}
+import { useAdmin } from '../../../store/admin';
+import { Product } from '../../../models';
+import { useRouter } from 'next/router';
 
 interface Props {
   product: IProduct;
@@ -70,18 +60,22 @@ const MenuProps = {
 };
 
 const ProductAdminPage: FC<Props> = ({ product }) => {
+  const { loading, updateProduct, createProduct } = useAdmin();
+  const router = useRouter();
   const [type, setType] = useState('clothing');
   const [gender, setGender] = useState('men');
   const [sizes, setSizes] = useState<string[]>([]);
+  const [newTagValue, setNewTagValue] = useState('');
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
+    getValues,
+    watch,
   } = useForm({
     defaultValues: product,
   });
-
-  console.log({ errors });
 
   useEffect(() => {
     if (product.sizes) {
@@ -89,15 +83,59 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     }
   }, [product]);
 
+  useEffect(() => {
+    if (product._id) {
+      const subscription = watch((value, { name, type }) => {
+        if (name === 'title') {
+          const newSlug =
+            value.title
+              ?.trim()
+              .replaceAll(' ', '_')
+              .replaceAll("'", '')
+              .toLocaleLowerCase() || '';
+
+          setValue('slug', newSlug, { shouldValidate: true });
+        }
+      });
+
+      return () => subscription.unsubscribe();
+    }
+  }, [watch, setValue, product]);
+
   const handleSizeChange = (event: SelectChangeEvent<typeof sizes>) => {
     const value = event.target.value;
     setSizes(typeof value === 'string' ? value.split(',') : value);
   };
 
-  const onDeleteTag = (tag: string) => {};
+  const onNewTag = (event: KeyboardEvent) => {
+    if (event.code === 'Space') {
+      const newTag = newTagValue.trim().toLocaleLowerCase();
+      setNewTagValue('');
+      const currentTags = getValues('tags');
+      if (currentTags.includes(newTag)) return;
+      currentTags.push(newTag);
+    }
+  };
 
-  const onSubmit = (form: FormData) => {
-    console.log({ form });
+  const onDeleteTag = (tag: string) => {
+    setValue(
+      'tags',
+      getValues('tags').filter((val) => val !== tag),
+      { shouldValidate: true }
+    );
+  };
+
+  const onSubmit = (form: FormProduct) => {
+    if (form.images.length < 2) return alert('At least 2 images.');
+
+    if (!form._id) {
+      createProduct(form);
+      router.replace(`/admin/products/${form.slug}`);
+    }
+
+    if (form._id) {
+      updateProduct(form);
+    }
   };
 
   return (
@@ -113,6 +151,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             startIcon={<SaveOutlined />}
             sx={{ width: '150px' }}
             type="submit"
+            disabled={loading}
           >
             Save
           </Button>
@@ -297,12 +336,13 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
               label="Slug - URL"
               variant="outlined"
               fullWidth
+              defaultValue={getValues('slug')}
               sx={{ mb: 3, mt: { xs: 2, sm: 0 } }}
               {...register('slug', {
                 required: 'This field is required.',
                 validate: (val) =>
                   val.trim().includes(' ')
-                    ? 'Blank spaces not allowed'
+                    ? 'Use "_" instead of blank spaces.'
                     : undefined,
               })}
               error={!!errors.slug}
@@ -310,11 +350,14 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             />
 
             <TextField
-              label="Etiquetas"
+              label="Tags"
               variant="outlined"
               fullWidth
+              value={newTagValue}
               sx={{ mb: 1, mt: { xs: 3, sm: 0 } }}
-              helperText="Presiona [spacebar] para agregar"
+              helperText="Press [space key] to add."
+              onChange={(event) => setNewTagValue(event.target.value)}
+              onKeyDown={onNewTag}
             />
 
             <Box
@@ -327,7 +370,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
               }}
               component="ul"
             >
-              {product.tags.map((tag) => {
+              {getValues('tags').map((tag) => {
                 return (
                   <Chip
                     key={tag}
@@ -344,18 +387,18 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             <Divider sx={{ my: 2 }} />
 
             <Box display="flex" flexDirection="column">
-              <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
+              <FormLabel sx={{ mb: 1 }}>Images</FormLabel>
               <Button
                 color="secondary"
                 fullWidth
                 startIcon={<UploadOutlined />}
                 sx={{ mb: 3 }}
               >
-                Cargar imagen
+                Load Image
               </Button>
 
               <Chip
-                label="Es necesario al 2 imagenes"
+                label="It's necessary at least 2 images."
                 color="error"
                 variant="filled"
               />
@@ -372,7 +415,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                       />
                       <CardActions>
                         <Button fullWidth color="error">
-                          Borrar
+                          Remove
                         </Button>
                       </CardActions>
                     </Card>
@@ -390,7 +433,16 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { slug = '' } = query;
 
-  const product = await dbProducts.getProductBySlug(slug.toString());
+  let product: IProduct | null;
+
+  if (slug === 'new') {
+    const tempProduct = JSON.parse(JSON.stringify(new Product()));
+    delete tempProduct._id;
+    tempProduct.images = ['img1.jpg', 'img2.jpg'];
+    product = tempProduct;
+  } else {
+    product = await await dbProducts.getProductBySlug(slug.toString());
+  }
 
   if (!product) {
     return {

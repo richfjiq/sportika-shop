@@ -3,7 +3,7 @@ import { IProduct } from '../interfaces';
 
 const ProductSchema = new Schema(
   {
-    description: { type: String, required: true },
+    description: { type: String, required: true, default: '' },
     images: [{ type: String }],
     inStock: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
@@ -83,13 +83,14 @@ const ProductSchema = new Schema(
     ],
     slug: { type: String, required: true, unique: true },
     tags: [{ type: String }],
-    title: { type: String, required: true },
+    title: { type: String, required: true, default: '' },
     type: {
       type: String,
       enum: {
         values: ['clothing', 'shoes'],
         message: '{VALUE} is not a valid type',
       },
+      default: 'clothing',
     },
     gender: {
       type: String,
@@ -97,6 +98,7 @@ const ProductSchema = new Schema(
         values: ['men', 'women', 'girls', 'boys'],
         message: '{VALUE} is not a valid gender',
       },
+      default: 'women',
     },
   },
   { timestamps: true }
