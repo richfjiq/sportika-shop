@@ -114,9 +114,9 @@ export const initialData: InitialData = {
       description:
         'Pants de futbol absorbentes hechos con materiales reciclados. Hecho con materiales 100% reciclados, este producto representa solo una de nuestras soluciones para acabar con los residuos',
       images: [
-        'tiro_essential_pants_women_01.jpg',
-        'tiro_essential_pants_women_02.jpg',
-        'tiro_essential_pants_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369444/sportika/i68pvmwdxxuirfemo2ld.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369445/sportika/mfrrmmirgsprlae652av.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369445/sportika/udazaer24tne2upqoaug.jpg',
       ],
       inStock: 30,
       price: 47.45,
@@ -131,9 +131,9 @@ export const initialData: InitialData = {
       description:
         'Shorts creados con marimekko, hechos parcialmente con parley ocean plastic. Esta prenda está confeccionada con hilo que contiene un 50% de Parley Ocean Plastic, un material que ha sido recuperado de residuos plásticos recogidos en islas remotas, playas, comunidades costeras y zonas costeras evitando que contaminen nuestros océanos. Esta prenda contiene al menos un 40% de contenido reciclado en total.',
       images: [
-        'pacer_adidas_x_marimekko_shorts_women_01.jpg',
-        'pacer_adidas_x_marimekko_shorts_women_02.jpg',
-        'pacer_adidas_x_marimekko_shorts_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369428/sportika/dpa4mfacapzmxm98m63q.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369426/sportika/pxnys8wp7kshp0xodlsu.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369424/sportika/sjmbxp7e12bjrmecn8h9.jpg',
       ],
       inStock: 25,
       price: 39.95,
@@ -148,9 +148,9 @@ export const initialData: InitialData = {
       description:
         'Un traje de natacion llamativo diseñado en colaboracion con rich mnisi. Este producto esta hecho de tejido resistente al cloro que incorpora hilo ECONYL regenrado.',
       images: [
-        'swimming_suit_rich_mnisi_women_01.jpg',
-        'swimming_suit_rich_mnisi_women_02.jpg',
-        'swimming_suit_rich_mnisi_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369442/sportika/tsveql61wzh69cxnboah.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369444/sportika/pf0pw4k7pltd2vimvdrw.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369444/sportika/hfjgzrf48rpy8phn32vi.jpg',
       ],
       inStock: 0,
       price: 59.95,
@@ -165,9 +165,9 @@ export const initialData: InitialData = {
       description:
         'Tenis de running receptivos con sujecion hechos parcialmente con materiales reciclados. Hechos con una serie de materiales reciclados, su exterior incorpora al menos un 50 % de contenido reciclado. Este producto representa solo una de nuestras soluciones para acabar con los residuos plasticos.',
       images: [
-        'alphatorsion_2_0_men_01.jpg',
-        'alphatorsion_2_0_men_02.jpg',
-        'alphatorsion_2_0_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369436/sportika/hppbebtgbpwtpkso4l1v.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369443/sportika/i8r40e4jmfpma8wlrshz.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369445/sportika/etymqgcsien4h785x0ge.jpg',
       ],
       inStock: 22,
       price: 124.95,
@@ -198,9 +198,9 @@ export const initialData: InitialData = {
       description:
         'Tenis inspirados en un famoso cervato y hechos parcialmente con parley ocean plastic. El exterior de este calzado esta confeccionado con hilo de alto rendimiento que contiene al menos un 50 % de Parley Ocean Plastic, un material que ha sido recuperado de residuos plásticos recogidos en islas, playas, comunidades costeras y costas evitando que contaminen nuestros oceanos. El otro 50 % del hilo esta hecho de poliester reciclado.',
       images: [
-        'disney_nmd_r1_women_01.jpg',
-        'disney_nmd_r1_women_02.jpg',
-        'disney_nmd_r1_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369457/sportika/g5swsbixc9ksm2qvczfs.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369457/sportika/o2hrof55pjgykcmsnac2.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369456/sportika/lk7dkuvszxwvs49ajbz2.jpg',
       ],
       inStock: 33,
       price: 164.95,
@@ -229,9 +229,9 @@ export const initialData: InitialData = {
       description:
         'Preparate para revolucionarlo todo. Los adidas Forum llevan implicita una actitud demoledora. Nacieron en 1984 para dominar las canchas de baloncesto; hoy son un icono en las calles. La correa ajustable y el diseño en forma de X conservan su esencia clasica. La paleta de colores se inspira en uno de los mejores equipos de la liga.',
       images: [
-        'forum_84_men_01.jpg',
-        'forum_84_men_02.jpg',
-        'forum_84_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369460/sportika/vpzfpef6gshzupstdzoh.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369462/sportika/pufrj8nzpry7uk8kzlv8.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369460/sportika/dz5jaa9brbvvqm8tatgc.jpg',
       ],
       inStock: 90,
       price: 149.95,
@@ -262,9 +262,9 @@ export const initialData: InitialData = {
       description:
         'Una nueva version de los tenis adidas superstar hechos parcialmente con materiales reciclados. A estas alturas, los tenis adidas Superstar no necesitan presentación. Conoces los hechos: nacidos en las canchas, adoptados por artistas del hip hop, usados en todas partes. Han pasado 50 años y la vibra es la misma. Lo que más te guste. Sé tú mismo. De eso se trata, y eso nunca cambiará. Lo que sí cambia en estos icónicos tenis son los colores y, para aportar un toque actual, agregamos un detalle de cuerda tejida en el costado. Las 3 Franjas con borde dentado y la punta de caucho con relieve: estas características legendarias siguen siendo tan relevantes como siempre.',
       images: [
-        'superstar_women_01.jpg',
-        'superstar_women_02.jpg',
-        'superstar_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369441/sportika/fwsc5hrvufs8g0aeirvx.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369441/sportika/sn1nw8pcbcldf8dq4llk.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369443/sportika/vavu6jqjyujgyub0qgxg.jpg',
       ],
       inStock: 75,
       price: 104.95,
@@ -293,9 +293,9 @@ export const initialData: InitialData = {
       description:
         'Tenis de running creados por y para atletas. Cuando los adidas Ultraboost debutaron en el 2015 tuvieron un impacto que llegó mucho más allá que el mundo del running. Para esta versión de estos tenis, le incorporamos al diseño una suela de impresión 3D. Las partes más densas del entrelazado brindan un mayor soporte, y las parte más abiertas una mayor amortiguación. Estos tenis no solo se ven como el futuro. Se sienten como él.',
       images: [
-        'ultra_4d_blanco_men_01.jpg',
-        'ultra_4d_blanco_men_02.jpg',
-        'ultra_4d_blanco_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369449/sportika/bytsh2p3otyjz4znwj64.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369445/sportika/xrt0f8fq0zeqgjtqsefl.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369445/sportika/mhrlcwwkdcvaohzp4kxa.jpg',
       ],
       inStock: 150,
       price: 249.95,
@@ -326,9 +326,9 @@ export const initialData: InitialData = {
       description:
         'Tenis ultraboost hechos parcialmente con parley ocean plastic. Rich Mnisi es un diseñador sudafricano que se inspira en el mundo de la moda, desde el cine hasta la música y la naturaleza. En esta colaboración con adidas, imprime los icónicos estampados animales de su marca en los tenis de running Ultraboost. Desde el exterior de adidas PRIMEKNIT hasta la mediasuela BOOST, el diseño cobra vida con una historia de un lugar donde animales y la vida en la ciudad se encuentran.',
       images: [
-        'ultraboost_22_rich_mnisi_women_01.jpg',
-        'ultraboost_22_rich_mnisi_women_02.jpg',
-        'ultraboost_22_rich_mnisi_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369448/sportika/c6xfzfsv4shzjhzahik5.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369448/sportika/rwqkarhjk4vhuocvf8sr.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369447/sportika/qjymbkjpqjfshtyt9ohl.jpg',
       ],
       inStock: 80,
       price: 199.95,
@@ -357,9 +357,9 @@ export const initialData: InitialData = {
       description:
         'Ganadores del premio platino T3. El exterior de este calzado está confeccionado con hilo de alto rendimiento que contiene al menos un 50% de Parley Ocean Plastic, un material que ha sido recuperado de residuos plásticos recogidos en islas, playas, comunidades costeras y costas evitando que contaminen nuestros océanos. El otro 50% del hilo está hecho de poliéster reciclado.',
       images: [
-        'ultraboost_22_women_01.jpg',
-        'ultraboost_22_women_02.jpg',
-        'ultraboost_22_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369448/sportika/xpqpcvdg3xniuofmhbnf.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369449/sportika/pkwzfm1ean7b1qrxzikh.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369449/sportika/ybaxkwvnuhdsifpg2js9.jpg',
       ],
       inStock: 80,
       price: 199.95,
@@ -388,9 +388,9 @@ export const initialData: InitialData = {
       description:
         'Tenis progresivos con un estilo moderno. Si tuvieras que decidir entre estilo e innovación, ¿cuál escogerías? Pregunta tonta. No deberías tener que tomar una decisión así. Solo ponte estos tenis adidas ZX 5K Boost y sal a conquistar las calles. Inspirados en el espíritu innovador del código de diseño de los ZX, incorporan una mediasuela Boost envolvente en una suela traslúcida. Revestimientos de gamuza y detalles reflectivos adornan el exterior de malla para un estilo que brilla.',
       images: [
-        'zx_5k_boost_blanco_men_01.jpg',
-        'zx_5k_boost_blanco_men_02.jpg',
-        'zx_5k_boost_blanco_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369453/sportika/my8i645ycmufyzwgdx2p.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369453/sportika/bvlr8y0f1xuuixgswgtb.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369453/sportika/hpcnbpwvlxnrivy37aih.jpg',
       ],
       inStock: 0,
       price: 189.95,
@@ -421,9 +421,9 @@ export const initialData: InitialData = {
       description:
         'Una chamarra abrigada con una silueta estilizada. Luce bien. Siéntete bien. Ponte esta chamarra adidas para protegerte del frío cuando baja la temperatura. El aislamiento térmico sintético ofrece abrigo sin abultamientos para mayor libertad de movimiento y comodidad. Su corte entallado, cintura ajustable y materiales reciclados la hacen muy cómoda y perfecta para todo momento.',
       images: [
-        'bsc_3_stripes_thermal_jacket_women_01.jpg',
-        'bsc_3_stripes_thermal_jacket_women_02.jpg',
-        'bsc_3_stripes_thermal_jacket_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369454/sportika/bqlmgcqjd8woj2jw5hdf.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369454/sportika/jw7gfyla3dtrqqg0ww3b.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369453/sportika/ctsslnwnyezon7akrg99.jpg',
       ],
       inStock: 19,
       price: 119.95,
@@ -438,9 +438,9 @@ export const initialData: InitialData = {
       description:
         'Una playera ajustada de algodon con las iconicas 3 franjas. No te compliques: esta playera adidas hace más fácil tu vida. Mantén tu estilo auténtico y relajado con este look discreto pero no minimalista. El tejido de algodón suave te ofrece total comodidad en todo momento.',
       images: [
-        'adicolor_classics_3_stripes_t_shirt_01.jpg',
-        'adicolor_classics_3_stripes_t_shirt_02.jpg',
-        'adicolor_classics_3_stripes_t_shirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369385/sportika/mz3h6sikrzlguw9ywvdk.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369383/sportika/apefu6qb6sdz2nkxsazv.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369378/sportika/ln6htlkxdvt0zidiqbym.jpg',
       ],
       inStock: 55,
       price: 32.45,
@@ -455,9 +455,9 @@ export const initialData: InitialData = {
       description:
         'Padded Jacket es un nuevo producto para Hombre de adidas. Te invitamos a ver las imágenes para apreciar más detalles desde diferentes ángulos.',
       images: [
-        'padded_jacket_men_01.jpg',
-        'padded_jacket_men_02.jpg',
-        'padded_jacket_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369427/sportika/wz2nhemnwukdkbxgjxzx.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369427/sportika/dorm6fbxnzjiklpt6s5z.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369427/sportika/yqagfbppbsmwv6mfhyhg.jpg',
       ],
       inStock: 33,
       price: 214.95,
@@ -472,9 +472,9 @@ export const initialData: InitialData = {
       description:
         'Pants firebird que actualizan un estilo vintage. Un modelo clásico se actualiza. Estos pants adidas Firebird están inspirados en un diseño vintage japonés. También están hechos con materiales reciclados. ¿Quién iba a pensar que el plástico reciclado se podría transformar en tus nuevos pants favoritos?',
       images: [
-        'adicolor_classics_firebird_primeblue_pants_01.jpg',
-        'adicolor_classics_firebird_primeblue_pants_02.jpg',
-        'adicolor_classics_firebird_primeblue_pants_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369385/sportika/p0fp28wi1uqy7ssicb5m.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369385/sportika/lfq2u8nzrfvbfxlmwxwc.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369388/sportika/g7mcjxb4t2qcwybgvcjs.jpg',
       ],
       inStock: 85,
       price: 74.95,
@@ -489,9 +489,9 @@ export const initialData: InitialData = {
       description:
         'Tenis para bebe para dias llenos de actividad. Estos tenis adidas fueron diseñados para que tu pequeño deportista disfrute de cada momento de juego y diversión. El tirador de talón y las tiras ajustables de cierre por contacto ofrecen un ajuste preciso y fácil de poner y de quitar. Su diseño inspirado en Mickey y Minnie Mouse les aporta un toque exclusivo.',
       images: [
-        'tensaur_adidas_x_disney_mickey_and_minnie_01.jpg',
-        'tensaur_adidas_x_disney_mickey_and_minnie_02.jpg',
-        'tensaur_adidas_x_disney_mickey_and_minnie_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369444/sportika/uworzxoqsz1isezfqhya.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369443/sportika/fpyolg7rzfzwnoh6bbph.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369444/sportika/bzgvc5g7ilkaxer2jnib.jpg',
       ],
       inStock: 50,
       price: 52.45,
@@ -522,9 +522,9 @@ export const initialData: InitialData = {
       description:
         'Estos tenis para niños estan hechos parcialmente con materiales reciclados. Hecho con una serie de materiales reciclados, este exterior incorpora al menos un 50 % de contenido reciclado. Este producto representa solo una de nuestras soluciones para acabar con los residuos plásticos.',
       images: [
-        'fortarun_running_shoes_01.jpg',
-        'fortarun_running_shoes_02.jpg',
-        'fortarun_running_shoes_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369461/sportika/cvlhuhsxmjc5dvynt8mj.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369460/sportika/omlgcipdeulizsgfdy79.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369458/sportika/qxfzrelajqrgqy9tmohs.jpg',
       ],
       inStock: 50,
       price: 69.95,
@@ -561,9 +561,9 @@ export const initialData: InitialData = {
       description:
         'Tenis muy comodos para pequeños exploradores. Para futuros basquetbolistas. Estos tenis para bebé le inyectan el ADN del básquet a un look sencillo para uso diario. Lucen un exterior de cuero sintético con detalles de malla y las 3 Franjas brillantes en los costados. Las tiras ajustables de cierre por contacto los hacen fáciles de poner y quitar.',
       images: [
-        'hoops_20_sneakers_01.jpg',
-        'hoops_20_sneakers_02.jpg',
-        'hoops_20_sneakers_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369462/sportika/digffyk5xhpt1sedyzwi.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369463/sportika/dvaxh9jmsbvtsvjdsl08.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369463/sportika/w06vuqnzgwecyrutje6h.jpg',
       ],
       inStock: 50,
       price: 44.95,
@@ -594,9 +594,9 @@ export const initialData: InitialData = {
       description:
         'Una playera de algodon para los amigos de Mickey Mouse. Inspirada en el adorable ratón de dibujos animados, esta playera adidas para niños celebra la alegría de la amistad. El tejido de algodón suave y el corte holgado la hacen muy cómoda para que puedas jugar a diario.',
       images: [
-        'adidas_x_disney_mickey_mouse_t_shirt_01.jpg',
-        'adidas_x_disney_mickey_mouse_t_shirt_02.jpg',
-        'adidas_x_disney_mickey_mouse_t_shirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369421/sportika/zivcgqxa3gk21ryswwfs.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369420/sportika/ta7gjyp8bz9h1c1uqoum.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369420/sportika/h0e4uy5fxq2fetoukdik.jpg',
       ],
       inStock: 0,
       price: 32.45,
@@ -619,9 +619,9 @@ export const initialData: InitialData = {
       description:
         'Una chamarra adidas x Disney hecha parcialmente con materiales reciclados. ¿Necesitas un recordatorio para relajarte? Esta chamarra adidas para jóvenes te envuelve en comodidad con sus estampados de Disney. El material de tejido de tricot suave y clásico también ayuda.',
       images: [
-        'sst_disney_mickey_and_friends_jacket_01.jpg',
-        'sst_disney_mickey_and_friends_jacket_02.jpg',
-        'sst_disney_mickey_and_friends_jacket_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369439/sportika/sspe0uuhmls9ufqex8kk.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369438/sportika/k9ejmnjqi5kjuscsvvmd.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369440/sportika/soypeycxdap4ichjey9j.jpg',
       ],
       inStock: 66,
       price: 32.45,
@@ -642,9 +642,9 @@ export const initialData: InitialData = {
       description:
         'Shorts livianos con un llamativo estampado LEGO. No tienes porque lucir siempre igual en tus entrenamientos. Cambia tu estilo con estos shorts adidas para jóvenes. La cintura elástica con cordón de ajuste brinda cobertura mientras haces movimientos exigentes. El bolsillo trasero oculto con cierre de cremallera mantiene tus objetos esenciales a la mano.',
       images: [
-        'adidas_x_classic_lego_shorts_01.jpg',
-        'adidas_x_classic_lego_shorts_02.jpg',
-        'adidas_x_classic_lego_shorts_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369401/sportika/rnvb6iijfzg0isroyz1m.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369405/sportika/qi9s3luxj0zwame6fyfk.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369402/sportika/obr7dpiorxevkmqre1m2.jpg',
       ],
       inStock: 99,
       price: 49.95,
@@ -665,9 +665,9 @@ export const initialData: InitialData = {
       description:
         'Tenis para bebe que celebran la realeza. A tu bebé a veces le cuesta elegir cuál es su princesa favorita. Por suerte, con estos tenis adidas no tendrá que hacerlo. Presentan un exterior de piel sintética muy resistente al desgaste y un cierre con tiras ajustables de cierre por contacto que le ofrece un ajuste seguro.',
       images: [
-        'breaknet_adidas_x_disney_princess_sneakers_01.jpg',
-        'breaknet_adidas_x_disney_princess_sneakers_02.jpg',
-        'breaknet_adidas_x_disney_princess_sneakers_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369450/sportika/wbjvisivzbaqdbg4rfyj.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369448/sportika/ezyyppyksmu70ce7k4zl.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369449/sportika/reqmscohuytjs2k6ouz0.jpg',
       ],
       inStock: 53,
       price: 49.95,
@@ -698,9 +698,9 @@ export const initialData: InitialData = {
       description:
         'Tenis cde running comodos para bebe. La mediasuela LIGHTMOTION de estos tenis de running adidas para bebé le inyectan comodidad y amortiguación a cada paso de tu peque. Los cordones elásticos y la tira ajustable de cierre por contacto los mantienen en su lugar mientras se mueven con fluidez por cada rincón de la casa.',
       images: [
-        'duramo_10_sneakers_girls_01.jpg',
-        'duramo_10_sneakers_girls_02.jpg',
-        'duramo_10_sneakers_girls_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369457/sportika/x9q7qrpkxtwi7wyl9i9n.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369457/sportika/dhiiekxjz4b8ghlmxxr3.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369457/sportika/zz9blboj0mmhlqnnxcow.jpg',
       ],
       inStock: 150,
       price: 59.95,
@@ -731,9 +731,9 @@ export const initialData: InitialData = {
       description:
         'Tenis stan smith para los mas pequeños hechos con marimekko. Brillante, audaz y lleno de alegría. ¿Te suena a tu peque? También es el espíritu detrás de la casa de diseño finlandesa Marimekko. Han estado iluminando el mundo con colores y estampados vibrantes desde los años 50. Ahora, su icónico diseño Unikko está sobre estos tenis adidas Stan Smith para bebé en dorado metalizado. Envuelve sus pies con estos cómodos tenis y deja que se enfrenten a los retos del día con estilo.',
       images: [
-        'stan_smith_marimekko_sneakers_01.jpg',
-        'stan_smith_marimekko_sneakers_02.jpg',
-        'stan_smith_marimekko_sneakers_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369440/sportika/paztow5nkpj4vcleyqoa.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369439/sportika/aavlsmlbkemfpbs3zzv5.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369440/sportika/afftm0hok4yuxiol6znm.jpg',
       ],
       inStock: 150,
       price: 59.95,
@@ -764,9 +764,9 @@ export const initialData: InitialData = {
       description:
         'Una playera absorbente hecha con materiales reciclados. Incorpora tecnología de absorción AEROREADY que se encarga de mantener su piel seca en todo momento. El corte holgado y alargado les permiten lucir un estilo diferente cada vez que la usan. La tinta brillante y el lindo estampado de Daisy Duck de Disney le dan un toque glamuroso',
       images: [
-        'disney_daisy_duck_t_shirt_01.jpg',
-        'disney_daisy_duck_t_shirt_02.jpg',
-        'disney_daisy_duck_t_shirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369456/sportika/gnaxhfc7mjtnuppwxgt3.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369455/sportika/qqpp6v91dnutedleripp.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369457/sportika/wkz9tsyuv0eqy4tbky7v.jpg',
       ],
       inStock: 66,
       price: 32.45,
@@ -789,9 +789,9 @@ export const initialData: InitialData = {
       description:
         "An adidas sweatshirt with famous pals. Nothing's better than a high-five among friends. Gear up your star player for fun in this kids' adidas sweatshirt. Lifelong besties Disney's Minnie Mouse and Daisy Duck bring the teamwork, so your active youngster can make the dream work. They'll feel warm and comfy for all-day play, thanks to soft fleece.",
       images: [
-        'adidas_x_disney_daisy_duck_crew_sweatshirt_01.jpg',
-        'adidas_x_disney_daisy_duck_crew_sweatshirt_02.jpg',
-        'adidas_x_disney_daisy_duck_crew_sweatshirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369404/sportika/hlq8sqzhl16ycdqzfjip.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369411/sportika/mhrd6hntxkafh3d9eymj.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369418/sportika/udwwsx2wy5kdvs8m7iek.jpg',
       ],
       inStock: 77,
       price: 24.95,
@@ -806,9 +806,9 @@ export const initialData: InitialData = {
       description:
         "This flower-print track jacket is made with recycled materials. Flowers make us feel empowered. You can really tell with this juniors' adidas track jacket. The iconic SST track suit silhouette features an allover print that draws meaning from the flowers in its design. We're highlighting gerbera daisy for strength, iris for hope and freesia for positive energy.",
       images: [
-        'allover_flower_print_sst_track_jacket_01.jpg',
-        'allover_flower_print_sst_track_jacket_02.jpg',
-        'allover_flower_print_sst_track_jacket_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369435/sportika/bflwpkicoolhc0d7ivbn.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369436/sportika/qgodkw4qnz6y3ajnylaj.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369440/sportika/wvpclydqf9koegkew1al.jpg',
       ],
       inStock: 102,
       price: 59.95,
@@ -829,9 +829,9 @@ export const initialData: InitialData = {
       description:
         'Aprovecha la energía. El sistema de amortiguación rediseñado combina Max Air visibles con una unidad Zoom Air gruesa y con respuesta inmediata. El Max Air disipa las fuerzas de impacto, mientras que el Zoom Air mejora tu paso en la cancha.',
       images: [
-        'lebron_19_men_01.jpg',
-        'lebron_19_men_02.jpg',
-        'lebron_19_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369464/sportika/acq4jyr7qzhftxcuoqfy.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369466/sportika/zjam6jriyzfp7v63j4ry.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369464/sportika/wipvbuhc2zchptuhfpef.jpg',
       ],
       inStock: 114,
       price: 214.95,
@@ -862,9 +862,9 @@ export const initialData: InitialData = {
       description:
         'Nada tan genial, nada tan cómodo, nada tan eficaz: el Air Max 90 te brinda un estilo primaveral al caminar. Con detalles divertidos, desde la seta en el talón hasta la mariposa en la plantilla, ofrece una sensación de verano. Además, te permite hacer el bien y verte bien.',
       images: [
-        'nike_air_max_90_01.jpg',
-        'nike_air_max_90_02.jpg',
-        'nike_air_max_90_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369383/sportika/nzaeotcgksectx4njb1d.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369385/sportika/l8oj5aj4kwhpks4na056.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369384/sportika/spyxoaj6gm3xfmxw96sb.jpg',
       ],
       inStock: 114,
       price: 139.95,
@@ -895,9 +895,9 @@ export const initialData: InitialData = {
       description:
         'Nike Waffle One equilibra todo lo que más te gusta de la herencia Nike Running con nuevas innovaciones.Su nuevo y duradero pasador de talón de plástico agrega energía mientras que una mezcla de malla transparente y exquisita gamuza te prepara para el verano.La nueva entresuela elástica cuenta con la clásica forma de cuña que ya conoces, mientras que la suela tipo wafle actualizada brinda un nivel de soporte y tracción que debes sentir para creer.',
       images: [
-        'nike_waffle_one_men_01.jpg',
-        'nike_waffle_one_men_02.jpg',
-        'nike_waffle_one_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369421/sportika/tkcfs0wxi6gbikqsllsx.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369422/sportika/rwjaqtmhxz0ttblx2i6n.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369427/sportika/gmzk3mdof6pdum96thna.jpg',
       ],
       inStock: 200,
       price: 114.95,
@@ -928,9 +928,9 @@ export const initialData: InitialData = {
       description:
         'Inicia tu ruta diaria con la camiseta Nike Dri-FIT Miler.Ofrece rendimiento ligero y movilidad para el corredor de nivel inicial.Este producto está fabricado con al menos un 50% de fibras de poliéster reciclado.',
       images: [
-        'nike_dri_fit_miler_01.jpg',
-        'nike_dri_fit_miler_02.jpg',
-        'nike_dri_fit_miler_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369393/sportika/zsuu6wndugdsuv08qnbt.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369393/sportika/d8cl0e4sxpdakkr2vnyh.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369398/sportika/ilrsura5dsxuynapws6s.jpg',
       ],
       inStock: 77,
       price: 37.45,
@@ -945,9 +945,9 @@ export const initialData: InitialData = {
       description:
         'Los shorts AeroSwift Nike te mantienen listo para tu carrera con un diseño ligero.La tecnología absorbente de sudor y la pretina ventilada te ayudan a mantenerte seco y fresco mientras corres.Este producto está fabricado con al menos un 75% de fibras de poliéster reciclado.',
       images: [
-        'nike_aeroswift_men_01.jpg',
-        'nike_aeroswift_men_02.jpg',
-        'nike_aeroswift_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369380/sportika/bd9jmlvnddicipir7ruy.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369382/sportika/mg5wcoii5aa1xyajdku4.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369381/sportika/tym42shsss9v4quw4qnh.jpg',
       ],
       inStock: 113,
       price: 84.95,
@@ -962,9 +962,9 @@ export const initialData: InitialData = {
       description:
         'Pasa directamente de la cancha a la calle con la sudadera sin cierre Nike Standard Issue. Está elaborada con un tejido Fleece suave y estructurado con un ajuste holgado. La tecnología Dri-FIT absorbente de sudor y los laterales flexibles hacen que sea una opción ideal para la cancha.',
       images: [
-        'nike_standard_issue_sweatshirt_01.jpg',
-        'nike_standard_issue_sweatshirt_02.jpg',
-        'nike_standard_issue_sweatshirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369417/sportika/pszjmjjuuogbpofxu3nz.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369417/sportika/vuob4htelb1ciuwkhqwe.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369421/sportika/ysfynlsycueklwtcacjo.jpg',
       ],
       inStock: 107,
       price: 62.45,
@@ -979,9 +979,9 @@ export const initialData: InitialData = {
       description:
         'Dales un poco de sol a tus pies. Los detalles desenfadados y los colores frescos aportan vibras de playa al estilo clásico del Dunk. Las telas aireadas canalizan el estilo veraniego, mientras que el cuello acolchado de corte bajo te permite llevar tu juego a cualquier lugar, con comodidad.',
       images: [
-        'nike_dunk_low_se_women_01.jpg',
-        'nike_dunk_low_se_women_02.jpg',
-        'nike_dunk_low_se_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369398/sportika/sryekmrtaofedkezzfea.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369400/sportika/nxaq6mho2azut2w1knmf.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369403/sportika/xcf2h4hacqb0lbmdbdmn.jpg',
       ],
       inStock: 200,
       price: 134.95,
@@ -1012,9 +1012,9 @@ export const initialData: InitialData = {
       description:
         'Permite que una nueva onda de estilo se apodere de ti con el Nike Fontanka Waffle. El diseño atlético elegante, que combina la moda con el deporte, rinde homenaje al Daybreak icónico y presenta detalles de gamuza clásicos y una suela tipo waffle. Los Swoosh bordados, las costuras decorativas y el cuello suave fusionan la artesanía con la comodidad.',
       images: [
-        'nike_fontanka_waffle_women_01.jpg',
-        'nike_fontanka_waffle_women_02.jpg',
-        'nike_fontanka_waffle_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369402/sportika/kiqml8tseyurzg7dgh6g.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369402/sportika/qocpbxivj0oc8z3nvkkl.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369406/sportika/mlsi7jtzg5nghhd1txyv.jpg',
       ],
       inStock: 117,
       price: 109.95,
@@ -1042,9 +1042,9 @@ export const initialData: InitialData = {
       description:
         'Podríamos usar muchos superlativos para describir este calzado. Podríamos decirte que el nuevo sistema de amortiguación Air ofrece la sensación más revolucionaria que hayas experimentado. O que la parte central de la suela de espuma te brinda la sensación más ligera y suave. Pero ¿qué gracia tiene adelantar las sorpresas? Amarra tus agujetas y disfruta la nueva era del diseño Air.',
       images: [
-        'nike_air_max_2021_women_01.jpg',
-        'nike_air_max_2021_women_02.jpg',
-        'nike_air_max_2021_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369388/sportika/mymfynpqhok8ezorlotm.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369388/sportika/eltp5t4kggayi6vuvqiz.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369390/sportika/bsnp4renb1agcjitcikg.jpg',
       ],
       inStock: 186,
       price: 179.95,
@@ -1072,9 +1072,9 @@ export const initialData: InitialData = {
       description:
         'La playera Nike Swoosh Run está diseñada para todas tus carreras: cortas y largas. La tela suave y tersa tiene un estilo transpirable para mantener una frescura libre de humedad. Este producto está fabricado al 100% con fibras de poliéster reciclado.',
       images: [
-        'nike_swoosh_run_t_shirt_01.jpg',
-        'nike_swoosh_run_t_shirt_02.jpg',
-        'nike_swoosh_run_t_shirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369419/sportika/va0oxrpoklzqfyqsat1r.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369420/sportika/pqmq8vfqk1exzywgv1ri.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369427/sportika/sq9bpibafauzufzqw5pq.jpg',
       ],
       inStock: 99,
       price: 39.45,
@@ -1089,9 +1089,9 @@ export const initialData: InitialData = {
       description:
         'Por encima de todo, necesitas flexibilidad en tu rutina y en lo que usas para entrenar. Estos leggings ligeros son una segunda piel que no querrás quitarte nunca. Confeccionados con tela suave y sedosa que no se transluce, te mantienen segura y cubierta para cualquier entrenamiento, e incluso para el resto del día. Este producto está fabricado con al menos un 50% de fibras de poliéster reciclado.',
       images: [
-        'nike_dri_fit_one_luxe_icon_clash_tights_women_01.jpg',
-        'nike_dri_fit_one_luxe_icon_clash_tights_women_02.jpg',
-        'nike_dri_fit_one_luxe_icon_clash_tights_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369393/sportika/irskw0h6knuydzpzy295.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369395/sportika/dgxqunbmwkz4qkslhaf6.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369398/sportika/c71pvhzef0zrt890n3i8.jpg',
       ],
       inStock: 113,
       price: 92.45,
@@ -1106,9 +1106,9 @@ export const initialData: InitialData = {
       description:
         'Esta chamarra es bastante ligera para mantener notablemente la velocidad, está lista para convertirse en tu nueva prenda favorita; está diseñada para mantener la transpirabilidad y protección en climas húmedos. ¿Necesitas quitarte capas a la mitad de tu carrera? No hay problema, la chamarra se puede guardar dentro de sí misma para transportarla con facilidad. Este producto está fabricado con al menos un 75% de fibras de poliéster reciclado.',
       images: [
-        'nike_running_jacket_women_01.jpg',
-        'nike_running_jacket_women_02.jpg',
-        'nike_running_jacket_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369408/sportika/nlwalfii1n7nnxiroxag.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369409/sportika/p2gmn5s0qpbn5nab2zjx.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369410/sportika/avijntxbdz9ur2bxl5xc.jpg',
       ],
       inStock: 300,
       price: 104.95,
@@ -1123,9 +1123,9 @@ export const initialData: InitialData = {
       description:
         'Fácil, cómodo y hecho para jugar en cualquier momento, el calzado Nike Dynamo Go será el próximo favorito de tu pequeño. Lo que más nos gusta es que los niños pueden pisar el talón plegable y ponérselo rápidamente. Y si no están preparados para hacerlo ellos mismos, puedes mostrarles cómo funciona para que puedan ser libres e independientes. También es suave y acolchado en los lugares precisos para que la diversión nunca se detenga.',
       images: [
-        'nike_dynamo_go_01.jpg',
-        'nike_dynamo_go_02.jpg',
-        'nike_dynamo_go_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369399/sportika/jtui72iyvwanj7puqry6.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369402/sportika/ezt4uf1hxdjnjvw8kzt9.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369398/sportika/yenywttjc2msmdbj37jq.jpg',
       ],
       inStock: 113,
       price: 84.95,
@@ -1153,9 +1153,9 @@ export const initialData: InitialData = {
       description:
         'El Nike Court Borough Low 2 aporta esa potencia rosa para las futuras estrellas. Desde las agujetas hasta el diseño Swoosh y la suela, el rosa no solo es un color, es una actitud. Este calzado también es duradero y ofrece el look y la sensación clásicos de la cancha, listo para el juego de todos los días.',
       images: [
-        'nike_court_borough_low_2_01.jpg',
-        'nike_court_borough_low_2_02.jpg',
-        'nike_court_borough_low_2_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369392/sportika/jgbljnb7dvkrwcpat26c.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369388/sportika/ie9r7q8cf5lul0cp3c1v.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369390/sportika/b4zazcjnfkubslnbct6g.jpg',
       ],
       inStock: 140,
       price: 59.95,
@@ -1183,9 +1183,9 @@ export const initialData: InitialData = {
       description:
         'Este calzado para todos los días vuelve al pasado con una combinación de detalles del calzado de running de los años 80. Además, el Nike MD Valiant está lleno de historia. Se le llama así por el carro en el que el cofundador de Nike vendía el calzado cuando empezó todo: un Valiant del 64.',
       images: [
-        'nike_md_valiant_01.jpg',
-        'nike_md_valiant_02.jpg',
-        'nike_md_valiant_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369405/sportika/ovbpevhgxpzh1x0yvaso.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369404/sportika/nn0abhvec3x4raeii5ve.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369409/sportika/loot4bgrq64rxkgxy440.jpg',
       ],
       inStock: 140,
       price: 62.45,
@@ -1213,9 +1213,9 @@ export const initialData: InitialData = {
       description:
         'Mira todos los gráficos jugosos de la camiseta de tirantes de Nike Sportswear. Están inspirados en nuestras pegatinas favoritas de frutas que se ven en la tienda de alimentos. ¿Cuál es tu favorito?',
       images: [
-        'nike_sportswear_tank_top_01.jpg',
-        'nike_sportswear_tank_top_02.jpg',
-        'nike_sportswear_tank_top_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369414/sportika/detyovvag9mzpdfn9snn.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369417/sportika/xldswar63izile3jurr5.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369417/sportika/xn4fo76ssuumoprecqwp.jpg',
       ],
       inStock: 111,
       price: 29.95,
@@ -1230,9 +1230,9 @@ export const initialData: InitialData = {
       description:
         'Los Nike Dri-FIT One Luxe son nuestros leggigns más versátiles— confeccionados con tela suave y sedosa para jugar o para lo que sea. Como parte de la línea Nike One Luxe, son supercómodos y ligeros, como un abrazo que dura todo el día. El agregado de un estampado floral colorido hace que se vean aún mejor.',
       images: [
-        'nike_dri_fit_one_luxe_tights_01.jpg',
-        'nike_dri_fit_one_luxe_tights_02.jpg',
-        'nike_dri_fit_one_luxe_tights_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369397/sportika/tabcihqjsunpwsiyejqr.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369396/sportika/cfhkhiupvbfvyhwsuob7.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369396/sportika/lrzlk4shlbjaqzkrxmtn.jpg',
       ],
       inStock: 200,
       price: 39.95,
@@ -1247,9 +1247,9 @@ export const initialData: InitialData = {
       description:
         'Estamos de acuerdo en que todos los días son mejores con una sudadera. Para ir a tu parque favorito o salir a la calle con tus amigos, siempre es tu prenda imprescindible. La sudadera con gorro Nike Sportswear está confeccionada con toda la sensación acogedora del tejido Fleece, además de un diseño Swoosh que te encantará al instante.',
       images: [
-        'nike_sportswear_sweatshirt_01.jpg',
-        'nike_sportswear_sweatshirt_02.jpg',
-        'nike_sportswear_sweatshirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369413/sportika/xgdb1m7f8r6g7kava3q1.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369414/sportika/nfrikyuztnppfqqfumam.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369417/sportika/gcn11aj1dkbz5dokq5al.jpg',
       ],
       inStock: 200,
       price: 44.95,
@@ -1264,9 +1264,9 @@ export const initialData: InitialData = {
       description:
         'El Nike Force 1 Crater tiene un secreto divertido: está hecho con al menos un 20% de contenido reciclado. El diseño transparente permite ver a través de este calzado legendario. Además, la suave espuma Crater utiliza goma Nike Grind para brindar una sensación única y ligera.',
       images: [
-        'nike_air_force_1_crater_01.jpg',
-        'nike_air_force_1_crater_02.jpg',
-        'nike_air_force_1_crater_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369382/sportika/yisoz4bxzu3jli3epssf.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369382/sportika/ibgvijixculwbgydgjfy.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369386/sportika/r0jf6fqwbtjgrmcwhdtb.jpg',
       ],
       inStock: 133,
       price: 99.95,
@@ -1294,9 +1294,9 @@ export const initialData: InitialData = {
       description:
         'Desde el perímetro hasta el aro, domina la cancha con confianza. Este es uno de los calzados de juego Air Jordan más ligeros hasta la fecha, con una parte superior minimalista pero duradera de tejido Leno reforzado con detalles de plástico resistentes. Además, la amortiguación Zoom Air brinda retorno de energía y capacidad de respuesta de élite. El juego te pide todo. Ahora tienes el calzado para combinar.',
       images: [
-        'air_jordan_xxxvl_luka_01.jpg',
-        'air_jordan_xxxvl_luka_02.jpg',
-        'air_jordan_xxxvl_luka_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369430/sportika/rs6cgimqtlwmexcxkm9d.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369424/sportika/kb517zatarhjvfqedrus.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369435/sportika/f6o5dqks68enpy4ijryj.jpg',
       ],
       inStock: 266,
       price: 159.95,
@@ -1324,9 +1324,9 @@ export const initialData: InitialData = {
       description:
         'Pon el sol a tus pies con el Nike Air Max 90 SE Next Nature. Los detalles relajados y los colores frescos brindan un estilo de día de playa, mientras que las telas ventiladas de verano mantienen tus pies frescos. ¿Lo mejor de todo? Incluye una unidad (Max) Air para brindar comodidad durante todo el día.',
       images: [
-        'nike_air_max_90_se_next_nature_01.jpg',
-        'nike_air_max_90_se_next_nature_02.jpg',
-        'nike_air_max_90_se_next_nature_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369385/sportika/ydpotn1yynigctqgllv9.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369383/sportika/duyssxct1qdbxpd1ewlf.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369389/sportika/wknsuy9ehces6mypegtb.jpg',
       ],
       inStock: 132,
       price: 119.95,
@@ -1354,9 +1354,9 @@ export const initialData: InitialData = {
       description:
         'Hazla en grande y con valentía o vete a casa. Los shorts Nike Sportswear son una prenda básica y ligera para el clima cálido con un estampado increíble dibujado a mano inspirado en el logotipo y un cordón de ajuste externo único.',
       images: [
-        'nike_sportswear_french_terry_shorts_01.jpg',
-        'nike_sportswear_french_terry_shorts_02.jpg',
-        'nike_sportswear_french_terry_shorts_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369410/sportika/cyaxspdllevacaxkoeys.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369415/sportika/uintkektlihafkxqukfl.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369415/sportika/pa8ezeahjiq7w85v3qbv.jpg',
       ],
       inStock: 89,
       price: 37.45,
@@ -1371,9 +1371,9 @@ export const initialData: InitialData = {
       description:
         'La camiseta Nike Dri-FIT Academy es una prenda básica de fútbol diseñada para el entrenamiento diario.Combina una tela suave absorbente de sudor con paneles de malla para mantener la frescura en el calor del juego.Este producto está fabricado al 100% con fibras de poliéster reciclado.',
       images: [
-        'nike_dri_fit_academy_t_shirt_01.jpg',
-        'nike_dri_fit_academy_t_shirt_02.jpg',
-        'nike_dri_fit_academy_t_shirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369390/sportika/mnkp8cvta8tnmi1hebbv.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369390/sportika/telmgamzf1pnpsxsj3q2.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369392/sportika/o5sxue1f4w6srgit9zlq.jpg',
       ],
       inStock: 189,
       price: 19.95,
@@ -1388,9 +1388,9 @@ export const initialData: InitialData = {
       description:
         'La sudadera con gorro Nike Sportswear Club es idea para los días fríos. Consejo: esta prenda se puede combinar con pants de tiro alto para lucir un look con el que te sentirás bien en cualquier situación.',
       images: [
-        'nike_sportswear_club_sweatshirt_01.jpg',
-        'nike_sportswear_club_sweatshirt_02.jpg',
-        'nike_sportswear_club_sweatshirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369408/sportika/wca2vcdyrlmhdyiot8es.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369408/sportika/o38vf2p3bnqgohn0zljm.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369411/sportika/spt52mvr750kjfwbkgbr.jpg',
       ],
       inStock: 117,
       price: 42.45,
@@ -1405,9 +1405,9 @@ export const initialData: InitialData = {
       description:
         'Tenis originales que fusionaron lo retro con lo moderno. Modernos, veloces y futurísticos. Eso es lo que obtienes con los Reebok Classic Leather Legacy AZ para mujer. Increíbles desde todos los ángulos gracias a las líneas de diseño geométrico. La evolución del icónico estabilizador de talón de TPU les da un look audaz. Los detalles de color contrastante añaden un toque llamativo. La capellada mezcla capas suaves y texturizadas con una estructura de tela y gamuza. No te pierdas los bordes serrados de la lengüeta que crean un look retro.',
       images: [
-        'classic_legacy_az_women_01.jpg',
-        'classic_legacy_az_women_02.jpg',
-        'classic_legacy_az_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369454/sportika/egc0a9b9s62pqylliqjm.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369455/sportika/rnrvoaveygrssax7aiif.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369454/sportika/rfr8ph2huokonzbqpuuq.jpg',
       ],
       inStock: 207,
       price: 99.95,
@@ -1422,9 +1422,9 @@ export const initialData: InitialData = {
       description:
         'Unos tenis de entrenamiento versatiles diseñados para darte soporte. Desde pistol squats hasta burpees, domina todos los movimientos que llevarán tu entrenamiento al próximo nivel. Usa estos tenis Reebok para mujer y mantente cómoda y segura en todo momento. Su capellada de tejido Flexweave® es transpirable y resistente, y cuenta con soporte integrado para movimientos estables en todas las direcciones. La suela de caucho con patrón de tacos en zonas estratégicas te brinda tracción segura.',
       images: [
-        'nano_x2_reebok_women_01.jpg',
-        'nano_x2_reebok_women_02.jpg',
-        'nano_x2_reebok_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369379/sportika/qhknsytolutzgmhp7g4a.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369380/sportika/pwkxie5enzxn398qwr6e.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369379/sportika/zcxjnmkabjoklodtkbrd.jpg',
       ],
       inStock: 221,
       price: 144.95,
@@ -1452,9 +1452,9 @@ export const initialData: InitialData = {
       description:
         'Unos tenis de entrenamiento versatiles diseñados para darte soporte. Desde pistol squats hasta burpees, domina todos los movimientos que llevarán tu entrenamiento al próximo nivel. Usa estos tenis Reebok para mujer y mantente cómoda y segura en todo momento. Su capellada de tejido Flexweave® es transpirable y resistente, y cuenta con soporte integrado para movimientos estables en todas las direcciones. La suela de caucho con patrón de tacos en zonas estratégicas te brinda tracción segura.',
       images: [
-        'princess_women_01.jpg',
-        'princess_women_02.jpg',
-        'princess_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369428/sportika/xpacj9c4bjjvfjrbohmc.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369428/sportika/m2f0jgotguuawomkq8hn.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369428/sportika/v0btgmmc96r6ojqezk8p.jpg',
       ],
       inStock: 221,
       price: 69.95,
@@ -1485,9 +1485,9 @@ export const initialData: InitialData = {
       description:
         'Playera de cuello redondo. En el gym o en la pista, da siempre lo mejor de ti. Esta playera para mujer está confeccionada en tejido elástico que te permite hacer todo tipo de movimientos sin restricción. Su corte entallado te aporta un look estilizado.',
       images: [
-        'workout_ready_speedwick_tee_01.jpg',
-        'workout_ready_speedwick_tee_02.jpg',
-        'workout_ready_speedwick_tee_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369451/sportika/pphpagfydxptbo6nu4cw.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369451/sportika/vmffvbw3umoctyk4wlhx.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369451/sportika/kgnqhlqpdiejdwe8c7uw.jpg',
       ],
       inStock: 173,
       price: 27.45,
@@ -1502,9 +1502,9 @@ export const initialData: InitialData = {
       description:
         'Mallas hechas con un minimo de 30% de materiales reciclados. ¡Olvídate de sutilezas! Sal a brillar con estas mallas Reebok para mujer. El estampado integral no pasará desapercibido y te llenará de energía para que puedas dar lo mejor de ti en tu entrenamiento. La pretina ancha y elástica viene con un panel antirozaduras para tu comodidad. Una prenda hecha con materiales reciclados para que puedas sentirte bien con lo que llevas puesto.',
       images: [
-        'lux_bold_tights_01.jpg',
-        'lux_bold_tights_02.jpg',
-        'lux_bold_tights_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369465/sportika/xn9ga6pfmcfe0x6azzh6.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369465/sportika/yscov328tce6m7izkt4i.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369380/sportika/kpysjxordp0xiutfsk1t.jpg',
       ],
       inStock: 111,
       price: 64.95,
@@ -1519,9 +1519,9 @@ export const initialData: InitialData = {
       description:
         'Shorts de running hechos con materiales reciclados. Haz que tu sesión de running sea la mejor parte de tu día. Estos shorts de running Reebok para mujer te ayudarán a lograrlo. La tecnología Speedwick mantiene tu cuerpo seco mientras tú encuentras tu ritmo ideal. Vienen con un forro interior que aumenta la circulación del aire y te mantiene seca.',
       images: [
-        'running_shorts_women_01.jpg',
-        'running_shorts_women_02.jpg',
-        'running_shorts_women_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369434/sportika/bcn3widoredxdcirnawd.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369434/sportika/ik3anzzakklx1dp9oy54.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369437/sportika/pbg2jwgwgy0uinfnqwxs.jpg',
       ],
       inStock: 99,
       price: 42.45,
@@ -1536,9 +1536,9 @@ export const initialData: InitialData = {
       description:
         'Tenis ligeros para entrenar y levantar peso. Pasa de entrenamientos con pesas a cardio sin perderte ni un respiro, ni parar a cambiarte los tenis. Estos tenis Reebok para entrenar están diseñados para ofrecerte versatilidad en el gym. Vienen con una capellada de malla transpirable sobre una mediasuela de espuma Floatride Energy para máximo confort. Una cuña en la zona media ofrece estabilidad para realizar levantamientos de pesas, y el chasis de velocidad brinda soporte en la zona media del pie.',
       images: [
-        'speed_21_tr_men_01.jpg',
-        'speed_21_tr_men_02.jpg',
-        'speed_21_tr_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369437/sportika/qngrpeumkbcfiicnex7e.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369438/sportika/oiegmausjrp0nkyfkxcg.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369437/sportika/nxjbcwqac8ou6oweju2d.jpg',
       ],
       inStock: 243,
       price: 139.95,
@@ -1573,9 +1573,9 @@ export const initialData: InitialData = {
       description:
         'Tenis veganos con una estetica minimalista. Combina tus principios con tu estilo. Estos tenis Reebok para hombre vienen con una suela de caucho natural y una capellada de piel sintética, además de una plantilla y refuerzo de talón con el logo vegano de Reebok. La cincha bicolor se mantiene fiel a la estética original y añade un toque de color.',
       images: [
-        'npc_uk_ll_vegan_men_01.jpg',
-        'npc_uk_ll_vegan_men_02.jpg',
-        'npc_uk_ll_vegan_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369425/sportika/pxn8m4awrpybreqxmeny.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369424/sportika/r1nydkxgndaqd6ildqlx.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369422/sportika/ab2uyldzlplygudmekmz.jpg',
       ],
       inStock: 243,
       price: 139.95,
@@ -1607,9 +1607,9 @@ export const initialData: InitialData = {
     {
       description: 'Tenis de running con amortiguacion reactiva.',
       images: [
-        'liquifect_90_men_01.jpg',
-        'liquifect_90_men_02.jpg',
-        'liquifect_90_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369465/sportika/f5xdryfy8lntkbsljrcu.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369465/sportika/rtjbvipresjwpjsw1fmm.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369464/sportika/ztcy9ooixzlal8prfzdh.jpg',
       ],
       inStock: 111,
       price: 89.95,
@@ -1641,9 +1641,9 @@ export const initialData: InitialData = {
       description:
         'Un playera sin mangas ligera y ventilada. Prepárate para salir a correr o en bici. Esta playera Reebok para hombre está diseñada para ofrecerte confort y ligereza. Presenta un corte ajustado que no se interpone con tus movimientos. La tecnología Speedwick repele el sudor para mantenerte seco, y las perforaciones en el panel posterior aportan ventilación.',
       images: [
-        'united_by_fitness_speed_tank_top_01.jpg',
-        'united_by_fitness_speed_tank_top_02.jpg',
-        'united_by_fitness_speed_tank_top_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369450/sportika/pirphtqejk9jb65bg0dk.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369450/sportika/imzkky31sxezjtftpufh.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369451/sportika/jyvfy7anjodrncfqna5g.jpg',
       ],
       inStock: 77,
       price: 42.45,
@@ -1658,9 +1658,9 @@ export const initialData: InitialData = {
       description:
         'Ts Epic Lightweight Short es un nuevo producto para Hombre de Reebok. Te invitamos a ver las imágenes para apreciar más detalles desde diferentes ángulos.',
       images: [
-        'graphic_epic_lightweight_men_01.jpg',
-        'graphic_epic_lightweight_men_02.jpg',
-        'graphic_epic_lightweight_men_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369461/sportika/ceakw5dysdr6g5sulphl.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369462/sportika/jrrzidrut6fwglxgv7vm.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369462/sportika/hedznsugdsqdjanvdzhx.jpg',
       ],
       inStock: 111,
       price: 54.95,
@@ -1675,9 +1675,9 @@ export const initialData: InitialData = {
       description:
         'Una sudadera de felpa que puedes usar para ir a cualquier lugar. Sube las escaleras del parque y levanta los brazos como un auténtico campeón. O simplemente, quédate en casa y disfruta de tu programa de deportes favorito. Sea lo que sea lo que te depare el día, esta sudadera de entrenamiento para hombre va contigo. Su tejido de felpa de mezcla de algodón se siente suave sobre tu piel. El logo Reebok en el pecho le infunde un look deportivo.',
       images: [
-        'reebok_identity_zip_up_sweatshirt_01.jpg',
-        'reebok_identity_zip_up_sweatshirt_02.jpg',
-        'reebok_identity_zip_up_sweatshirt_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369429/sportika/fmzdrpant6tufhvrlo6m.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369429/sportika/zkufpucdp554lxfzcj8b.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369431/sportika/m3x89zfmrth1tz8rmrok.jpg',
       ],
       inStock: 59,
       price: 59.95,
@@ -1692,9 +1692,9 @@ export const initialData: InitialData = {
       description:
         'Corre. Salta. Colúmpiate. Repite. Estos tenis de running Reebok para niñas están diseñados para seguirle el ritmo a su estilo de vida activo. Vienen con una capellada de tela ligera para que nada la detenga. Jugará todo el día con comodidad gracias a la amortiguación de la mediasuela y suela de EVA.',
       images: [
-        'rush_runner_4_reebok_girls_01.jpg',
-        'rush_runner_4_reebok_girls_02.jpg',
-        'rush_runner_4_reebok_girls_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369437/sportika/x6d3mztdvulkl3qifsdr.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369437/sportika/l3zwj7r006m3zfpc2ukv.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369436/sportika/um97blquu3m2xnbpbxem.jpg',
       ],
       inStock: 400,
       price: 52.45,
@@ -1724,9 +1724,9 @@ export const initialData: InitialData = {
       description:
         'A veces la imaginación lleva a tu peque a vivir aventuras en la selva. Estos tenis Reebok para niñas le dan toda la energía que necesita para divertirse gracias al estampado de guepardo. El cierre de tira por contacto hace que sean fáciles de poner y quitar. Porque hasta los grandes gatitos tienen que volver a casa a la hora de la cena.',
       images: [
-        'reebok_royal_complete_cln_2_girls_01.jpg',
-        'reebok_royal_complete_cln_2_girls_02.jpg',
-        'reebok_royal_complete_cln_2_girls_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369431/sportika/ws0as0j4406hiquf6zqh.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369431/sportika/ujnwmlblhwbvydjxguma.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369431/sportika/nzytmlcse5duv6jiofvh.jpg',
       ],
       inStock: 67,
       price: 49.95,
@@ -1754,9 +1754,9 @@ export const initialData: InitialData = {
       description:
         'Estilo icónico para los pies de tu pequeña. Estos tenis para niñas vienen cargados de herencia Reebok con una mediasuela Zig y un sutil logo Vector. La espuma de EVA aporta amortiguación reactiva en cada paso. El sistema de cordones elástico permite ponerlos con rapidez cuando es momento de salir de casa.',
       images: [
-        'zig_dynamica_3_alt_girls_01.jpg',
-        'zig_dynamica_3_alt_girls_02.jpg',
-        'zig_dynamica_3_alt_girls_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369452/sportika/iuvbtb7h23qj4lnkxgu6.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369453/sportika/z1etw98as49x7odctzmh.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369452/sportika/eyga7vwb1pt3nx8mx3hh.jpg',
       ],
       inStock: 211,
       price: 64.95,
@@ -1784,9 +1784,9 @@ export const initialData: InitialData = {
       description:
         '¿Perderse entre la multitud o destacarse del montón? La elección es suya con estos tenis Reebok para niños. Los detalles de camuflaje le imprimen nueva dimensión al diseño clásico de franjas laterales. La suela de caucho ofrece durabilidad para pasar del parque a jugar videojuegos, sin perderse ni un segundo de diversión.',
       images: [
-        'royal_classic_jogger_3_boys_01.jpg',
-        'royal_classic_jogger_3_boys_02.jpg',
-        'royal_classic_jogger_3_boys_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369433/sportika/bmuxvoxtj9pwaaeaqky2.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369434/sportika/p1ucu8wuickdgnxgmjmb.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369434/sportika/b1yqnes3ok9eipdxuzpz.jpg',
       ],
       inStock: 189,
       price: 54.95,
@@ -1814,9 +1814,9 @@ export const initialData: InitialData = {
       description:
         'Maximiza el estilo deportivo de tu peque con este modelo monocromático con un look minimalista. Están disponibles en colores clásicos, blanco y negro. Su suela resistente al desgaste podrá acompañarlo adonde quiera.',
       images: [
-        'reebok_royal_prime_2_boys_01.jpg',
-        'reebok_royal_prime_2_boys_02.jpg',
-        'reebok_royal_prime_2_boys_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369431/sportika/gibelbatvhzwgx8000kz.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369432/sportika/duccuzrsgcokp3xcp58b.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369433/sportika/ycrtiyh7g9b6nkvsyits.jpg',
       ],
       inStock: 200,
       price: 47.45,
@@ -1844,9 +1844,9 @@ export const initialData: InitialData = {
       description:
         'No importa a dónde vaya, tu peque se sentirá ágil siempre con estos tenis Reebok para niños. La capellada de malla transpirable mantiene sus pies cómodos todo el día. La espuma de EVA le brinda la amortiguación que necesita para correr, saltar y jugar con energía.',
       images: [
-        'flexagon_energy_3_reebok_boys_01.jpg',
-        'flexagon_energy_3_reebok_boys_02.jpg',
-        'flexagon_energy_3_reebok_boys_03.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369458/sportika/nelq24tbr9ntyd2fa4mi.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369460/sportika/eftbkgipyloqqq2eksfx.jpg',
+        'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369459/sportika/atvyrptnsbrntbn7eooa.jpg',
       ],
       inStock: 105,
       price: 64.95,

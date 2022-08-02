@@ -1,4 +1,11 @@
-import { FC, KeyboardEvent, useEffect, useState } from 'react';
+import {
+  ChangeEvent,
+  FC,
+  KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { GetServerSideProps } from 'next';
 import {
   DriveFileRenameOutline,
@@ -43,6 +50,7 @@ import { products } from '../../../utils';
 import { useAdmin } from '../../../store/admin';
 import { Product } from '../../../models';
 import { useRouter } from 'next/router';
+import { sportikaApi } from '../../../api';
 
 interface Props {
   product: IProduct;
@@ -62,6 +70,7 @@ const MenuProps = {
 const ProductAdminPage: FC<Props> = ({ product }) => {
   const { loading, updateProduct, createProduct } = useAdmin();
   const router = useRouter();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [type, setType] = useState('clothing');
   const [gender, setGender] = useState('men');
   const [sizes, setSizes] = useState<string[]>([]);
@@ -121,6 +130,37 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     setValue(
       'tags',
       getValues('tags').filter((val) => val !== tag),
+      { shouldValidate: true }
+    );
+  };
+
+  const onFilesSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
+    if (!target.files || target.files.length === 0) {
+      return;
+    }
+
+    try {
+      for (const file of target.files) {
+        const formData = new FormData();
+        formData.append('file', file);
+        const { data } = await sportikaApi.post<{ message: string }>(
+          '/admin/upload',
+          formData
+        );
+        console.log({ data });
+        setValue('images', [...getValues('images'), data.message], {
+          shouldValidate: true,
+        });
+      }
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  const onDeleteImage = (image: string) => {
+    setValue(
+      'images',
+      getValues('images').filter((img) => img !== image),
       { shouldValidate: true }
     );
   };
@@ -388,33 +428,59 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
             <Box display="flex" flexDirection="column">
               <FormLabel sx={{ mb: 1 }}>Images</FormLabel>
-              <Button
-                color="secondary"
-                fullWidth
-                startIcon={<UploadOutlined />}
-                sx={{ mb: 3 }}
+              <Grid container justifyContent="center" mt={1}>
+                <Grid item xs={8}>
+                  <Button
+                    color="secondary"
+                    fullWidth
+                    startIcon={<UploadOutlined />}
+                    onClick={() => fileInputRef.current?.click()}
+                  >
+                    Load Image
+                  </Button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    accept="image/png, image/gif, image/jpeg"
+                    style={{ display: 'none' }}
+                    onChange={onFilesSelected}
+                  />
+                </Grid>
+                <Grid item xs={8}>
+                  <Chip
+                    label="It's necessary at least 2 images."
+                    color="error"
+                    variant="outlined"
+                    sx={{
+                      width: '100%',
+                      display: getValues('images').length < 2 ? 'flex' : 'none',
+                    }}
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid
+                container
+                spacing={2}
+                sx={{ mt: 2 }}
+                justifyContent="center"
               >
-                Load Image
-              </Button>
-
-              <Chip
-                label="It's necessary at least 2 images."
-                color="error"
-                variant="filled"
-              />
-
-              <Grid container spacing={2}>
-                {product.images.map((img) => (
+                {getValues('images').map((img) => (
                   <Grid item xs={4} sm={3} key={img}>
                     <Card>
                       <CardMedia
                         component="img"
                         className="fadeIn"
-                        image={`/products/${img}`}
+                        image={img}
                         alt={img}
                       />
                       <CardActions>
-                        <Button fullWidth color="error">
+                        <Button
+                          fullWidth
+                          color="error"
+                          onClick={() => onDeleteImage(img)}
+                        >
                           Remove
                         </Button>
                       </CardActions>
