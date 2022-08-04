@@ -11,7 +11,7 @@ interface Props {
 export const SummaryTile: FC<Props> = ({ title, subTitle, icon }) => {
   return (
     <Grid item xs={12} sm={4} md={3}>
-      <Card sx={{ display: 'flex' }}>
+      <Card sx={{ display: 'flex', backgroundColor: '#F8F8F8' }}>
         <CardContent
           sx={{
             width: 50,
