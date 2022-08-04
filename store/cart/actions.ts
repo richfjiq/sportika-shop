@@ -1,6 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 import Cookies from 'js-cookie';
+
 import { store } from '..';
 import { sportikaApi } from '../../api';
 import { ICartProduct, IOrder } from '../../interfaces';

@@ -18,6 +18,7 @@ import { ErrorOutline } from '@mui/icons-material';
 
 import { ShopLayout } from '../../components/layout';
 import { validations } from '../../utils';
+import { CustomIcon } from '../../components/auth';
 // import { useAuth } from '../../store';
 
 type FormData = {
@@ -191,6 +192,7 @@ const LoginPage = () => {
                       color="primary"
                       sx={{ mb: 1 }}
                       onClick={() => signIn(provider.id)}
+                      startIcon={<CustomIcon logo={provider.id} />}
                     >
                       {provider.name}
                     </Button>

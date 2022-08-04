@@ -1,12 +1,13 @@
 import { NextFetchEvent, NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-// import { getSession, useSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
+
+const secret = process.env.NEXTAUTH_SECRET || '';
 
 export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   const session: any = await getToken({
     req,
-    secret: process.env.NEXTAUTH_SECRET,
+    secret,
   });
   const requestedPage = req.nextUrl.pathname;
   const { origin } = req.nextUrl;
