@@ -74,7 +74,7 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     await db.disconnect();
     console.log(error);
 
-    if (axios.isAxiosError(error) && error instanceof AxiosError) {
+    if (error instanceof AxiosError) {
       return res.status(400).json(error.response?.data.message);
     }
 

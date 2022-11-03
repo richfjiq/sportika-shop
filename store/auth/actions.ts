@@ -54,7 +54,7 @@ export const userLogin = createAsyncThunk(
 
       return data.user;
     } catch (error) {
-      if (axios.isAxiosError(error) && error instanceof AxiosError) {
+      if (error instanceof AxiosError) {
         return thunkApi.rejectWithValue(error.response?.data.message);
       }
 
@@ -82,7 +82,7 @@ export const createUser = createAsyncThunk(
 
       return data.user;
     } catch (error) {
-      if (axios.isAxiosError(error) && error instanceof AxiosError) {
+      if (error instanceof AxiosError) {
         return thunkApi.rejectWithValue(error.response?.data.message);
       }
 
@@ -104,7 +104,7 @@ export const checkToken = createAsyncThunk(
     } catch (error) {
       Cookies.remove('token');
 
-      if (axios.isAxiosError(error) && error instanceof AxiosError) {
+      if (error instanceof AxiosError) {
         return thunkApi.rejectWithValue(error.response?.data.message);
       }
 

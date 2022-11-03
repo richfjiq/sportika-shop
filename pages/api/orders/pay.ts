@@ -44,7 +44,7 @@ const getPaypalBearerToken = async (): Promise<string | null> => {
 
     return data.access_token;
   } catch (error) {
-    if (axios.isAxiosError(error) && error instanceof AxiosError) {
+    if (error instanceof AxiosError) {
       console.log(error.response?.data.message);
     } else {
       console.log(error);
@@ -55,8 +55,8 @@ const getPaypalBearerToken = async (): Promise<string | null> => {
 };
 
 const payOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  // TODO: validar sesion del usuario
-  // TODO: validar mongoId
+  // TODO: validate user session
+  // TODO: validate mongoId
   const paypalBearerToken = await getPaypalBearerToken();
 
   if (!paypalBearerToken) {

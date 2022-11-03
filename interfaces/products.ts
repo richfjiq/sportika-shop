@@ -11,7 +11,7 @@ export interface IProduct {
   type: IType;
   gender: 'men' | 'women' | 'boys' | 'girls';
 
-  // TODO: agregar createdAt y updatedAt
+  // TODO: add createdAt y updatedAt
   createdAt: string;
   updatedAt: string;
 }

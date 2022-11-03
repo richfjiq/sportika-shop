@@ -210,7 +210,7 @@ export const createOrder = createAsyncThunk(
       return data._id || '';
     } catch (error) {
       console.log(error);
-      if (axios.isAxiosError(error) && error instanceof AxiosError) {
+      if (error instanceof AxiosError) {
         return thunkApi.rejectWithValue(error.response?.data.message);
       }
 

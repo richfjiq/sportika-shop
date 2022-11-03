@@ -21,7 +21,7 @@ export const updateProduct = createAsyncThunk(
         payload: '',
       };
     } catch (error) {
-      if (axios.isAxiosError(error) && error instanceof AxiosError) {
+      if (error instanceof AxiosError) {
         return thunkApi.rejectWithValue(error.response?.data.message);
       }
 
@@ -44,7 +44,7 @@ export const createProduct = createAsyncThunk(
         payload: '',
       };
     } catch (error) {
-      if (axios.isAxiosError(error) && error instanceof AxiosError) {
+      if (error instanceof AxiosError) {
         return thunkApi.rejectWithValue(error.response?.data.message);
       }
 
