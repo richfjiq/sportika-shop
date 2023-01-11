@@ -169,7 +169,7 @@ const LoginPage = () => {
 
               <Grid item xs={12} display="flex" justifyContent="end">
                 <NextLink href={`/auth/register?p=${destination}`} passHref>
-                  <Link underline="always">Do you have an account?</Link>
+                  <Link underline="always">Don&apos;t have an account?</Link>
                 </NextLink>
               </Grid>
 
@@ -213,6 +213,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const session = await getSession({ req });
   const { p = '/' } = query;
+
+  console.log({ session });
 
   if (session) {
     return {

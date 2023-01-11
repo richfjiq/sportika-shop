@@ -16,6 +16,15 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    type: {
+      type: String,
+      enum: {
+        values: ['credentials', 'oAuth'],
+        message: '{VALUE} is not a valid role.',
+        default: 'credentials',
+        required: true,
+      },
+    },
     role: {
       type: String,
       enum: {

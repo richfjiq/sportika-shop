@@ -21,21 +21,14 @@ import {
   CardMedia,
   Checkbox,
   Chip,
-  CircularProgress,
   Divider,
   FormControl,
-  FormControlLabel,
-  FormGroup,
   FormLabel,
   Grid,
   InputLabel,
-  ListItem,
   ListItemText,
   MenuItem,
   OutlinedInput,
-  Paper,
-  Radio,
-  RadioGroup,
   Select,
   SelectChangeEvent,
   TextField,
@@ -43,7 +36,7 @@ import {
 } from '@mui/material';
 
 import { dbProducts } from '../../../database';
-import { FormProduct, IProduct, ISize, IType } from '../../../interfaces';
+import { FormProduct, IProduct } from '../../../interfaces';
 import { AdminLayout } from '../../../components/layout';
 import { useForm } from 'react-hook-form';
 import { products } from '../../../utils';

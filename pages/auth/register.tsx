@@ -16,7 +16,6 @@ import { ShopLayout } from '../../components/layout';
 import { validations } from '../../utils';
 import { useAuth } from '../../store';
 import { useRouter } from 'next/router';
-import { sportikaApi } from '../../api';
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 
@@ -47,13 +46,6 @@ const RegisterPage = () => {
     }
   }, [error]);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      const destination = router.query.p?.toString() || '/';
-      router.replace(destination);
-    }
-  }, [isLoggedIn, router]);
-
   const onRegisterForm = async ({ name, email, password }: FormData) => {
     const userData = {
       name,
@@ -62,6 +54,7 @@ const RegisterPage = () => {
     };
 
     createUser(userData);
+    router.replace('/auth/login?p=/');
     // setShowError(false);
     // try {
     //   const { data } = await sportikaApi.post('/user/register', {
@@ -88,7 +81,6 @@ const RegisterPage = () => {
             height: '100vh',
             display: 'flex',
             justifyContent: 'center',
-            // alignItems: 'center',
           }}
         >
           <Box
@@ -177,7 +169,7 @@ const RegisterPage = () => {
 
               <Grid item xs={12} display="flex" justifyContent="end">
                 <NextLink href={`/auth/register?p=${destination}`} passHref>
-                  <Link underline="always">I have an account.</Link>
+                  <Link underline="always">Have an account? Log in here</Link>
                 </NextLink>
               </Grid>
             </Grid>

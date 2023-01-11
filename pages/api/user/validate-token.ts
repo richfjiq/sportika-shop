@@ -14,6 +14,7 @@ type Data =
         email: string;
         name: string;
         role: string;
+        type: string;
       };
     };
 
@@ -53,7 +54,7 @@ const checkJWT = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     return res.status(400).json({ message: 'There is no user with this id.' });
   }
 
-  const { _id, email, role, name } = user;
+  const { _id, email, role, name, type } = user;
 
   return res.status(200).json({
     token: jwt.signToken(_id, email),
@@ -61,6 +62,7 @@ const checkJWT = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       email,
       role,
       name,
+      type,
     },
   });
 };

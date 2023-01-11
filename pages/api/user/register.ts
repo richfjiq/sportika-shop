@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import { db } from '../../../database';
 import { User } from '../../../models';
 import { jwt, validations } from '../../../utils';
+import { IUser } from '../../../interfaces';
 
 type Data =
   | {
@@ -15,6 +16,7 @@ type Data =
         email: string;
         name: string;
         role: string;
+        type: string;
       };
     };
 
@@ -75,6 +77,7 @@ const registerUser = async (
     password: bcrypt.hashSync(password),
     role: 'client',
     name,
+    type: 'credentials',
   });
 
   try {
@@ -86,7 +89,7 @@ const registerUser = async (
     });
   }
 
-  const { _id, role } = newUser;
+  const { _id, role, type } = newUser as IUser;
   const token = jwt.signToken(_id, email);
 
   return res.status(200).json({
@@ -95,6 +98,7 @@ const registerUser = async (
       email,
       role,
       name,
+      type,
     },
   });
 };

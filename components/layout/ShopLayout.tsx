@@ -32,13 +32,20 @@ export const ShopLayout: FC<Props> = ({
   fromHome,
 }) => {
   const { data, status } = useSession();
-  const { loginNextAuth } = useAuth();
+  const { loginNextAuth, getUserAddress } = useAuth();
 
   useEffect(() => {
     if (status === 'authenticated') {
       loginNextAuth(data.user as AuthUser);
     }
   }, [data, status, loginNextAuth]);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      const user = data.user as AuthUser;
+      getUserAddress(user._id as string);
+    }
+  }, [data?.user, getUserAddress, status]);
 
   return (
     <>

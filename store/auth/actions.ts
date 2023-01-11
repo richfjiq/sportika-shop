@@ -1,10 +1,11 @@
 import { signOut } from 'next-auth/react';
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import Cookies from 'js-cookie';
 
 import { sportikaApi } from '../../api';
 import { AuthUser } from './reducer';
+import { IAddress } from '../../interfaces';
 
 const USER_LOGIN = 'USER_LOGIN';
 const CREATE_USER = 'CREATE_USER';
@@ -12,6 +13,9 @@ const CHECK_TOKEN_FROM_COOKIES = 'CHECK_TOKEN_FROM_COOKIES';
 const USER_LOGOUT = 'USER_LOGOUT';
 const LOGIN_NEXT_AUTH = 'LOGIN_NEXT_AUTH';
 const LOGOUT_NEXT_AUTH = 'LOGOUT_NEXT_AUTH';
+const GET_USER_ADDRESS = 'GET_USER_ADDRESS';
+const CREATE_USER_ADDRESS = 'CREATE_USER_ADDRESS';
+const UPDATE_USER_ADDRESS = 'UPDATE_USER_ADDRESS';
 
 export interface UserData {
   email: string;
@@ -50,7 +54,7 @@ export const userLogin = createAsyncThunk(
         password,
       });
       const { token } = data;
-      // Cookies.set('token', token);
+      Cookies.set('token', token);
 
       return data.user;
     } catch (error) {
@@ -78,7 +82,6 @@ export const createUser = createAsyncThunk(
         }
       );
       const { token } = data;
-      // Cookies.set('token', token);
 
       return data.user;
     } catch (error) {
@@ -113,6 +116,46 @@ export const checkToken = createAsyncThunk(
   }
 );
 
+export const getUserAddress = createAsyncThunk(
+  GET_USER_ADDRESS,
+  async (userId: string, thunkApi) => {
+    try {
+      const { data } = await sportikaApi.get<IAddress[]>(
+        `/user/address/${userId}`
+      );
+      if (data.length > 0) return data[0];
+      return null;
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        return thunkApi.rejectWithValue(error.response?.data.message);
+      }
+
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
+export const createUserAddress = createAsyncThunk(
+  CREATE_USER_ADDRESS,
+  async (address: IAddress, { rejectWithValue }) => {
+    try {
+      const { data } = await sportikaApi.post<IAddress>(
+        '/user/address',
+        address
+      );
+      if (data) return data;
+      return null;
+    } catch (error) {
+      console.log({ error });
+      if (error instanceof AxiosError) {
+        return rejectWithValue(error.response?.data.message);
+      }
+
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const userLogout = createAction(USER_LOGOUT, () => {
   Cookies.remove('cart');
   Cookies.remove('firstName');
@@ -123,7 +166,6 @@ export const userLogout = createAction(USER_LOGOUT, () => {
   Cookies.remove('city');
   Cookies.remove('country');
   Cookies.remove('phone');
-  Cookies.remove('token');
   return {
     payload: '',
   };

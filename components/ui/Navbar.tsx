@@ -32,7 +32,7 @@ export const Navbar = () => {
   const { asPath, push } = router;
   const { addCartFromCookies, numberOfItems, loadAddressFromCookies } =
     useCart();
-  // const { checkToken } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     loadAddressFromCookies();
@@ -174,7 +174,11 @@ export const Navbar = () => {
         {/* <NextLink href={`/auth/login?p=${router.asPath}`} passHref>
           <Link> */}
         <IconButton
-          onClick={() => navigateTo(`/auth/login?p=${router.asPath}`)}
+          onClick={() =>
+            isLoggedIn
+              ? navigateTo('/profile')
+              : navigateTo(`/auth/login?p=${router.asPath}`)
+          }
         >
           <PersonOutlineOutlined />
         </IconButton>

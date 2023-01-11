@@ -1,6 +1,7 @@
 import { NextFetchEvent, NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
+import Cookies from 'js-cookie';
 
 const secret = process.env.NEXTAUTH_SECRET || '';
 
@@ -19,6 +20,18 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
 
     if (session.user.role === 'client') {
       return NextResponse.redirect(`${origin}/`);
+    }
+  }
+
+  if (req.nextUrl.pathname.startsWith('/api/user/address/')) {
+    if (!session) {
+      return NextResponse.redirect(`${origin}/auth/login`);
+    }
+  }
+
+  if (req.nextUrl.pathname.startsWith('/profile')) {
+    if (!session) {
+      return NextResponse.redirect(`${origin}/auth/login?p=${requestedPage}`);
     }
   }
 
