@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import NextLink from 'next/link';
 import {
   AppBar,
@@ -23,6 +24,7 @@ import { useRouter } from 'next/router';
 import { useAuth, useCart, useUi } from '../../store';
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import Image from 'next/image';
 
 export const Navbar = () => {
   const { setMenuOpen, setAutoFocus } = useUi();
@@ -75,6 +77,7 @@ export const Navbar = () => {
     <AppBar
       sx={{
         justifyContent: 'center',
+        height: '100px',
       }}
     >
       <Toolbar
@@ -83,18 +86,34 @@ export const Navbar = () => {
           margin: { xl: '0 auto' },
         }}
       >
-        <Box sx={{ display: { xs: 'flex', sm: 'none' }, mx: 'auto' }}>
+        <Box
+          sx={{
+            display: { xs: 'flex', sm: 'none' },
+            mx: 'auto',
+          }}
+        >
           <NextLink href="/" passHref>
             <Link display="flex" alignItems="center">
-              <Typography variant="h5">Sportika</Typography>
+              <img
+                src="https://res.cloudinary.com/dlz1bhh8j/image/upload/v1672172814/sportika/umqc76hrwnckyxwwiy2z.png"
+                alt="sportika_logo"
+                height={60}
+                width={110}
+              />
             </Link>
           </NextLink>
         </Box>
         <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
           <NextLink href="/" passHref>
             <Link display="flex" alignItems="center">
-              <Typography variant="h4">Sportika |</Typography>
-              <Typography sx={{ ml: 0.5 }}>Shop</Typography>
+              <img
+                src="https://res.cloudinary.com/dlz1bhh8j/image/upload/v1672172814/sportika/umqc76hrwnckyxwwiy2z.png"
+                alt="sportika_logo"
+                height={70}
+                width={140}
+              />
+              {/* <Typography variant="h4">Sportika |</Typography> */}
+              {/* <Typography sx={{ ml: 0.5 }}>| Shop</Typography> */}
             </Link>
           </NextLink>
         </Box>
@@ -165,7 +184,7 @@ export const Navbar = () => {
         )}
 
         <IconButton
-          sx={{ display: { xs: 'flex', md: 'none' } }}
+          sx={{ display: { xs: 'none', sm: 'flex', md: 'none' } }}
           onClick={setInputSearchFocused}
         >
           <SearchOutlined />
@@ -174,6 +193,7 @@ export const Navbar = () => {
         {/* <NextLink href={`/auth/login?p=${router.asPath}`} passHref>
           <Link> */}
         <IconButton
+          sx={{ display: { xs: 'none', sm: 'flex' } }}
           onClick={() =>
             isLoggedIn
               ? navigateTo('/profile')
@@ -187,7 +207,7 @@ export const Navbar = () => {
 
         <NextLink href="/cart" passHref>
           <Link>
-            <IconButton>
+            <IconButton sx={{ display: { xs: 'none', sm: 'flex' } }}>
               <Badge
                 badgeContent={numberOfItems > 9 ? '+9' : numberOfItems}
                 color="secondary"

@@ -15,7 +15,7 @@ export const ProductSlideshow: FC<Props> = ({ images, fromHome }) => {
     return (
       <Grid
         container
-        sx={{ display: { xs: 'none', sm: 'flex' } }}
+        sx={{ display: { xs: 'none', sm: 'flex' }, marginBottom: '30px' }}
         justifyContent="center"
       >
         <Grid item sm={8} md={7} lg={7}>

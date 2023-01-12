@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import {
   AccountCircleOutlined,
   BoyOutlined,
-  CategoryOutlined,
   DashboardOutlined,
   GirlOutlined,
   GroupOutlined,
@@ -10,6 +9,7 @@ import {
   LogoutOutlined,
   ManOutlined,
   SearchOutlined,
+  ShoppingCartOutlined,
   VpnKeyOutlined,
   WomanOutlined,
 } from '@mui/icons-material';
@@ -59,7 +59,7 @@ export const SideMenu = () => {
       sx={{ backdropFilter: 'blur(4px)', transition: 'all 0.5s ease-out' }}
       onClose={setMenuOpen}
     >
-      <Box sx={{ width: { xs: 180, sm: 250 }, paddingTop: 2 }}>
+      <Box sx={{ width: { xs: '50vw', sm: 250 }, paddingTop: 2 }}>
         <List>
           <ListItem>
             <Input
@@ -76,6 +76,7 @@ export const SideMenu = () => {
                   </IconButton>
                 </InputAdornment>
               }
+              fullWidth
             />
           </ListItem>
 
@@ -135,6 +136,16 @@ export const SideMenu = () => {
               <GirlOutlined />
             </ListItemIcon>
             <ListItemText primary={'Girls'} />
+          </ListItemButton>
+
+          <ListItemButton
+            onClick={() => navigateTo('/cart')}
+            sx={{ display: { sm: 'none' } }}
+          >
+            <ListItemIcon>
+              <ShoppingCartOutlined />
+            </ListItemIcon>
+            <ListItemText primary={'Cart'} />
           </ListItemButton>
 
           {isLoggedIn ? (
