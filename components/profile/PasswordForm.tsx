@@ -1,4 +1,5 @@
-import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react';
+import { FC, MouseEvent, useEffect, useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Box,
   Button,
@@ -18,6 +19,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 import { useAuth } from '../../store';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { passwordValidation } from '../../utils';
 
 interface Props {
   open: boolean;
@@ -25,7 +27,7 @@ interface Props {
 }
 
 type FormData = {
-  currenPassword: string;
+  currentPassword: string;
   newPassword: string;
   repeatPassword: string;
 };
@@ -42,20 +44,28 @@ const PasswordForm: FC<Props> = ({ open, onClose }) => {
     newPassword: false,
     repeatPassword: false,
   });
-  const { user } = useAuth();
+  const { user, updateUserPassword } = useAuth();
   const {
     register,
     handleSubmit,
-    setValue,
+    resetField,
     formState: { errors },
   } = useForm<FormData>({
     defaultValues: {
-      currenPassword: '',
+      currentPassword: '',
       newPassword: '',
       repeatPassword: '',
     },
+    resolver: yupResolver(passwordValidation),
     shouldUseNativeValidation: true,
   });
+
+  useEffect(() => {
+    resetField('currentPassword', { keepTouched: true });
+    resetField('newPassword', { keepTouched: true });
+    resetField('repeatPassword', { keepTouched: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   const passwordVisible = (key: string) => {
     setShowPassword((prevState) => ({
@@ -70,8 +80,12 @@ const PasswordForm: FC<Props> = ({ open, onClose }) => {
 
   const onSubmitAddress = (data: FormData) => {
     console.log({ data });
-    const userAccount = {};
-    // createUserAddress(shippingAddress);
+    const userData = {
+      userId: user?._id,
+      currentPassword: data.currentPassword,
+      newPassword: data.newPassword,
+    };
+    updateUserPassword(userData);
     onClose();
   };
 
@@ -160,17 +174,11 @@ const PasswordForm: FC<Props> = ({ open, onClose }) => {
                       </InputAdornment>
                     }
                     label="Current Password"
-                    {...register('currenPassword', {
-                      required: 'Current Password is required.',
-                      minLength: {
-                        value: 6,
-                        message: 'At least 6 characters.',
-                      },
-                    })}
-                    error={!!errors.currenPassword}
+                    {...register('currentPassword')}
+                    error={!!errors.currentPassword}
                   />
                   <FormHelperText id="outlined-weight-helper-text" error>
-                    {errors.currenPassword?.message}
+                    {errors.currentPassword?.message}
                   </FormHelperText>
                 </FormControl>
               </Grid>
@@ -200,13 +208,7 @@ const PasswordForm: FC<Props> = ({ open, onClose }) => {
                       </InputAdornment>
                     }
                     label="New Password"
-                    {...register('newPassword', {
-                      required: 'New Password is required.',
-                      minLength: {
-                        value: 6,
-                        message: 'At least 6 characters.',
-                      },
-                    })}
+                    {...register('newPassword')}
                     error={!!errors.newPassword}
                   />
                   <FormHelperText id="outlined-weight-helper-text" error>
@@ -240,13 +242,7 @@ const PasswordForm: FC<Props> = ({ open, onClose }) => {
                       </InputAdornment>
                     }
                     label="Repeat Password"
-                    {...register('repeatPassword', {
-                      required: 'Repeat Password is required.',
-                      minLength: {
-                        value: 6,
-                        message: 'At least 6 characters.',
-                      },
-                    })}
+                    {...register('repeatPassword')}
                     error={!!errors.repeatPassword}
                   />
                   <FormHelperText id="outlined-weight-helper-text" error>

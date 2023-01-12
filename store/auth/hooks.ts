@@ -1,5 +1,9 @@
 import { useCallback } from 'react';
-import { IAddress } from '../../interfaces';
+import {
+  IAddress,
+  IUserUpdateData,
+  IUserUpdatePassword,
+} from '../../interfaces';
 import { useAppDispatch, useAppSelector } from '../types';
 import {
   UserData,
@@ -11,6 +15,9 @@ import {
   logoutNextAuth as logoutNextAuthAction,
   getUserAddress as getUserAddressAction,
   createUserAddress as createUserAddressAction,
+  updateUserData as updateUserDataAction,
+  updateUserPassword as updateUserPasswordAction,
+  updateUserAddress as updateUserAddressAction,
   ICreateUser,
 } from './actions';
 import { AuthUser } from './reducer';
@@ -54,6 +61,27 @@ export const useAuth = () => {
     [dispatch]
   );
 
+  const updateUserAddress = useCallback(
+    (address: IAddress) => {
+      dispatch(updateUserAddressAction(address));
+    },
+    [dispatch]
+  );
+
+  const updateUserData = useCallback(
+    (data: IUserUpdateData) => {
+      dispatch(updateUserDataAction(data));
+    },
+    [dispatch]
+  );
+
+  const updateUserPassword = useCallback(
+    (data: IUserUpdatePassword) => {
+      dispatch(updateUserPasswordAction(data));
+    },
+    [dispatch]
+  );
+
   const checkToken = useCallback(() => {
     dispatch(checkTokenAction());
   }, [dispatch]);
@@ -76,5 +104,8 @@ export const useAuth = () => {
     logoutNextAuth,
     getUserAddress,
     createUserAddress,
+    updateUserData,
+    updateUserPassword,
+    updateUserAddress,
   };
 };

@@ -3,3 +3,4 @@ export * as jwt from './jwt';
 export * as validations from './validations';
 export * from './countries';
 export * as products from './products';
+export * from './validationForm';

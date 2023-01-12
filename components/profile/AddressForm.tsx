@@ -32,7 +32,8 @@ type FormData = {
 };
 
 const AddressForm: FC<Props> = ({ open, onClose }) => {
-  const { user, shippingAddress, createUserAddress } = useAuth();
+  const { user, shippingAddress, createUserAddress, updateUserAddress } =
+    useAuth();
   const [country, setCountry] = useState('Canada');
   const [code, setCode] = useState('');
   const {
@@ -82,13 +83,17 @@ const AddressForm: FC<Props> = ({ open, onClose }) => {
 
   const onSubmitAddress = (data: FormData) => {
     if (!user) return;
-    const shippingAddress = {
+    const addressData = {
       user: user._id,
       ...data,
       country,
       code,
     };
-    createUserAddress(shippingAddress);
+    if (shippingAddress) {
+      updateUserAddress(addressData);
+    } else {
+      createUserAddress(addressData);
+    }
     onClose();
   };
 

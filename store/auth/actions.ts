@@ -5,7 +5,12 @@ import Cookies from 'js-cookie';
 
 import { sportikaApi } from '../../api';
 import { AuthUser } from './reducer';
-import { IAddress } from '../../interfaces';
+import {
+  IAddress,
+  IUser,
+  IUserUpdateData,
+  IUserUpdatePassword,
+} from '../../interfaces';
 
 const USER_LOGIN = 'USER_LOGIN';
 const CREATE_USER = 'CREATE_USER';
@@ -16,6 +21,8 @@ const LOGOUT_NEXT_AUTH = 'LOGOUT_NEXT_AUTH';
 const GET_USER_ADDRESS = 'GET_USER_ADDRESS';
 const CREATE_USER_ADDRESS = 'CREATE_USER_ADDRESS';
 const UPDATE_USER_ADDRESS = 'UPDATE_USER_ADDRESS';
+const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
+const UPDATE_USER_PASSWORD = 'UPDATE_USER_PASSWORD';
 
 export interface UserData {
   email: string;
@@ -142,6 +149,89 @@ export const createUserAddress = createAsyncThunk(
       const { data } = await sportikaApi.post<IAddress>(
         '/user/address',
         address
+      );
+      if (data) return data;
+      return null;
+    } catch (error) {
+      console.log({ error });
+      if (error instanceof AxiosError) {
+        return rejectWithValue(error.response?.data.message);
+      }
+
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const updateUserAddress = createAsyncThunk(
+  UPDATE_USER_ADDRESS,
+  async (addressData: IAddress, { rejectWithValue }) => {
+    try {
+      const { data } = await sportikaApi.put<IAddress>(
+        `/user/address/${addressData.user}`,
+        {
+          firstName: addressData.firstName,
+          lastName: addressData.lastName,
+          address: addressData.address,
+          zip: addressData.zip,
+          city: addressData.city,
+          state: addressData.state,
+          country: addressData.country,
+          code: addressData.code,
+          phone: addressData.phone,
+        }
+      );
+      if (data) return data;
+      return null;
+    } catch (error) {
+      console.log({ error });
+      if (error instanceof AxiosError) {
+        return rejectWithValue(error.response?.data.message);
+      }
+
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const updateUserData = createAsyncThunk(
+  UPDATE_USER_DATA,
+  async (userData: IUserUpdateData, { rejectWithValue }) => {
+    console.log({ userData });
+    try {
+      const { data } = await sportikaApi.put<IUser>(
+        `/user/account/data/${userData.userId}`,
+        {
+          name: userData.name,
+          email: userData.email,
+          currentPassword: userData.currentPassword,
+        }
+      );
+      if (data) return data;
+      return null;
+    } catch (error) {
+      console.log({ error });
+      if (error instanceof AxiosError) {
+        return rejectWithValue(error.response?.data.message);
+      }
+
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const updateUserPassword = createAsyncThunk(
+  UPDATE_USER_PASSWORD,
+  async (userData: IUserUpdatePassword, { rejectWithValue }) => {
+    console.log({ userData });
+    try {
+      const { data } = await sportikaApi.put<IUser>(
+        `/user/account/password/${userData.userId}`,
+        {
+          currentPassword: userData.currentPassword,
+          newPassword: userData.newPassword,
+          repeatPassword: userData.repeatPassword,
+        }
       );
       if (data) return data;
       return null;

@@ -8,3 +8,17 @@ export interface IUser {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface IUserUpdateData {
+  userId?: string;
+  name: string;
+  email: string;
+  currentPassword: string;
+}
+
+export interface IUserUpdatePassword {
+  userId?: string;
+  currentPassword: string;
+  newPassword: string;
+  repeatPassword?: string;
+}

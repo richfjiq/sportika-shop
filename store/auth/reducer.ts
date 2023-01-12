@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { IAddress } from '../../interfaces';
+import { IAddress, IUser } from '../../interfaces';
 
 import {
   checkToken,
@@ -8,6 +8,9 @@ import {
   getUserAddress,
   loginNextAuth,
   logoutNextAuth,
+  updateUserAddress,
+  updateUserData,
+  updateUserPassword,
   userLogin,
 } from './actions';
 
@@ -92,13 +95,37 @@ const authStore = createSlice({
       state.loadingAddress = false;
       state.shippingAddress = payload;
     });
+    builder.addCase(updateUserData.pending, (state) => {
+      state.loadingAddress = true;
+    });
+    builder.addCase(updateUserData.fulfilled, (state, { payload }) => {
+      state.loadingAddress = false;
+      state.user = payload as IUser;
+    });
+    builder.addCase(updateUserPassword.pending, (state) => {
+      state.loadingAddress = true;
+    });
+    builder.addCase(updateUserPassword.fulfilled, (state, { payload }) => {
+      state.loadingAddress = false;
+      state.user = payload as IUser;
+    });
+    builder.addCase(updateUserAddress.pending, (state) => {
+      state.loadingAddress = true;
+    });
+    builder.addCase(updateUserAddress.fulfilled, (state, { payload }) => {
+      state.loadingAddress = false;
+      state.shippingAddress = payload;
+    });
     builder.addMatcher(
       isAnyOf(
         userLogin.rejected,
         createUser.rejected,
         checkToken.rejected,
         getUserAddress.rejected,
-        createUserAddress.rejected
+        createUserAddress.rejected,
+        updateUserData.rejected,
+        updateUserPassword.rejected,
+        updateUserAddress.rejected
       ),
       (state, action) => {
         const message: string = action.payload as string;

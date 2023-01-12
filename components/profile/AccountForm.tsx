@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react';
+import { FC, MouseEvent, useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -27,7 +27,7 @@ interface Props {
 type FormData = {
   name: string;
   email: string;
-  currenPassword: string;
+  currentPassword: string;
 };
 
 interface Passwords extends Object {
@@ -38,17 +38,18 @@ const AccountForm: FC<Props> = ({ open, onClose }) => {
   const [showPassword, setShowPassword] = useState<Passwords>({
     currentPassword: false,
   });
-  const { user } = useAuth();
+  const { user, updateUserData } = useAuth();
   const {
     register,
     handleSubmit,
     setValue,
+    resetField,
     formState: { errors },
   } = useForm<FormData>({
     defaultValues: {
       name: '',
       email: '',
-      currenPassword: '',
+      currentPassword: '',
     },
     shouldUseNativeValidation: true,
   });
@@ -70,14 +71,21 @@ const AccountForm: FC<Props> = ({ open, onClose }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
+  useEffect(() => {
+    resetField('currentPassword', { keepTouched: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
   const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
 
   const onSubmitAddress = (data: FormData) => {
-    console.log({ data });
-    const userData = {};
-    // createUserAddress(shippingAddress);
+    const userData = {
+      userId: user?._id,
+      ...data,
+    };
+    updateUserData(userData);
     onClose();
   };
 
@@ -194,17 +202,17 @@ const AccountForm: FC<Props> = ({ open, onClose }) => {
                       </InputAdornment>
                     }
                     label="Current Password"
-                    {...register('currenPassword', {
+                    {...register('currentPassword', {
                       required: 'Current Password is required.',
                       minLength: {
                         value: 6,
                         message: 'At least 6 characters.',
                       },
                     })}
-                    error={!!errors.currenPassword}
+                    error={!!errors.currentPassword}
                   />
                   <FormHelperText id="outlined-weight-helper-text" error>
-                    {errors.currenPassword?.message}
+                    {errors.currentPassword?.message}
                   </FormHelperText>
                 </FormControl>
               </Grid>
@@ -225,7 +233,9 @@ const AccountForm: FC<Props> = ({ open, onClose }) => {
                   display: { xs: 'block', sm: 'none' },
                   width: { xs: '100px', sm: '0' },
                 }}
-                onClick={onClose}
+                onClick={() => {
+                  onClose();
+                }}
               >
                 Close
               </Button>
