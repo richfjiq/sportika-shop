@@ -31,10 +31,7 @@ const Profile = () => {
   const welcome = `Hi ${user?.name}, welcome and have a nice buying`;
 
   return (
-    <ShopLayout
-      title={'Orders history'}
-      pageDescription={'Customer order history'}
-    >
+    <ShopLayout title={'Profile'} pageDescription={'User Profile'}>
       <Typography
         variant="h2"
         component="h2"
@@ -133,17 +130,19 @@ const Profile = () => {
                     User Data
                   </Typography>
 
-                  <div onClick={handleAccountModal}>
-                    <Typography
-                      sx={{
-                        cursor: 'pointer',
-                        fontSize: 16,
-                        color: 'blue',
-                      }}
-                    >
-                      Edit
-                    </Typography>
-                  </div>
+                  {user?.type === 'credentials' && (
+                    <div onClick={handleAccountModal}>
+                      <Typography
+                        sx={{
+                          cursor: 'pointer',
+                          fontSize: 16,
+                          color: 'blue',
+                        }}
+                      >
+                        Edit
+                      </Typography>
+                    </div>
+                  )}
                 </Box>
 
                 <Typography

@@ -11,12 +11,13 @@ export const countries = [
   },
   {
     name: 'United States of America',
-    code: 'EUA',
+    code: 'US',
     dialCode: '+1',
   },
 ];
 
 export const getCodeCountry = (name: string) => {
   const country = countries.filter((option) => option.name === name);
+  if (country.length === 0) return;
   return country[0].dialCode;
 };

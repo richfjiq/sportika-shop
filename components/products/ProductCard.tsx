@@ -52,6 +52,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
               alt={product.title}
               className="fadeIn"
               onLoad={() => setIsImageLoaded(true)}
+              sx={{ aspectRatio: '1/1' }}
             />
             <Box
               sx={{

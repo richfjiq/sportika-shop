@@ -58,7 +58,7 @@ const AddressForm: FC<Props> = ({ open, onClose }) => {
 
   useEffect(() => {
     const dialCode = getCodeCountry(country);
-    setCode(dialCode);
+    setCode(dialCode ?? '+1');
   }, [country]);
 
   useEffect(() => {
