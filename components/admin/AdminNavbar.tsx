@@ -38,7 +38,7 @@ export const AdminNavbar = () => {
     >
       <Toolbar
         sx={{
-          width: { xl: '1536px' },
+          width: { xl: '1240px' },
           margin: { xl: '0 auto' },
         }}
       >

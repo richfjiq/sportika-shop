@@ -34,7 +34,7 @@ export const AdminLayout: FC<Props> = ({ children, title, subTitle, icon }) => {
       <main
         style={{
           margin: '80px auto',
-          maxWidth: '1536px',
+          maxWidth: '1240px',
           padding: '0px 30px',
         }}
       >

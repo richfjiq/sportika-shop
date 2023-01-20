@@ -251,6 +251,18 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                   )}
                 </Box>
               </Box>
+
+              <Link href="/orders/history">
+                <Button
+                  color="secondary"
+                  className="circular-btn"
+                  fullWidth
+                  type="button"
+                  sx={{ mt: 3 }}
+                >
+                  Go To Orders
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </Grid>

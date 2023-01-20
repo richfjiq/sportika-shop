@@ -21,7 +21,7 @@ export const AuthLayout: FC<Props> = ({ children, title }) => {
           alignItems="center"
           height="calc(100vh - 200px)"
           margin="80px auto"
-          maxWidth="1536px"
+          maxWidth="1240px"
         >
           {children}
         </Box>

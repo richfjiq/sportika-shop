@@ -7,6 +7,7 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
+import Link from 'next/link';
 import { CartList, OrderSummary } from '../../components/cart';
 import { EmptyPage } from '../../components/cart';
 
@@ -38,14 +39,16 @@ const CartPage = () => {
                   <OrderSummary />
 
                   <Box sx={{ mt: 3 }}>
-                    <Button
-                      color="secondary"
-                      className="circular-btn"
-                      fullWidth
-                      href="/checkout/address"
-                    >
-                      Checkout
-                    </Button>
+                    <Link href="/checkout/summary">
+                      <Button
+                        color="secondary"
+                        className="circular-btn"
+                        fullWidth
+                        type="button"
+                      >
+                        Checkout
+                      </Button>
+                    </Link>
                   </Box>
                 </CardContent>
               </Card>

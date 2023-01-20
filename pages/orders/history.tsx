@@ -32,7 +32,7 @@ const columns: GridColDef[] = [
     renderCell: (params: GridValueGetterParams) => {
       return (
         <NextLink href={`/orders/${params.row.orderId}`} passHref>
-          <Link underline="always">See details</Link>
+          <Link sx={{ color: 'blue' }}>See details</Link>
         </NextLink>
       );
     },

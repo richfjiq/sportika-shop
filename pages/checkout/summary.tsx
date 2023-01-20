@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import {
@@ -11,26 +12,22 @@ import {
   Link,
   Typography,
 } from '@mui/material';
-import { GetServerSideProps } from 'next';
-import { getSession } from 'next-auth/react';
 
 import { CartList, OrderSummary } from '../../components/cart';
 import { ShopLayout } from '../../components/layout';
-import { useCart } from '../../store';
-import { useEffect, useState } from 'react';
+import { useAuth, useCart } from '../../store';
+import { AddressForm } from '../../components/profile';
 
 const SummaryPage = () => {
+  const { shippingAddress } = useAuth();
   const router = useRouter();
-  const {
-    shippingAddress,
-    numberOfItems,
-    createOrder,
-    loading,
-    orderCreated,
-    setOrderCreated,
-    newOrder,
-  } = useCart();
-  const [errorMessage, setErrorMessage] = useState('');
+  const { numberOfItems, createOrder, loading, orderCreated, newOrder } =
+    useCart();
+  const [addressModal, setAddressModal] = useState(false);
+
+  const handleModal = () => setAddressModal((prev) => !prev);
+
+  console.log({ orderCreated });
 
   useEffect(() => {
     if (orderCreated) {
@@ -39,6 +36,7 @@ const SummaryPage = () => {
   }, [orderCreated, router]);
 
   const onCreateOrder = () => {
+    console.log('Summary button clicked');
     createOrder();
   };
 
@@ -91,39 +89,59 @@ const SummaryPage = () => {
 
                   <Divider sx={{ my: 1 }} />
 
-                  <Box display="flex" justifyContent="space-between">
-                    <Typography
-                      variant="subtitle1"
-                      sx={{ fontSize: { xs: 14, sm: 18 } }}
-                    >
-                      Delivery address
-                    </Typography>
+                  {shippingAddress ? (
+                    <>
+                      <Box display="flex" justifyContent="space-between">
+                        <Typography
+                          variant="subtitle1"
+                          sx={{ fontSize: { xs: 14, sm: 18 } }}
+                        >
+                          Delivery address
+                        </Typography>
 
-                    <NextLink href="/checkout/address" passHref>
-                      <Link
-                        sx={{ fontSize: { xs: 14, sm: 18 } }}
-                        underline="always"
+                        <div onClick={handleModal}>
+                          <Typography
+                            sx={{
+                              cursor: 'pointer',
+                              fontSize: 16,
+                              color: 'blue',
+                            }}
+                          >
+                            Edit
+                          </Typography>
+                        </div>
+                      </Box>
+
+                      <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
+                        {`${shippingAddress?.firstName} ${shippingAddress?.lastName}`}
+                      </Typography>
+                      <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
+                        {shippingAddress?.address} {shippingAddress?.address2}
+                      </Typography>
+                      <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
+                        {shippingAddress?.city} {shippingAddress?.zip}
+                      </Typography>
+                      <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
+                        {shippingAddress?.country}
+                      </Typography>
+                      <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
+                        {`${shippingAddress?.code} ${shippingAddress?.phone}`}
+                      </Typography>
+                    </>
+                  ) : (
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                      <Button
+                        color="secondary"
+                        className="circular-btn"
+                        onClick={handleModal}
+                        disabled={loading}
+                        type="button"
+                        sx={{ width: '50%', margin: '40px 0' }}
                       >
-                        Edit
-                      </Link>
-                    </NextLink>
-                  </Box>
-
-                  <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                    {`${shippingAddress?.firstName} ${shippingAddress?.lastName}`}
-                  </Typography>
-                  <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                    {shippingAddress?.address} {shippingAddress?.address2}
-                  </Typography>
-                  <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                    {shippingAddress?.city} {shippingAddress?.zip}
-                  </Typography>
-                  <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                    {shippingAddress?.country}
-                  </Typography>
-                  <Typography sx={{ fontSize: { xs: 14, sm: 18 } }}>
-                    {`${shippingAddress?.code} ${shippingAddress?.phone}`}
-                  </Typography>
+                        Add Address
+                      </Button>
+                    </Box>
+                  )}
 
                   <Divider sx={{ my: 1 }} />
 
@@ -136,12 +154,7 @@ const SummaryPage = () => {
                     </Typography>
 
                     <NextLink href="/cart" passHref>
-                      <Link
-                        sx={{ fontSize: { xs: 14, sm: 18 } }}
-                        underline="always"
-                      >
-                        Edit
-                      </Link>
+                      <Link sx={{ fontSize: 16, color: 'blue' }}>Edit</Link>
                     </NextLink>
                   </Box>
 
@@ -154,6 +167,7 @@ const SummaryPage = () => {
                       fullWidth
                       onClick={onCreateOrder}
                       disabled={loading}
+                      type="button"
                     >
                       Confirm Order
                     </Button>
@@ -164,6 +178,7 @@ const SummaryPage = () => {
           </Grid>
         </>
       )}
+      <AddressForm open={addressModal} onClose={handleModal} />
     </ShopLayout>
   );
 };

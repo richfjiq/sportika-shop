@@ -191,13 +191,13 @@ export const createOrder = createAsyncThunk(
   async (_, thunkApi) => {
     const { cart, auth } = store.getState();
 
-    if (!cart.shippingAddress) {
+    if (!auth.shippingAddress) {
       throw new Error('There is not shipping address');
     }
 
     const body = {
       orderItems: cart.cart,
-      shippingAddress: cart.shippingAddress,
+      shippingAddress: auth.shippingAddress,
       numberOfItems: cart.numberOfItems,
       subTotal: cart.subTotal,
       tax: cart.tax,
