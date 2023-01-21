@@ -63,10 +63,16 @@ const ProductPage: NextPage<Props> = ({ product }) => {
   return (
     <ShopLayout title={product.title} pageDescription={product.description}>
       <Grid container spacing={3} mt={2} justifyContent="center">
-        <Grid item xs={10} md={7}>
-          <ProductSlideshow images={product.images} />
+        <Grid item xs={12} md={6}>
+          <Box
+            sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}
+          >
+            <Box sx={{ width: { xs: '100%', sm: '75%', md: '100%' } }}>
+              <ProductSlideshow images={product.images} />
+            </Box>
+          </Box>
         </Grid>
-        <Grid item xs={10} md={5}>
+        <Grid item xs={12} md={5}>
           <Box display="flex" flexDirection="column">
             <Typography variant="h1" component="h1">
               {product.title}
@@ -83,7 +89,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                 updatedQuantity={onUpdateQuantity}
                 maxValue={product.inStock}
               />
-              <FormControl sx={{ width: '25%', marginTop: 2, marginBottom: 2 }}>
+              <FormControl sx={{ width: '35%', marginTop: 2, marginBottom: 2 }}>
                 <InputLabel id="demo-simple-select-label">Size</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
@@ -107,6 +113,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                 onClick={onAddProduct}
                 color="secondary"
                 className="circular-btn"
+                sx={{ height: 40 }}
               >
                 {tempCartProduct.size ? 'Add to cart' : 'Choose a size'}
               </Button>

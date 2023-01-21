@@ -13,37 +13,25 @@ interface Props {
 export const ProductSlideshow: FC<Props> = ({ images, fromHome }) => {
   if (fromHome) {
     return (
-      <Grid
-        container
-        sx={{ display: { xs: 'none', sm: 'flex' }, marginBottom: '30px' }}
-        justifyContent="center"
+      <Slide
+        easing="ease"
+        duration={2000}
+        prevArrow={<div />}
+        nextArrow={<div />}
       >
-        <Grid item sm={8} md={7} lg={7}>
-          <Slide
-            easing="ease"
-            duration={2000}
-            prevArrow={<div />}
-            nextArrow={<div />}
-          >
-            {images.map((image) => {
-              const url = `/products/${image}`;
-
-              return (
-                <div className={styles['each-slide-home']} key={image}>
-                  <div
-                    style={{
-                      // backgroundImage: `url(${url})`,
-                      backgroundImage: `url(${image})`,
-                      backgroundSize: 'cover',
-                      borderRadius: 20,
-                    }}
-                  ></div>
-                </div>
-              );
-            })}
-          </Slide>
-        </Grid>
-      </Grid>
+        {images.map((image) => {
+          return (
+            <div className={styles['each-slide-home']} key={image}>
+              <div
+                style={{
+                  backgroundImage: `url(${image})`,
+                  backgroundSize: 'cover',
+                }}
+              ></div>
+            </div>
+          );
+        })}
+      </Slide>
     );
   }
 
