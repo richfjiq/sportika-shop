@@ -25,7 +25,9 @@ export const getOrdersByUser = async (userId: string): Promise<IOrder[]> => {
   }
 
   await db.connect();
-  const orders = await Order.find({ user: userId }).lean();
+  const orders = await Order.find({ user: userId })
+    .sort({ createdAt: 'desc' })
+    .lean();
   await db.disconnect();
 
   return JSON.parse(JSON.stringify(orders));

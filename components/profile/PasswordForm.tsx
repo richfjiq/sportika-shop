@@ -79,7 +79,6 @@ const PasswordForm: FC<Props> = ({ open, onClose }) => {
   };
 
   const onSubmitAddress = (data: FormData) => {
-    console.log({ data });
     const userData = {
       userId: user?._id,
       currentPassword: data.currentPassword,

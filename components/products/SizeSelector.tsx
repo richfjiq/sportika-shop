@@ -13,8 +13,6 @@ export const SizeSelector: FC<Props> = ({
   sizes,
   onSelectedSize,
 }) => {
-  console.log({ selectedSize });
-  console.log({ sizes });
   return (
     <Box>
       {sizes.map((size) => (

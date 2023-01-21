@@ -140,7 +140,6 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
           '/admin/upload',
           formData
         );
-        console.log({ data });
         setValue('images', [...getValues('images'), data.message], {
           shouldValidate: true,
         });

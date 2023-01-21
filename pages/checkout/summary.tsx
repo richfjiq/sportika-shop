@@ -27,8 +27,6 @@ const SummaryPage = () => {
 
   const handleModal = () => setAddressModal((prev) => !prev);
 
-  console.log({ orderCreated });
-
   useEffect(() => {
     if (orderCreated) {
       router.replace(`/orders/${orderCreated}`);
@@ -36,7 +34,6 @@ const SummaryPage = () => {
   }, [orderCreated, router]);
 
   const onCreateOrder = () => {
-    console.log('Summary button clicked');
     createOrder();
   };
 

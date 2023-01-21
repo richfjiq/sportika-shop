@@ -2,6 +2,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import NextLink from 'next/link';
 import { Chip, Grid, Link, Typography } from '@mui/material';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import moment from 'moment';
 
 import { ShopLayout } from '../../components/layout';
 import { getSession } from 'next-auth/react';
@@ -10,12 +11,13 @@ import { IOrder } from '../../interfaces';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 100 },
-  { field: 'fullName', headerName: 'Name', width: 300 },
+  { field: 'fullName', headerName: 'Name', width: 300, sortable: false },
   {
     field: 'paid',
     headerName: 'Paid',
     description: "Shows order's status",
-    width: 200,
+    width: 150,
+    sortable: false,
     renderCell: (params: GridValueGetterParams) => {
       return params.row.paid ? (
         <Chip color="success" label="Paid" variant="outlined" />
@@ -27,7 +29,7 @@ const columns: GridColDef[] = [
   {
     field: 'order',
     headerName: 'Order',
-    width: 200,
+    width: 150,
     sortable: false,
     renderCell: (params: GridValueGetterParams) => {
       return (
@@ -35,6 +37,15 @@ const columns: GridColDef[] = [
           <Link sx={{ color: 'blue' }}>See details</Link>
         </NextLink>
       );
+    },
+  },
+  {
+    field: 'date',
+    headerName: 'Date',
+    width: 200,
+    renderCell: (params: GridValueGetterParams) => {
+      const date = moment(params.row.date).format('DD-MM-YYYY hh:mm a');
+      return <Typography>{date}</Typography>;
     },
   },
 ];
@@ -49,6 +60,7 @@ const HistoryPage: NextPage<Props> = ({ orders }) => {
     paid: order.isPaid,
     fullName: `${order.shippingAddress.firstName} ${order.shippingAddress.lastName}`,
     orderId: order._id,
+    date: order.createdAt,
   }));
 
   return (

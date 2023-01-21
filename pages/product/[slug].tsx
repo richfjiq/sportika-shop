@@ -5,10 +5,20 @@ import {
   GetStaticPaths,
   GetStaticProps,
 } from 'next';
-import { Box, Button, Chip, Grid, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Chip,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from '@mui/material';
 
 import { ShopLayout } from '../../components/layout';
-import { ProductSlideshow, SizeSelector } from '../../components/products';
+import { ProductSlideshow } from '../../components/products';
 import { ItemCounter } from '../../components/ui';
 import { dbProducts } from '../../database';
 import { ICartProduct, IProduct, ISize } from '../../interfaces';
@@ -73,11 +83,23 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                 updatedQuantity={onUpdateQuantity}
                 maxValue={product.inStock}
               />
-              <SizeSelector
-                selectedSize={tempCartProduct.size}
-                sizes={product.sizes}
-                onSelectedSize={selectedSize}
-              />
+              <FormControl sx={{ width: '25%', marginTop: 2, marginBottom: 2 }}>
+                <InputLabel id="demo-simple-select-label">Size</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={tempCartProduct.size}
+                  label="Size"
+                  onChange={(e) => selectedSize(e.target.value as ISize)}
+                  sx={{ textAlign: 'center' }}
+                >
+                  {product.sizes.map((p) => (
+                    <MenuItem key={p} value={p}>
+                      {p}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </Box>
 
             {product.inStock > 0 ? (

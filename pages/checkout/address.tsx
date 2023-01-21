@@ -22,7 +22,6 @@ const AddressPage = () => {
 
   const onSubmitAddress = () => {
     if (!shippingAddress) return;
-    console.log('Button clicked');
     router.push('/checkout/summary');
   };
 
