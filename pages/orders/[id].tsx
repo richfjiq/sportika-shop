@@ -15,7 +15,6 @@ import {
 import {
   CreditCardOffOutlined,
   CreditScoreOutlined,
-  FamilyRestroomRounded,
 } from '@mui/icons-material';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';

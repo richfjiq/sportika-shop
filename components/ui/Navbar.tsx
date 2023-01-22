@@ -82,8 +82,9 @@ export const Navbar = () => {
     >
       <Toolbar
         sx={{
-          width: { xl: '1240px' },
-          margin: { xl: '0 auto' },
+          maxWidth: '1240px',
+          margin: '0 auto',
+          width: '100%',
         }}
       >
         <Box
@@ -190,8 +191,6 @@ export const Navbar = () => {
           <SearchOutlined />
         </IconButton>
 
-        {/* <NextLink href={`/auth/login?p=${router.asPath}`} passHref>
-          <Link> */}
         <IconButton
           sx={{ display: { xs: 'none', sm: 'flex' } }}
           onClick={() =>
@@ -202,8 +201,6 @@ export const Navbar = () => {
         >
           <PersonOutlineOutlined />
         </IconButton>
-        {/* </Link>
-        </NextLink> */}
 
         <NextLink href="/cart" passHref>
           <Link>

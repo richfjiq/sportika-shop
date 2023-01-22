@@ -67,7 +67,11 @@ const ProductPage: NextPage<Props> = ({ product }) => {
           <Box
             sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}
           >
-            <Box sx={{ width: { xs: '100%', sm: '75%', md: '100%' } }}>
+            <Box
+              sx={{
+                width: { xs: '100%', sm: '75%', md: '100%' },
+              }}
+            >
               <ProductSlideshow images={product.images} />
             </Box>
           </Box>

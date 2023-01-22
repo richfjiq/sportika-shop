@@ -26,6 +26,8 @@ export const ProductSlideshow: FC<Props> = ({ images, fromHome }) => {
                 style={{
                   backgroundImage: `url(${image})`,
                   backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  borderRadius: '20px',
                 }}
               ></div>
             </div>
@@ -38,8 +40,6 @@ export const ProductSlideshow: FC<Props> = ({ images, fromHome }) => {
   return (
     <Slide easing="ease" duration={7000} indicators>
       {images.map((image) => {
-        const url = `/products/${image}`;
-
         return (
           <div className={styles['each-slide']} key={image}>
             <div

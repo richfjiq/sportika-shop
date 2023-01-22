@@ -6,6 +6,7 @@ import { Navbar, SideMenu } from '../ui';
 import { ProductSlideshow } from '../products';
 import { useAuth } from '../../store';
 import { AuthUser } from '../../store/auth/reducer';
+import { Box } from '@mui/material';
 
 interface Props {
   children: ReactNode;
@@ -61,7 +62,6 @@ export const ShopLayout: FC<Props> = ({
 
       <Navbar />
 
-      {/* TODO: Sidebar */}
       <SideMenu />
 
       <main
@@ -71,7 +71,15 @@ export const ShopLayout: FC<Props> = ({
           padding: '30px 30px',
         }}
       >
-        {fromHome && <ProductSlideshow images={homeImages} fromHome={true} />}
+        <Box
+          sx={{
+            marginTop: '20px',
+            marginBottom: '40px',
+            display: { xs: 'none', sm: 'block' },
+          }}
+        >
+          {fromHome && <ProductSlideshow images={homeImages} fromHome={true} />}
+        </Box>
         {children}
       </main>
 

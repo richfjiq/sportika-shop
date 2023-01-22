@@ -5,6 +5,7 @@
   background-size: cover;
   width: 100%;
   aspect-ratio: 1/1;
+  border-radius: 20px;
 }
 
 .each-slide-home > div {
@@ -13,6 +14,7 @@
   justify-content: center;
   background-size: cover;
   height: 400px;
+  border-radius: 20px;
 }
 
 @media (max-width: 599px) {
@@ -21,7 +23,7 @@
   }
 }
 
-@media all and (max-width: 750px) and (min-width: 599px) {
+@media all and (max-width: 750px) and (min-width: 600px) {
   .each-slide-home > div {
     height: 250px;
   }
