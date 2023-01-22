@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { FC } from 'react';
 import { Slide } from 'react-slideshow-image';
 
@@ -13,27 +13,35 @@ interface Props {
 export const ProductSlideshow: FC<Props> = ({ images, fromHome }) => {
   if (fromHome) {
     return (
-      <Slide
-        easing="ease"
-        duration={2000}
-        prevArrow={<div />}
-        nextArrow={<div />}
+      <Box
+        sx={{
+          marginTop: '20px',
+          marginBottom: '40px',
+          display: { xs: 'none', sm: 'block' },
+        }}
       >
-        {images.map((image) => {
-          return (
-            <div className={styles['each-slide-home']} key={image}>
-              <div
-                style={{
-                  backgroundImage: `url(${image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  borderRadius: '20px',
-                }}
-              ></div>
-            </div>
-          );
-        })}
-      </Slide>
+        <Slide
+          easing="ease"
+          duration={2000}
+          prevArrow={<div />}
+          nextArrow={<div />}
+        >
+          {images.map((image) => {
+            return (
+              <div className={styles['each-slide-home']} key={image}>
+                <div
+                  style={{
+                    backgroundImage: `url(${image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    borderRadius: '20px',
+                  }}
+                ></div>
+              </div>
+            );
+          })}
+        </Slide>
+      </Box>
     );
   }
 

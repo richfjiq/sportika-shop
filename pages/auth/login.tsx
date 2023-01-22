@@ -90,18 +90,16 @@ const LoginPage = () => {
       <form onSubmit={handleSubmit(onLoginUser)} noValidate>
         <Box
           sx={{
-            height: '100vh',
             display: 'flex',
             justifyContent: 'center',
-            // alignItems: 'center',
+            alignItems: 'center',
+            height: 'calc(100vh - 220px)',
           }}
         >
           <Box
             sx={{
               width: 350,
-              padding: '10px 20px',
               margin: 'auto 0',
-              height: 'calc(100vh - 200px)',
             }}
           >
             <Grid container spacing={2}>
@@ -169,7 +167,9 @@ const LoginPage = () => {
 
               <Grid item xs={12} display="flex" justifyContent="end">
                 <NextLink href={`/auth/register?p=${destination}`} passHref>
-                  <Link underline="always">Don&apos;t have an account?</Link>
+                  <Link sx={{ color: 'blue' }}>
+                    Don&apos;t have an account?
+                  </Link>
                 </NextLink>
               </Grid>
 

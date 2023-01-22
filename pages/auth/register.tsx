@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Chip,
+  Divider,
   Grid,
   Link,
   TextField,
@@ -17,7 +18,8 @@ import { validations } from '../../utils';
 import { useAuth } from '../../store';
 import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
-import { getSession } from 'next-auth/react';
+import { getProviders, getSession, signIn } from 'next-auth/react';
+import { CustomIcon } from '../../components/auth';
 
 type FormData = {
   name: string;
@@ -34,8 +36,15 @@ const RegisterPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
+  const [providers, setProviders] = useState<any>({});
 
   const destination = router.query.p?.toString() || '/';
+
+  useEffect(() => {
+    getProviders().then((prov) => {
+      setProviders(prov);
+    });
+  }, []);
 
   useEffect(() => {
     if (error) {
@@ -75,22 +84,23 @@ const RegisterPage = () => {
 
   return (
     <ShopLayout title="Create an account" pageDescription="Create an account">
-      <form onSubmit={handleSubmit(onRegisterForm)} noValidate>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+          height: 'calc(100vh - 220px)',
+        }}
+      >
         <Box
           sx={{
-            height: '100vh',
-            display: 'flex',
-            justifyContent: 'center',
+            width: 350,
+            padding: '0 20px',
+            margin: 'auto 0',
           }}
         >
-          <Box
-            sx={{
-              width: 350,
-              padding: '10px 20px',
-              margin: 'auto 0',
-              height: 'calc(100vh - 200px)',
-            }}
-          >
+          <form onSubmit={handleSubmit(onRegisterForm)} noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Typography variant="h1" component="h1">
@@ -168,14 +178,42 @@ const RegisterPage = () => {
               </Grid>
 
               <Grid item xs={12} display="flex" justifyContent="end">
-                <NextLink href={`/auth/register?p=${destination}`} passHref>
-                  <Link underline="always">Have an account? Log in here</Link>
+                <NextLink href={`/auth/login?p=${destination}`} passHref>
+                  <Link sx={{ color: 'blue' }}>
+                    Have an account? Log in here
+                  </Link>
                 </NextLink>
               </Grid>
             </Grid>
-          </Box>
+          </form>
+          <Grid
+            item
+            xs={12}
+            display="flex"
+            flexDirection="column"
+            sx={{ maxWidth: '350px', width: '100%' }}
+          >
+            <Divider sx={{ width: '100%', mb: 2, mt: 1 }} />
+            {Object.values(providers).map((provider: any) => {
+              if (provider.id === 'credentials') return;
+
+              return (
+                <Button
+                  key={provider.id}
+                  variant="outlined"
+                  fullWidth
+                  color="primary"
+                  sx={{ mb: 1 }}
+                  onClick={() => signIn(provider.id)}
+                  startIcon={<CustomIcon logo={provider.id} />}
+                >
+                  {provider.name}
+                </Button>
+              );
+            })}
+          </Grid>
         </Box>
-      </form>
+      </Box>
     </ShopLayout>
   );
 };
