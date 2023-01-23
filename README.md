@@ -1,27 +1,61 @@
-# Next.js Sportika App
+## Project Title
 
-Para correr localmente, se necesita la base de datos
+Sportika (web application)
+
+## Demo link:
+
+Access my site at https://sportika-shop.herokuapp.com
+
+## About The App
+
+Sportika is a web application built with Next.Js, it's an eCommerce where the users can buy items, and the admin can manage the web site.
+
+## Screenshots
+
+![image](https://res.cloudinary.com/dlz1bhh8j/image/upload/v1674475040/sportika/e1sa9wxqol9rzhm5l1om.jpg)
+![image](https://res.cloudinary.com/dlz1bhh8j/image/upload/v1674475039/sportika/r3pu0i4zo8fv36ak52au.jpg)
+![image](https://res.cloudinary.com/dlz1bhh8j/image/upload/v1674475039/sportika/e0yi0kbpfmlrmgiv7ba9.jpg)
+![image](https://res.cloudinary.com/dlz1bhh8j/image/upload/v1674475040/sportika/zvtssk2fer7xkvk1ejmv.jpg)
+
+## Technologies
+
+Next.js, React, TypeScript, Mongoose, Redux Toolkit, Paypal, Material UI, Axios
+
+## Setup
 
 ```
-docker-compose up -d
+git clone git@github.com:richfjiq/sportika-shop.git
 ```
 
-- El -d, significa **detached**
+```
+Add .env file
 
-- MongoDB URL Local:
+MONGO_URL
+JWT_SECRET_SEED
+NEXTAUTH_SECRET
+NEXT_PUBLIC_TAX_RATE
+SENDGRID_API_KEY
+GITHUB_ID
+GITHUB_SECRET
+FACEBOOK_CLIENT_ID
+FACEBOOK_CLIENT_SECRET
+GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET
+NEXT_PUBLIC_PAYPAL_CLIENT_ID
+PAYPAL_SECRET
+PAYPAL_OAUTH_URL
+PAYPAL_ORDERS_URL
+CLOUDINARY_URL
+```
 
 ```
-mongodb://localhost:27017/sportikaDb
+node version 14.19.0
 ```
 
-## Configurar las variables de entorno
-
-Renombrar el archivo **.env.template** a **.env**
-
-## Llenar la base de datos con informacion de pruebas
-
-Llamar a:
+```
+yarn
+```
 
 ```
-http://localhost:3000/api/seed
+yarn dev
 ```
