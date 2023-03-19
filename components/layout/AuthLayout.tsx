@@ -19,9 +19,11 @@ export const AuthLayout: FC<Props> = ({ children, title }) => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          height="calc(100vh - 200px)"
-          margin="80px auto"
-          maxWidth="1240px"
+          sx={{
+            margin: '80px auto 40px',
+            maxWidth: '1240px',
+            padding: { xs: '0 16px', sm: '0 24px' },
+          }}
         >
           {children}
         </Box>

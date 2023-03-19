@@ -93,7 +93,7 @@ const LoginPage = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: 'calc(100vh - 220px)',
+            padding: { xs: '20px 0', sm: '50px 0' },
           }}
         >
           <Box
@@ -190,7 +190,7 @@ const LoginPage = () => {
                       variant="outlined"
                       fullWidth
                       color="primary"
-                      sx={{ mb: 1 }}
+                      sx={{ mb: 1, padding: '10px 0' }}
                       onClick={() => signIn(provider.id)}
                       startIcon={<CustomIcon logo={provider.id} />}
                     >

@@ -120,7 +120,7 @@ const AddressForm: FC<Props> = ({ open, onClose }) => {
       <Box
         sx={{
           display: 'flex',
-          height: '100vh',
+          height: '100svh',
           justifyContent: 'center',
           alignItems: 'center',
         }}
@@ -129,7 +129,7 @@ const AddressForm: FC<Props> = ({ open, onClose }) => {
           sx={{
             backgroundColor: 'white',
             maxWidth: '85%',
-            maxHeight: '85vh',
+            maxHeight: '85svh',
             overflow: 'scroll',
             padding: '20px',
             borderRadius: '20px',
@@ -343,7 +343,6 @@ const AddressForm: FC<Props> = ({ open, onClose }) => {
                 ) : (
                   `${buttonTitle}`
                 )}
-                {/* {`${buttonTitle}`} */}
               </Button>
             </Box>
           </form>

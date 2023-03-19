@@ -25,6 +25,7 @@ const columns: GridColDef[] = [
               height: '100%',
               justifyContent: 'flex-start',
               alignItems: 'center',
+              cursor: 'pointer',
             }}
           >
             <Link sx={{ color: 'blue' }}>See details</Link>
@@ -84,7 +85,14 @@ const HistoryPage: NextPage<Props> = ({ orders }) => {
       </Typography>
 
       <Grid container className="fadeIn">
-        <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            height: 650,
+            width: '100%',
+          }}
+        >
           <DataGrid
             rows={rows}
             columns={columns}
