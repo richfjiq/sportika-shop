@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 import { FC } from 'react';
 import { Slide } from 'react-slideshow-image';
 

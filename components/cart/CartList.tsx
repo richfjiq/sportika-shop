@@ -12,6 +12,7 @@ import { FC } from 'react';
 import { ICartProduct, IOrderItem } from '../../interfaces';
 
 import { useCart } from '../../store';
+import { currency } from '../../utils';
 import { ItemCounter } from '../ui';
 
 interface Props {
@@ -26,7 +27,6 @@ export const CartList: FC<Props> = ({ editable = false, products }) => {
     product: ICartProduct,
     newQuantityValue: number
   ) => {
-    // product.quantity = newQuantityValue;
     updateCartQuantity(product, newQuantityValue);
   };
 
@@ -64,7 +64,6 @@ export const CartList: FC<Props> = ({ editable = false, products }) => {
                 Size: <strong>{product.size}</strong>
               </Typography>
 
-              {/* Condicional */}
               {editable ? (
                 <ItemCounter
                   currentValue={product.quantity}
@@ -92,10 +91,9 @@ export const CartList: FC<Props> = ({ editable = false, products }) => {
               sx={{ fontSize: { xs: 14, sm: 18 } }}
               variant="subtitle1"
             >
-              ${product.price}
+              {currency.format(product.price * product.quantity)}
             </Typography>
 
-            {/* Editable */}
             {editable && (
               <Button
                 variant="text"
