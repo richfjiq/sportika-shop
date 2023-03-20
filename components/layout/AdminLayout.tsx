@@ -28,17 +28,18 @@ export const AdminLayout: FC<Props> = ({ children, title, subTitle, icon }) => {
     <>
       <AdminNavbar />
 
-      {/* TODO: Sidebar */}
       <SideMenu />
 
-      <main
-        style={{
-          margin: '80px auto',
-          maxWidth: '1240px',
-          padding: '0px 30px',
-        }}
-      >
-        <Box display="flex" flexDirection="column">
+      <main>
+        <Box
+          display="flex"
+          flexDirection="column"
+          sx={{
+            margin: '80px auto 40px',
+            maxWidth: '1240px',
+            padding: { xs: '0 16px', sm: '0 24px' },
+          }}
+        >
           <Typography variant="h1" component="h1">
             {icon} {title}
           </Typography>

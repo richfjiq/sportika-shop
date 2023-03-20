@@ -2,6 +2,7 @@ import { ChangeEvent, FC, useEffect, useState } from 'react';
 import {
   Box,
   Button,
+  CircularProgress,
   Grid,
   IconButton,
   Modal,
@@ -32,8 +33,13 @@ type FormData = {
 };
 
 const AddressForm: FC<Props> = ({ open, onClose }) => {
-  const { user, shippingAddress, createUserAddress, updateUserAddress } =
-    useAuth();
+  const {
+    user,
+    shippingAddress,
+    loadingAddress,
+    createUserAddress,
+    updateUserAddress,
+  } = useAuth();
   const [country, setCountry] = useState('Canada');
   const [code, setCode] = useState('');
   const {
@@ -114,7 +120,7 @@ const AddressForm: FC<Props> = ({ open, onClose }) => {
       <Box
         sx={{
           display: 'flex',
-          height: '100vh',
+          height: '100svh',
           justifyContent: 'center',
           alignItems: 'center',
         }}
@@ -123,7 +129,7 @@ const AddressForm: FC<Props> = ({ open, onClose }) => {
           sx={{
             backgroundColor: 'white',
             maxWidth: '85%',
-            maxHeight: '85vh',
+            maxHeight: '85svh',
             overflow: 'scroll',
             padding: '20px',
             borderRadius: '20px',
@@ -321,6 +327,7 @@ const AddressForm: FC<Props> = ({ open, onClose }) => {
                   width: { xs: '100px', sm: '0' },
                 }}
                 onClick={onClose}
+                disabled={loadingAddress}
               >
                 Close
               </Button>
@@ -331,7 +338,11 @@ const AddressForm: FC<Props> = ({ open, onClose }) => {
                 size="large"
                 sx={{ width: { xs: '100px', sm: '150px' } }}
               >
-                {`${buttonTitle}`}
+                {loadingAddress ? (
+                  <CircularProgress thickness={2} color="info" size={75} />
+                ) : (
+                  `${buttonTitle}`
+                )}
               </Button>
             </Box>
           </form>

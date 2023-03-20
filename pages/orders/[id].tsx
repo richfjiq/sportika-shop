@@ -138,6 +138,24 @@ const OrderPage: NextPage<Props> = ({ order }) => {
             <CardContent>
               <Typography
                 sx={{
+                  fontSize: { xs: 14 },
+                  textAlign: 'center',
+                  fontWeight: '600',
+                }}
+              >
+                Testing account Paypal payment
+              </Typography>
+              <Typography sx={{ fontSize: { xs: 14 }, textAlign: 'center' }}>
+                sb-6sy8u17836682@personal.example.com
+              </Typography>
+              <Typography
+                sx={{ fontSize: { xs: 14 }, textAlign: 'center' }}
+                marginBottom={1}
+              >
+                123abc&$
+              </Typography>
+              <Typography
+                sx={{
                   fontSize: { xs: 16, sm: 20 },
                   fontWeight: { xs: '600', sm: '600' },
                 }}
@@ -186,16 +204,6 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                   Bill
                 </Typography>
               </Box>
-              {/* <Box display="flex">
-                <NextLink href="/cart" passHref>
-                  <Link
-                    sx={{ fontSize: { xs: 14, sm: 18 } }}
-                    underline="always"
-                  >
-                    Edit
-                  </Link>
-                </NextLink>
-              </Box> */}
 
               <OrderSummary
                 numberOfItemsOrder={numberOfItems}

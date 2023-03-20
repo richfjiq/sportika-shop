@@ -41,14 +41,6 @@ export const Navbar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   const token = Cookies.get('token');
-  //   if (token) {
-  //     checkToken();
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
   useEffect(() => {
     const cartFromCookies = Cookies.get('cart')
       ? JSON.parse(Cookies.get('cart')!)
@@ -77,7 +69,7 @@ export const Navbar = () => {
     <AppBar
       sx={{
         justifyContent: 'center',
-        height: '100px',
+        height: '80px',
       }}
     >
       <Toolbar
@@ -113,8 +105,6 @@ export const Navbar = () => {
                 height={70}
                 width={140}
               />
-              {/* <Typography variant="h4">Sportika |</Typography> */}
-              {/* <Typography sx={{ ml: 0.5 }}>| Shop</Typography> */}
             </Link>
           </NextLink>
         </Box>

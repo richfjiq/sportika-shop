@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next';
 import NextLink from 'next/link';
-import { Chip, Grid, Link, Typography } from '@mui/material';
+import { Box, Chip, Grid, Link, Typography } from '@mui/material';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import moment from 'moment';
 
@@ -10,6 +10,30 @@ import { dbOrders } from '../../database';
 import { IOrder } from '../../interfaces';
 
 const columns: GridColDef[] = [
+  {
+    field: 'order',
+    headerName: 'Order',
+    width: 150,
+    sortable: false,
+    renderCell: (params: GridValueGetterParams) => {
+      return (
+        <NextLink href={`/orders/${params.row.orderId}`} passHref>
+          <Box
+            style={{
+              display: 'flex',
+              width: '100%',
+              height: '100%',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            <Link sx={{ color: 'blue' }}>See details</Link>
+          </Box>
+        </NextLink>
+      );
+    },
+  },
   { field: 'id', headerName: 'ID', width: 100 },
   { field: 'fullName', headerName: 'Name', width: 300, sortable: false },
   {
@@ -26,19 +50,7 @@ const columns: GridColDef[] = [
       );
     },
   },
-  {
-    field: 'order',
-    headerName: 'Order',
-    width: 150,
-    sortable: false,
-    renderCell: (params: GridValueGetterParams) => {
-      return (
-        <NextLink href={`/orders/${params.row.orderId}`} passHref>
-          <Link sx={{ color: 'blue' }}>See details</Link>
-        </NextLink>
-      );
-    },
-  },
+
   {
     field: 'date',
     headerName: 'Date',
@@ -73,7 +85,14 @@ const HistoryPage: NextPage<Props> = ({ orders }) => {
       </Typography>
 
       <Grid container className="fadeIn">
-        <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            height: 650,
+            width: '100%',
+          }}
+        >
           <DataGrid
             rows={rows}
             columns={columns}

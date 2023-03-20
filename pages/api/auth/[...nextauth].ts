@@ -23,10 +23,11 @@ export default NextAuth({
         },
       },
       async authorize(credentials) {
-        return await dbUsers.checkUserEmailPassword(
+        const cred = await dbUsers.checkUserEmailPassword(
           credentials!.email,
           credentials!.password
         );
+        return cred;
       },
     }),
     GithubProvider({
@@ -81,3 +82,5 @@ export default NextAuth({
     },
   },
 });
+
+// http://localhost:3000/auth/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Flogin%3Fp%3D%2F&error=CredentialsSignin

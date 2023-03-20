@@ -98,7 +98,7 @@ const PasswordForm: FC<Props> = ({ open, onClose }) => {
       <Box
         sx={{
           display: 'flex',
-          height: '100vh',
+          height: '100svh',
           justifyContent: 'center',
           alignItems: 'center',
         }}
@@ -107,7 +107,7 @@ const PasswordForm: FC<Props> = ({ open, onClose }) => {
           sx={{
             backgroundColor: 'white',
             maxWidth: { xs: '340px', sm: '400px', lg: '450px' },
-            maxHeight: '85vh',
+            maxHeight: '85svh',
             overflow: 'scroll',
             padding: '20px',
             borderRadius: '20px',

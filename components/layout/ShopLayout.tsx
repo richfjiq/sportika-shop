@@ -64,15 +64,21 @@ export const ShopLayout: FC<Props> = ({
 
       <SideMenu />
 
-      <main
-        style={{
-          margin: '80px auto',
-          maxWidth: '1240px',
-          padding: '30px 30px',
-        }}
-      >
-        {fromHome && <ProductSlideshow images={homeImages} fromHome={true} />}
-        {children}
+      <main>
+        <Box
+          sx={{
+            margin: '80px auto 40px',
+            maxWidth: '1240px',
+            padding: { xs: '0 16px', sm: '0 24px' },
+          }}
+        >
+          {fromHome && (
+            <Box sx={{ margin: '100px auto 20px' }}>
+              <ProductSlideshow images={homeImages} fromHome={true} />
+            </Box>
+          )}
+          {children}
+        </Box>
       </main>
 
       <footer>{/* TODO: Footer */}</footer>

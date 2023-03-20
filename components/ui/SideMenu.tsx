@@ -59,7 +59,7 @@ export const SideMenu = () => {
       sx={{ backdropFilter: 'blur(4px)', transition: 'all 0.5s ease-out' }}
       onClose={setMenuOpen}
     >
-      <Box sx={{ width: { xs: '50vw', sm: 250 }, paddingTop: 2 }}>
+      <Box sx={{ width: { xs: '50vw', sm: 250 } }}>
         <List>
           <ListItem>
             <Input

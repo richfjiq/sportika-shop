@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 import { FC } from 'react';
 import { Slide } from 'react-slideshow-image';
 
@@ -15,8 +15,6 @@ export const ProductSlideshow: FC<Props> = ({ images, fromHome }) => {
     return (
       <Box
         sx={{
-          marginTop: '20px',
-          marginBottom: '40px',
           display: { xs: 'none', sm: 'block' },
         }}
       >
