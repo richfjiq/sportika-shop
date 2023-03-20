@@ -15,11 +15,12 @@ import {
   Typography,
 } from '@mui/material';
 import { ErrorOutline } from '@mui/icons-material';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { ShopLayout } from '../../components/layout';
 import { validations } from '../../utils';
 import { CustomIcon } from '../../components/auth';
-// import { useAuth } from '../../store';
 
 type FormData = {
   email: string;
@@ -29,8 +30,6 @@ type FormData = {
 const LoginPage = () => {
   const router = useRouter();
   const [providers, setProviders] = useState<any>({});
-  // const [showError, setShowError] = useState(false);
-  // const { userLogin, loading, error, isLoggedIn } = useAuth();
   const {
     register,
     handleSubmit,
@@ -42,6 +41,14 @@ const LoginPage = () => {
       setProviders(prov);
     });
   }, []);
+
+  useEffect(() => {
+    if (router.query?.error) {
+      toast.error('Wrong credentials.');
+
+      return () => toast.dismiss();
+    }
+  }, [router.query?.error]);
 
   const destination = router.query.p?.toString() || '/';
 
@@ -159,7 +166,6 @@ const LoginPage = () => {
                   className="circular-btn"
                   size="large"
                   fullWidth
-                  // disabled={loading}
                 >
                   Log in
                 </Button>
@@ -180,7 +186,7 @@ const LoginPage = () => {
                 flexDirection="column"
                 justifyContent="end"
               >
-                <Divider sx={{ width: '100%', mb: 2, mt: 1 }} />
+                <Divider sx={{ width: '100%', mb: 3, mt: 1 }} />
                 {Object.values(providers).map((provider: any) => {
                   if (provider.id === 'credentials') return;
 
@@ -190,7 +196,7 @@ const LoginPage = () => {
                       variant="outlined"
                       fullWidth
                       color="primary"
-                      sx={{ mb: 1, padding: '10px 0' }}
+                      sx={{ mb: 2, padding: '10px 0' }}
                       onClick={() => signIn(provider.id)}
                       startIcon={<CustomIcon logo={provider.id} />}
                     >

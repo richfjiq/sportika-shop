@@ -5,6 +5,7 @@ import { SessionProvider } from 'next-auth/react';
 import { SWRConfig } from 'swr';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import { ToastContainer } from 'react-toastify';
 
 import { lightTheme } from '../themes';
 import { store } from '../store';
@@ -27,6 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <ThemeProvider theme={lightTheme}>
               <CssBaseline />
               <Component {...pageProps} />
+              <ToastContainer />
             </ThemeProvider>
           </Provider>
         </SWRConfig>

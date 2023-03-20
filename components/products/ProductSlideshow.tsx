@@ -15,8 +15,6 @@ export const ProductSlideshow: FC<Props> = ({ images, fromHome }) => {
     return (
       <Box
         sx={{
-          marginTop: '20px',
-          marginBottom: '40px',
           display: { xs: 'none', sm: 'block' },
         }}
       >
