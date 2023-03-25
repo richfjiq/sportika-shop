@@ -7,11 +7,7 @@ import { FullScreenLoading } from '../components/ui';
 import { useProducts } from '../hooks';
 
 const HomePage: NextPage = () => {
-  const { products, isLoading } = useProducts('/products');
-
-  if (isLoading) {
-    return <FullScreenLoading />;
-  }
+  const { products, error } = useProducts('/products');
 
   return (
     <ShopLayout
@@ -28,7 +24,7 @@ const HomePage: NextPage = () => {
         All Products
       </Typography>
 
-      <ProductList products={products} />
+      {!products ? <FullScreenLoading /> : <ProductList products={products} />}
     </ShopLayout>
   );
 };

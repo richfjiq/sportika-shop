@@ -4,7 +4,7 @@ export const FullScreenLoading = () => {
   return (
     <Box
       display="flex"
-      height="calc(100vh - 200px)"
+      height="calc(100svh - 140px)"
       justifyContent="center"
       flexDirection="column"
       alignItems="center"
