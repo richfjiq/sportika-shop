@@ -136,24 +136,30 @@ const OrderPage: NextPage<Props> = ({ order }) => {
         <Grid item xs={12} sm={10} md={5}>
           <Card className="summary-card">
             <CardContent>
-              <Typography
-                sx={{
-                  fontSize: { xs: 14 },
-                  textAlign: 'center',
-                  fontWeight: '600',
-                }}
-              >
-                Testing account Paypal payment
-              </Typography>
-              <Typography sx={{ fontSize: { xs: 14 }, textAlign: 'center' }}>
-                sb-6sy8u17836682@personal.example.com
-              </Typography>
-              <Typography
-                sx={{ fontSize: { xs: 14 }, textAlign: 'center' }}
-                marginBottom={1}
-              >
-                123abc&$
-              </Typography>
+              {!isPaid && (
+                <>
+                  <Typography
+                    sx={{
+                      fontSize: { xs: 14 },
+                      textAlign: 'center',
+                      fontWeight: '600',
+                    }}
+                  >
+                    Testing account Paypal payment
+                  </Typography>
+                  <Typography
+                    sx={{ fontSize: { xs: 14 }, textAlign: 'center' }}
+                  >
+                    sb-6sy8u17836682@personal.example.com
+                  </Typography>
+                  <Typography
+                    sx={{ fontSize: { xs: 14 }, textAlign: 'center' }}
+                    marginBottom={1}
+                  >
+                    123abc&$
+                  </Typography>
+                </>
+              )}
               <Typography
                 sx={{
                   fontSize: { xs: 16, sm: 20 },

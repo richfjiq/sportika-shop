@@ -98,7 +98,7 @@ const ProductPage: NextPage<Props> = ({ product }) => {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={tempCartProduct.size}
+                  value={tempCartProduct.size || ''}
                   label="Size"
                   onChange={(e) => selectedSize(e.target.value as ISize)}
                   sx={{ textAlign: 'center' }}

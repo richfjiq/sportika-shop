@@ -72,11 +72,16 @@ export const ShopLayout: FC<Props> = ({
             padding: { xs: '0 16px', sm: '0 24px' },
           }}
         >
-          {fromHome && (
-            <Box sx={{ margin: '100px auto 20px' }}>
+          {fromHome ? (
+            <Box
+              sx={{
+                margin: '80px auto 20px',
+              }}
+            >
               <ProductSlideshow images={homeImages} fromHome={true} />
             </Box>
-          )}
+          ) : null}
+
           {children}
         </Box>
       </main>

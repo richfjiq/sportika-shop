@@ -42,14 +42,15 @@ const SummaryPage = () => {
       {newOrder ? (
         <Box
           sx={{
-            height: '100vh',
+            height: '100svh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
+            marginTop: '-80px',
           }}
         >
-          <CircularProgress size={80} />
+          <CircularProgress size={80} thickness={2} />
           <Typography variant="h5" sx={{ mt: 2 }}>
             Loading...
           </Typography>
