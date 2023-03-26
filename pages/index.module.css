@@ -1,0 +1,69 @@
+.cardContainer {
+  position: relative;
+  transform: rotate(5deg);
+}
+
+.cardContainer:before {
+  content: '';
+  position: absolute;
+  top: -4%;
+  left: -2.5%;
+  width: 105%;
+  height: 108%;
+  border-radius: 20px;
+  background-color: #e74c3c;
+  opacity: 0.5;
+  transition: 0.5s;
+  z-index: -1;
+  transform: rotate(20deg);
+}
+
+.cardContainer:after {
+  content: '';
+  position: absolute;
+  top: -4%;
+  left: -2.5%;
+  width: 105%;
+  height: 108%;
+  border-radius: 20px;
+  background-color: #3498db;
+  opacity: 0.5;
+  transition: 0.5s;
+  z-index: -1;
+  transform: rotate(10deg);
+}
+
+.cardContainer2 {
+  position: relative;
+  transform: rotate(-5deg);
+}
+
+.cardContainer2:before {
+  content: '';
+  position: absolute;
+  top: -4%;
+  left: -2.5%;
+  width: 105%;
+  height: 108%;
+  border-radius: 20px;
+  background-color: #e74c3c;
+  opacity: 0.5;
+  transition: 0.5s;
+  z-index: -1;
+  transform: rotate(-20deg);
+}
+
+.cardContainer2:after {
+  content: '';
+  position: absolute;
+  top: -4%;
+  left: -2.5%;
+  width: 105%;
+  height: 108%;
+  border-radius: 20px;
+  background-color: #3498db;
+  opacity: 0.5;
+  transition: 0.5s;
+  z-index: -1;
+  transform: rotate(-10deg);
+}

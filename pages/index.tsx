@@ -1,14 +1,15 @@
-import { Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import type { NextPage } from 'next';
+import Image from 'next/image';
+
+import styles from './index.module.css';
+import woman from '../public/images/woman.jpg';
+import man from '../public/images/man.jpg';
+import kid from '../public/images/kid.jpg';
 
 import { ShopLayout } from '../components/layout';
-import { ProductList } from '../components/products';
-import { FullScreenLoading } from '../components/ui';
-import { useProducts } from '../hooks';
 
 const HomePage: NextPage = () => {
-  const { products, error } = useProducts('/products');
-
   return (
     <ShopLayout
       title={'Sportika-Shop - Home'}
@@ -17,14 +18,87 @@ const HomePage: NextPage = () => {
       }
       fromHome={true}
     >
-      <Typography variant="h1" component="h1">
-        Home
-      </Typography>
-      <Typography variant="h2" sx={{ mb: 2 }}>
-        All Products
-      </Typography>
-
-      {!products ? <FullScreenLoading /> : <ProductList products={products} />}
+      <Box
+        sx={{
+          width: '100%',
+          display: 'flex',
+        }}
+      >
+        <Box sx={{ width: '45%', border: '2px solid green', padding: '10px' }}>
+          <Typography variant="h1">Looking for a new outfit?</Typography>
+          <Button>Buy Now</Button>
+        </Box>
+        <Box
+          sx={{
+            width: '55%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingY: '10%',
+          }}
+        >
+          <Box
+            sx={{ width: '85%', display: 'flex', alignItems: 'center' }}
+            className={styles.cardContainer}
+          >
+            <Image src={woman} alt="woman" style={{ borderRadius: '20px' }} />
+          </Box>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          width: '100%',
+          display: 'flex',
+        }}
+      >
+        <Box
+          sx={{
+            width: '55%',
+            border: '2px solid pink',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingY: '10%',
+          }}
+        >
+          <Box
+            sx={{
+              width: '85%',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            className={styles.cardContainer2}
+          >
+            <Image src={man} alt="woman" style={{ borderRadius: '20px' }} />
+          </Box>
+        </Box>
+        <Box sx={{ width: '45%', border: '2px solid pink' }}></Box>
+      </Box>
+      <Box
+        sx={{
+          width: '100%',
+          display: 'flex',
+        }}
+      >
+        <Box sx={{ width: '45%', border: '2px solid green' }}></Box>
+        <Box
+          sx={{
+            width: '55%',
+            border: '2px solid pink',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingY: '10%',
+          }}
+        >
+          <Box
+            sx={{ width: '85%', display: 'flex', alignItems: 'center' }}
+            className={styles.cardContainer}
+          >
+            <Image src={kid} alt="woman" style={{ borderRadius: '20px' }} />
+          </Box>
+        </Box>
+      </Box>
     </ShopLayout>
   );
 };
