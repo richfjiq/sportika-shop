@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 
 import { Navbar, SideMenu } from '../ui';
-import { ProductSlideshow } from '../products';
 import { useAuth } from '../../store';
 import { AuthUser } from '../../store/auth/reducer';
 import { Box } from '@mui/material';
@@ -16,15 +15,6 @@ interface Props {
   imageFullUrl?: string;
   fromHome?: boolean;
 }
-
-const homeImages = [
-  'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659375333/sportika/ucfgfj3qylagifaen4hc.jpg',
-  'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369404/sportika/m7vioo1musslcgufkd8j.jpg',
-  'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369429/sportika/ikofwucxcwmnsdwqh1yl.jpg',
-  'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369395/sportika/nowdls6yuyxi8vgs4jmc.jpg',
-  'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369405/sportika/wbwribwbmpkh27xharpt.jpg',
-  'https://res.cloudinary.com/dlz1bhh8j/image/upload/v1659369400/sportika/si8bva8jfhgqsvess2lb.jpg',
-];
 
 export const ShopLayout: FC<Props> = ({
   children,
