@@ -74,16 +74,6 @@ export const ShopLayout: FC<Props> = ({
             height: '100%',
           }}
         >
-          {/* {fromHome ? (
-            <Box
-              sx={{
-                margin: '0px auto 20px',
-              }}
-            >
-              <ProductSlideshow images={homeImages} fromHome={true} />
-            </Box>
-          ) : null} */}
-
           {children}
         </Box>
       </main>

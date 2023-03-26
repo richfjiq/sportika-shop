@@ -34,7 +34,7 @@ const Footer = () => {
             </Link>
           </LinkNext>
           <Typography sx={{ fontWeight: '400', textAlign: 'center' }}>
-            Lorem ipsum dolor sit amet.
+            Online sportswear store
           </Typography>
         </Grid>
         <Grid
