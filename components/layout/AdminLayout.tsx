@@ -6,6 +6,7 @@ import { useAuth } from '../../store';
 import { AuthUser } from '../../store/auth/reducer';
 import { AdminNavbar } from '../admin';
 import { Box, Typography } from '@mui/material';
+import Footer from '../ui/Footer';
 
 interface Props {
   children: ReactNode;
@@ -50,7 +51,15 @@ export const AdminLayout: FC<Props> = ({ children, title, subTitle, icon }) => {
         <Box className="fadeIn">{children}</Box>
       </main>
 
-      <footer>{/* TODO: Footer */}</footer>
+      <Box
+        sx={{
+          margin: '50px auto',
+          maxWidth: '1240px',
+          padding: { xs: '0 16px', sm: '0' },
+        }}
+      >
+        <Footer />
+      </Box>
     </>
   );
 };

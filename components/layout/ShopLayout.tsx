@@ -7,6 +7,7 @@ import { ProductSlideshow } from '../products';
 import { useAuth } from '../../store';
 import { AuthUser } from '../../store/auth/reducer';
 import { Box } from '@mui/material';
+import Footer from '../ui/Footer';
 
 interface Props {
   children: ReactNode;
@@ -60,22 +61,23 @@ export const ShopLayout: FC<Props> = ({
         {imageFullUrl && <meta name="og:image" content={imageFullUrl} />}
       </Head>
 
-      <Navbar />
-
-      <SideMenu />
-
       <main>
+        <Navbar />
+
+        <SideMenu />
         <Box
           sx={{
             margin: '80px auto 40px',
             maxWidth: '1240px',
-            padding: { xs: '0 16px', sm: '0 24px' },
+            padding: { xs: '0 16px', sm: '15px 24px' },
+            minHeight: { xs: '100svh', sm: 'calc(100svh - (80px + 295px))' },
+            height: '100%',
           }}
         >
           {fromHome ? (
             <Box
               sx={{
-                margin: '80px auto 20px',
+                margin: '0px auto 20px',
               }}
             >
               <ProductSlideshow images={homeImages} fromHome={true} />
@@ -86,7 +88,16 @@ export const ShopLayout: FC<Props> = ({
         </Box>
       </main>
 
-      <footer>{/* TODO: Footer */}</footer>
+      <Box
+        sx={{
+          margin: '50px auto',
+          maxWidth: '1240px',
+          width: '100%',
+          padding: { xs: '0 16px', sm: 'auto 0' },
+        }}
+      >
+        <Footer />
+      </Box>
     </>
   );
 };

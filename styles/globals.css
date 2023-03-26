@@ -16,6 +16,13 @@
   }
 }
 
+body {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .fadeIn {
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
