@@ -117,29 +117,36 @@ export const Navbar = () => {
           }}
           className="fadeIn"
         >
+          <NextLink href="/home" passHref>
+            <Link mx={2}>
+              <Button color={asPath === '/home' ? 'primary' : 'info'}>
+                <Typography variant="subtitle1">All</Typography>
+              </Button>
+            </Link>
+          </NextLink>
           <NextLink href="/category/men" passHref>
-            <Link mx={3}>
+            <Link mx={2}>
               <Button color={asPath === '/category/men' ? 'primary' : 'info'}>
                 <Typography variant="subtitle1">Men</Typography>
               </Button>
             </Link>
           </NextLink>
           <NextLink href="/category/women" passHref>
-            <Link mx={3}>
+            <Link mx={2}>
               <Button color={asPath === '/category/women' ? 'primary' : 'info'}>
                 <Typography variant="subtitle1">Women</Typography>
               </Button>
             </Link>
           </NextLink>
           <NextLink href="/category/boys" passHref>
-            <Link mx={3}>
+            <Link mx={2}>
               <Button color={asPath === '/category/boys' ? 'primary' : 'info'}>
                 <Typography variant="subtitle1">Boys</Typography>
               </Button>
             </Link>
           </NextLink>
           <NextLink href="/category/girls" passHref>
-            <Link mx={3}>
+            <Link mx={2}>
               <Button color={asPath === '/category/girls' ? 'primary' : 'info'}>
                 <Typography variant="subtitle1">Girls</Typography>
               </Button>

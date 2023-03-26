@@ -24,26 +24,35 @@ const HomePage: NextPage = () => {
           width: '100%',
           display: 'flex',
           marginBottom: '5vh',
+          flexDirection: { xs: 'column-reverse', sm: 'row' },
         }}
       >
         <Box
           sx={{
-            width: '45%',
+            width: { xs: '100%', sm: '45%' },
             padding: '10px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <Typography variant="h1">Looking for a new outfit?</Typography>
-          <Typography sx={{ marginTop: '5px' }}>
+          <Typography
+            variant="h1"
+            sx={{ textAlign: { xs: 'center', sm: 'start' } }}
+          >
+            Looking for a new outfit?
+          </Typography>
+          <Typography
+            sx={{ marginTop: '5px', textAlign: { xs: 'center', sm: 'start' } }}
+          >
             All what you need in order to achieve your trainings goals
           </Typography>
           <NextLink href="/home" passHref>
             <Link
               sx={{
                 marginTop: '40px',
-                width: '80%',
+                width: { xs: '60%', sm: '80%' },
                 fontSize: '20px',
                 height: '60px',
               }}
@@ -55,15 +64,19 @@ const HomePage: NextPage = () => {
         </Box>
         <Box
           sx={{
-            width: '55%',
+            width: { xs: '100%', sm: '55%' },
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            paddingY: '10%',
+            paddingY: { xs: '20%', sm: '10%' },
           }}
         >
           <Box
-            sx={{ width: '85%', display: 'flex', alignItems: 'center' }}
+            sx={{
+              width: { xs: '80%', sm: '85%' },
+              display: 'flex',
+              alignItems: 'center',
+            }}
             className={styles.cardContainer}
           >
             <Image src={woman} alt="woman" style={{ borderRadius: '20px' }} />
@@ -75,20 +88,21 @@ const HomePage: NextPage = () => {
           width: '100%',
           display: 'flex',
           marginBottom: '5vh',
+          flexDirection: { xs: 'column', sm: 'row' },
         }}
       >
         <Box
           sx={{
-            width: '55%',
+            width: { xs: '100%', sm: '55%' },
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            paddingY: '10%',
+            paddingY: { xs: '20%', sm: '10%' },
           }}
         >
           <Box
             sx={{
-              width: '85%',
+              width: { xs: '80%', sm: '85%' },
               display: 'flex',
               alignItems: 'center',
             }}
@@ -99,16 +113,20 @@ const HomePage: NextPage = () => {
         </Box>
         <Box
           sx={{
-            width: '45%',
+            width: { xs: '100%', sm: '45%' },
             padding: '10px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            alignItems: 'flex-end',
+            alignItems: { xs: 'center', sm: 'flex-end' },
           }}
         >
-          <Typography variant="h1">Reinvent your impulse</Typography>
-          <Typography sx={{ marginTop: '5px', textAlign: 'end' }}>
+          <Typography variant="h1" sx={{ textAlign: 'end' }}>
+            Reinvent your impulse
+          </Typography>
+          <Typography
+            sx={{ marginTop: '5px', textAlign: { xs: 'center', sm: 'end' } }}
+          >
             Nothing exhausts and destroys the human body like physical
             inactivity
           </Typography>
@@ -116,7 +134,7 @@ const HomePage: NextPage = () => {
             <Link
               sx={{
                 marginTop: '40px',
-                width: '80%',
+                width: { xs: '60%', sm: '80%' },
                 fontSize: '20px',
                 height: '60px',
               }}
@@ -131,26 +149,35 @@ const HomePage: NextPage = () => {
         sx={{
           width: '100%',
           display: 'flex',
+          flexDirection: { xs: 'column-reverse', sm: 'row' },
         }}
       >
         <Box
           sx={{
-            width: '45%',
+            width: { xs: '100%', sm: '45%' },
             padding: '10px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <Typography variant="h1">Imagine your world</Typography>
-          <Typography sx={{ marginTop: '5px' }}>
+          <Typography
+            variant="h1"
+            sx={{ textAlign: { xs: 'center', sm: 'start' } }}
+          >
+            Imagine your world
+          </Typography>
+          <Typography
+            sx={{ marginTop: '5px', textAlign: { xs: 'center', sm: 'start' } }}
+          >
             One step at a time, never give up
           </Typography>
           <NextLink href="/home" passHref>
             <Link
               sx={{
                 marginTop: '40px',
-                width: '80%',
+                width: { xs: '60%', sm: '80%' },
                 fontSize: '20px',
                 height: '60px',
               }}
@@ -162,15 +189,19 @@ const HomePage: NextPage = () => {
         </Box>
         <Box
           sx={{
-            width: '55%',
+            width: { xs: '100%', sm: '55%' },
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            paddingY: '10%',
+            paddingY: { xs: '20%', sm: '10%' },
           }}
         >
           <Box
-            sx={{ width: '85%', display: 'flex', alignItems: 'center' }}
+            sx={{
+              width: { xs: '80%', sm: '85%' },
+              display: 'flex',
+              alignItems: 'center',
+            }}
             className={styles.cardContainer}
           >
             <Image src={kid} alt="woman" style={{ borderRadius: '20px' }} />

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import {
   AccountCircleOutlined,
   BoyOutlined,
@@ -12,6 +12,7 @@ import {
   ShoppingCartOutlined,
   VpnKeyOutlined,
   WomanOutlined,
+  BorderAllOutlined,
 } from '@mui/icons-material';
 import {
   Box,
@@ -97,6 +98,16 @@ export const SideMenu = () => {
               </ListItemButton>
             </>
           )}
+
+          <ListItemButton
+            onClick={() => navigateTo('/home')}
+            sx={{ display: { md: 'none' } }}
+          >
+            <ListItemIcon>
+              <BorderAllOutlined />
+            </ListItemIcon>
+            <ListItemText primary={'All'} />
+          </ListItemButton>
 
           <ListItemButton
             onClick={() => navigateTo('/category/men')}
