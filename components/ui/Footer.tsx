@@ -1,7 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import LinkNext from 'next/link';
-import { Grid, Link, Typography } from '@mui/material';
+import { Box, Grid, Link, Typography } from '@mui/material';
 import Image from 'next/image';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 import googleBadge from '../../public/images/google-play-badge.png';
 
@@ -118,11 +121,18 @@ const Footer = () => {
           </LinkNext>
         </Grid>
       </Grid>
-      <Typography
-        sx={{ fontWeight: '400', textAlign: 'center', marginY: '20px' }}
-      >
-        Copyright @Sportika 2023. All Rights Reserved.
-      </Typography>
+      <Box>
+        <Typography
+          sx={{ fontWeight: '400', textAlign: 'center', marginTop: '20px' }}
+        >
+          Copyright @Sportika 2023. All Rights Reserved.
+        </Typography>
+        <Box sx={{ textAlign: 'center', marginTop: '10px' }}>
+          <FacebookIcon />
+          <TwitterIcon />
+          <InstagramIcon />
+        </Box>
+      </Box>
     </>
   );
 };

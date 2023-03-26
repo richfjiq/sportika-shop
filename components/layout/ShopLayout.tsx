@@ -70,7 +70,7 @@ export const ShopLayout: FC<Props> = ({
             margin: '80px auto 40px',
             maxWidth: '1240px',
             padding: { xs: '0 16px', sm: '15px 24px' },
-            minHeight: { xs: '100svh', sm: 'calc(100svh - (80px + 295px))' },
+            minHeight: { xs: '100svh', sm: 'calc(100svh - (80px + 340px))' },
             height: '100%',
           }}
         >
