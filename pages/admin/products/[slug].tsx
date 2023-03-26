@@ -323,7 +323,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                     labelId="demo-multiple-checkbox-label"
                     id="demo-multiple-checkbox"
                     multiple
-                    value={sizes}
+                    value={sizes || ''}
                     {...register('sizes', {
                       required: 'This field is required.',
                     })}

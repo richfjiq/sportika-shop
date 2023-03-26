@@ -6,7 +6,7 @@ import { FullScreenLoading } from '../../components/ui';
 import { useProducts } from '../../hooks';
 
 const BoysPage = () => {
-  const { products, isLoading } = useProducts('/products?gender=boys');
+  const { products, error } = useProducts('/products?gender=boys');
 
   return (
     <ShopLayout
@@ -20,7 +20,7 @@ const BoysPage = () => {
         All Products for boys
       </Typography>
 
-      {isLoading ? <FullScreenLoading /> : <ProductList products={products} />}
+      {!products ? <FullScreenLoading /> : <ProductList products={products} />}
     </ShopLayout>
   );
 };

@@ -90,13 +90,12 @@ const RegisterPage = () => {
           justifyContent: 'center',
           flexDirection: 'column',
           alignItems: 'center',
-          height: 'calc(100vh - 220px)',
         }}
       >
         <Box
           sx={{
-            width: 350,
-            padding: '0 20px',
+            maxWidth: 350,
+            padding: '20px 0',
             margin: 'auto 0',
           }}
         >
@@ -191,9 +190,9 @@ const RegisterPage = () => {
             xs={12}
             display="flex"
             flexDirection="column"
-            sx={{ maxWidth: '350px', width: '100%' }}
+            // sx={{ maxWidth: '350px', width: '100%' }}
           >
-            <Divider sx={{ width: '100%', mb: 2, mt: 1 }} />
+            <Divider sx={{ width: '100%', mb: 3, mt: 1 }} />
             {Object.values(providers).map((provider: any) => {
               if (provider.id === 'credentials') return;
 
@@ -203,7 +202,7 @@ const RegisterPage = () => {
                   variant="outlined"
                   fullWidth
                   color="primary"
-                  sx={{ mb: 1 }}
+                  sx={{ mb: 2, padding: '10px 0' }}
                   onClick={() => signIn(provider.id)}
                   startIcon={<CustomIcon logo={provider.id} />}
                 >

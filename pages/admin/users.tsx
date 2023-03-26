@@ -72,7 +72,7 @@ const UsersPage = () => {
       renderCell: ({ row }: GridValueGetterParams) => {
         return (
           <Select
-            value={row.role}
+            value={row.role || ''}
             label="Role"
             sx={{ width: 300 }}
             onChange={({ target }) => onRoleUpdated(row.id, target.value)}

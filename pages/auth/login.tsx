@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import { GetServerSideProps } from 'next';
 import { getProviders, getSession, signIn } from 'next-auth/react';
@@ -27,7 +27,11 @@ type FormData = {
   password: string;
 };
 
-const LoginPage = () => {
+type Props = {
+  error: boolean;
+};
+
+const LoginPage: FC<Props> = ({ error = false }) => {
   const router = useRouter();
   const [providers, setProviders] = useState<any>({});
   const {
@@ -43,12 +47,12 @@ const LoginPage = () => {
   }, []);
 
   useEffect(() => {
-    if (router.query?.error) {
+    if (error) {
       toast.error('Wrong credentials.');
 
       return () => toast.dismiss();
     }
-  }, [router.query?.error]);
+  }, [error]);
 
   const destination = router.query.p?.toString() || '/';
 
@@ -220,8 +224,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   const session = await getSession({ req });
   const { p = '/' } = query;
 
-  console.log({ session });
-
   if (session) {
     return {
       redirect: {
@@ -231,8 +233,16 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 
+  let errorLogin = false;
+
+  if (query?.error) {
+    errorLogin = true;
+  }
+
   return {
-    props: {},
+    props: {
+      error: errorLogin,
+    },
   };
 };
 
