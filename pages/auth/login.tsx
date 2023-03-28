@@ -16,7 +16,6 @@ import {
 } from '@mui/material';
 import { ErrorOutline } from '@mui/icons-material';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { ShopLayout } from '../../components/layout';
 import { validations } from '../../utils';
@@ -29,6 +28,7 @@ type FormData = {
 
 type Props = {
   error: boolean;
+  registered: boolean;
 };
 
 const LoginPage: FC<Props> = ({ error = false }) => {
@@ -48,7 +48,9 @@ const LoginPage: FC<Props> = ({ error = false }) => {
 
   useEffect(() => {
     if (error) {
-      toast.error('Wrong credentials.');
+      toast.error('Wrong credentials.', {
+        position: 'top-center',
+      });
 
       return () => toast.dismiss();
     }
@@ -56,44 +58,8 @@ const LoginPage: FC<Props> = ({ error = false }) => {
 
   const destination = router.query.p?.toString() || '/';
 
-  // useEffect(() => {
-  //   if (error) {
-  //     setShowError(true);
-  //     setTimeout(() => {
-  //       setShowError(false);
-  //     }, 3000);
-  //   }
-  // }, [error]);
-
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     const destination = router.query.p?.toString() || '/';
-  //     router.replace(destination);
-  //   }
-  // }, [isLoggedIn, router]);
-
   const onLoginUser = async ({ email, password }: FormData) => {
     await signIn('credentials', { email, password });
-    // const data = {
-    //   email,
-    //   password,
-    // };
-    // userLogin(data);
-    // setShowError(false);
-    // try {
-    //   const { data } = await sportikaApi.post('/user/login', {
-    //     email,
-    //     password,
-    //   });
-    //   const { token, user } = data;
-    //   console.log({ token, user });
-    // } catch (error) {
-    //   console.log('credentials error');
-    //   setShowError(true);
-    //   setTimeout(() => {
-    //     setShowError(false);
-    //   }, 3000);
-    // }
   };
 
   return (
@@ -237,12 +203,16 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   if (query?.error) {
     errorLogin = true;
+
+    return {
+      props: {
+        error: errorLogin,
+      },
+    };
   }
 
   return {
-    props: {
-      error: errorLogin,
-    },
+    props: {},
   };
 };
 

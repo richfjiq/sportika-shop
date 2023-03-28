@@ -38,6 +38,7 @@ export interface ShippingAddress {
   country: string;
   code: string;
   phone: string;
+  state?: string;
 }
 
 // export interface IOrder {

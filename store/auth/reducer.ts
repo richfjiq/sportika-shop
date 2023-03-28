@@ -83,6 +83,7 @@ const authStore = createSlice({
     });
     builder.addCase(getUserAddress.pending, (state) => {
       state.loading = true;
+      state.error = false;
     });
     builder.addCase(getUserAddress.fulfilled, (state, { payload }) => {
       state.loading = false;
@@ -90,6 +91,7 @@ const authStore = createSlice({
     });
     builder.addCase(createUserAddress.pending, (state) => {
       state.loadingAddress = true;
+      state.error = false;
     });
     builder.addCase(createUserAddress.fulfilled, (state, { payload }) => {
       state.loadingAddress = false;
@@ -97,6 +99,7 @@ const authStore = createSlice({
     });
     builder.addCase(updateUserData.pending, (state) => {
       state.loadingAddress = true;
+      state.error = false;
     });
     builder.addCase(updateUserData.fulfilled, (state, { payload }) => {
       state.loadingAddress = false;
@@ -104,6 +107,7 @@ const authStore = createSlice({
     });
     builder.addCase(updateUserPassword.pending, (state) => {
       state.loadingAddress = true;
+      state.error = false;
     });
     builder.addCase(updateUserPassword.fulfilled, (state, { payload }) => {
       state.loadingAddress = false;
@@ -111,6 +115,7 @@ const authStore = createSlice({
     });
     builder.addCase(updateUserAddress.pending, (state) => {
       state.loadingAddress = true;
+      state.error = false;
     });
     builder.addCase(updateUserAddress.fulfilled, (state, { payload }) => {
       state.loadingAddress = false;

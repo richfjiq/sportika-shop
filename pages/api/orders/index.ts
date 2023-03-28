@@ -1,16 +1,32 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/react';
 import axios, { AxiosError } from 'axios';
+import Handlebars from 'handlebars';
+import sgMail, { MailDataRequired } from '@sendgrid/mail';
+import { readFileSync } from 'fs';
+import { join, resolve } from 'path';
 
 import { db } from '../../../database';
 import { IOrder } from '../../../interfaces';
 import { Order, Product } from '../../../models';
+import { currency } from '../../../utils';
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY ?? '');
 
 type Data =
   | {
       message: string;
     }
   | IOrder;
+
+const sendOrderConfirmedMail = async (msg: MailDataRequired): Promise<void> => {
+  try {
+    await sgMail.send(msg);
+    console.log('Order Confirmed email, sent successfully!');
+  } catch (error) {
+    console.log({ error });
+  }
+};
 
 export default function handler(
   req: NextApiRequest,
@@ -68,6 +84,42 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
     await newOrder.save();
     await db.disconnect();
+
+    const viewsDir = resolve(process.cwd(), 'views');
+    const templateHandlebars = join(viewsDir, 'orderConfirmed.handlebars');
+    const fileHandlebars = readFileSync(templateHandlebars, 'utf-8');
+    const template = Handlebars.compile(fileHandlebars);
+
+    const items = newOrder.orderItems.map((item) => ({
+      image: item.image,
+      price: currency.format(item.price),
+      title: item.title,
+      size: item.size,
+      quantity: item.quantity,
+    }));
+
+    const emailData = {
+      to: session.user.email,
+      from: 'rfjiq1986@gmail.com',
+      subject: 'Your order has been confirmed!',
+      html: template({
+        order: newOrder._id,
+        items,
+        name: `${newOrder.shippingAddress.firstName} ${newOrder.shippingAddress.lastName}`,
+        address: newOrder.shippingAddress.address,
+        city: `${newOrder.shippingAddress.city}, ${
+          newOrder.shippingAddress?.state as string
+        }, ${newOrder.shippingAddress.zip}`,
+        country: newOrder.shippingAddress.country,
+        phoneNumber: `${newOrder.shippingAddress.code} ${newOrder.shippingAddress.phone}`,
+        totalItems: newOrder.numberOfItems,
+        subtotal: currency.format(newOrder.subTotal),
+        tax: currency.format(newOrder.tax),
+        total: currency.format(newOrder.total),
+      }),
+    };
+
+    await sendOrderConfirmedMail(emailData);
 
     return res.status(201).json(newOrder);
   } catch (error) {
