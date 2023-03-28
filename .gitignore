@@ -38,3 +38,5 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+temp_auto_push.bat
+temp_interactive_push.bat

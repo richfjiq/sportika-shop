@@ -6,6 +6,7 @@ import { SWRConfig } from 'swr';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { lightTheme } from '../themes';
 import { store } from '../store';
