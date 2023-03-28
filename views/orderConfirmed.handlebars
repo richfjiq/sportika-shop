@@ -1,0 +1,308 @@
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+		<title>Welcome</title>
+	</head>
+	<body style='display: flex;'>
+		<div style='max-width: 500px; width: 100%; padding: 40px 0; margin: 0 auto;'>
+			<div style='border: 1px solid lightgray; border-radius: 10px; padding: 20px 16px;'>
+				<h1
+					style='
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 18px;
+          font-weight: 300;
+          text-transform: uppercase;
+        '
+				>
+					Order:
+					<b>{{order}}</b>
+				</h1>
+
+				<hr style='width: 100%; margin-bottom: 20px' />
+
+				<div
+					style='display: flex; margin-bottom: 20px; border: 1px solid #dc3535; padding: 7px 20px; border-radius: 10px;'
+				>
+					<div style='display: flex; margin: 0 auto;'>
+						<div style='width: 31px; height: 24px;'>
+							<img
+								src='https://res.cloudinary.com/dlz1bhh8j/image/upload/v1671128524/sportika/jir3tpkvcnfiusrf2pl1.png'
+							/>
+						</div>
+						<div style='margin: auto 10px;'>
+							<p
+								style='
+									font-family: Arial, Helvetica, sans-serif;
+									font-size: 15px;
+									text-transform: uppercase;
+									font-weight: 500;
+									color: #dc3535;
+									margin-top: 0;
+									margin-bottom: 0;
+								'
+							>
+								Pending Payment
+							</p>
+						</div>
+					</div>
+				</div>
+
+				{{#each items}}
+					<div style='display: flex; margin-bottom: 12px'>
+						<div style='width: 30%; height: auto'>
+							<img style='width: 100%; overflow: hidden; border-radius: 5px;' src='{{image}}' />
+						</div>
+						<div style='flex: 1; padding-left: 10px'>
+							<p
+								style='
+              margin: 5px 0 10px;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 15px;
+              text-transform: uppercase;
+              font-weight: 600;
+            '
+							>
+								{{price}}
+							</p>
+
+							<p
+								style='
+              margin: 5px 0;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 15px;
+              text-transform: uppercase;
+              font-weight: 300;
+            '
+							>
+								{{title}}
+							</p>
+
+							<p
+								style='
+              margin: 5px 0;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 15px;
+              text-transform: uppercase;
+              font-weight: 300;
+            '
+							>
+								Size:
+								{{size}}
+							</p>
+
+							<p
+								style='
+              margin: 5px 0;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 15px;
+              text-transform: uppercase;
+              font-weight: 300;
+            '
+							>
+								Quantity:
+								{{quantity}}
+							</p>
+						</div>
+					</div>
+				{{/each}}
+
+				<hr style='width: 100%' />
+
+				<h2
+					style='
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 18px;
+          text-transform: uppercase;
+        '
+				>
+					Delivery Address
+				</h2>
+
+				<p
+					style='
+          margin: 5px 0;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          text-transform: uppercase;
+        '
+				>
+					{{name}}
+				</p>
+
+				<p
+					style='
+          margin: 5px 0;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          text-transform: uppercase;
+        '
+				>
+					{{address}}
+				</p>
+
+				<p
+					style='
+          margin: 5px 0;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          text-transform: uppercase;
+        '
+				>
+					{{city}}
+				</p>
+
+				<p
+					style='
+          margin: 5px 0;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          text-transform: uppercase;
+        '
+				>
+					{{country}}
+				</p>
+
+				<p
+					style='
+          margin: 5px 0;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          text-transform: uppercase;
+        '
+				>
+					{{phoneNumber}}
+				</p>
+
+				<hr style='width: 100%' />
+
+				<h2
+					style='
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 18px;
+          text-transform: uppercase;
+        '
+				>
+					Bill
+				</h2>
+
+				<div
+					style='
+          margin: 5px 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        '
+				>
+					<div style='width: 50%'>
+						<p
+							style='
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            text-transform: uppercase;
+          '
+						>
+							Items
+						</p>
+					</div>
+					<div style='width: 50%'>
+						<p
+							style='text-align: end; margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 16px; text-transform: uppercase;'
+						>
+							{{totalItems}}
+						</p>
+					</div>
+				</div>
+
+				<div
+					style='
+          margin: 5px 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        '
+				>
+					<div style='width: 50%'>
+						<p
+							style='
+							margin: 0;
+							font-family: Arial, Helvetica, sans-serif;
+							font-size: 16px;
+							text-transform: uppercase;
+						'
+						>
+							Subtotal
+						</p>
+					</div>
+					<div style='width: 50%'>
+						<p
+							style='text-align: end; margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 16px; text-transform: uppercase;'
+						>
+							{{subtotal}}
+						</p>
+					</div>
+				</div>
+
+				<div
+					style='
+          margin: 5px 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        '
+				>
+					<div style='width: 50%'>
+						<p
+							style='
+							margin: 0;
+							font-family: Arial, Helvetica, sans-serif;
+							font-size: 16px;
+							text-transform: uppercase;
+						'
+						>
+							Tax (15 %)
+						</p>
+					</div>
+					<div style='width: 50%'>
+						<p
+							style='text-align: end; margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 16px; text-transform: uppercase;'
+						>
+							{{tax}}
+						</p>
+					</div>
+				</div>
+
+				<div
+					style='
+          margin: 15px 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        '
+				>
+					<div style='width: 50%'>
+						<h3
+							style='
+							margin: 0;
+							font-family: Arial, Helvetica, sans-serif;
+							font-size: 16px;
+							text-transform: uppercase;
+						'
+						>
+							Total
+						</h3>
+					</div>
+					<div style='width: 50%'>
+						<h3
+							style='text-align: end; margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 16px; text-transform: uppercase;'
+						>
+							{{total}}
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

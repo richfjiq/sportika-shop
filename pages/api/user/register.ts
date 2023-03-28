@@ -1,10 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
+import sgMail, { MailDataRequired } from '@sendgrid/mail';
+import path from 'path';
+import { readFileSync } from 'fs';
 
 import { db } from '../../../database';
 import { User } from '../../../models';
 import { jwt, validations } from '../../../utils';
 import { IUser } from '../../../interfaces';
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY ?? '');
 
 type Data =
   | {
@@ -19,6 +24,15 @@ type Data =
         type: string;
       };
     };
+
+const sendWelcomeMail = async (msg: MailDataRequired): Promise<void> => {
+  try {
+    await sgMail.send(msg);
+    console.log('Welcome email, sent successfully :)');
+  } catch (error) {
+    console.log({ error });
+  }
+};
 
 export default function handler(
   req: NextApiRequest,
@@ -82,8 +96,10 @@ const registerUser = async (
 
   try {
     await newUser.save({ validateBeforeSave: true });
+    await db.disconnect();
   } catch (error) {
     console.log(error);
+    await db.disconnect();
     return res.status(500).json({
       message: 'Server error',
     });
@@ -91,6 +107,21 @@ const registerUser = async (
 
   const { _id, role, type } = newUser as IUser;
   const token = jwt.signToken(_id, email);
+
+  const pathHandlebars = path.join(__dirname, './welcome.handlebars');
+  console.log('+++++++++ pathHandlebars ++++++++++', pathHandlebars);
+  const fileHandlebars = readFileSync(pathHandlebars, 'utf-8');
+  console.log('--------- fileHandlebars ---------', fileHandlebars);
+  const template = Handlebars.compile(fileHandlebars);
+
+  const emailData = {
+    to: newUser.email,
+    from: 'rfjiq1986@gmail.com',
+    subject: 'Congratulations! You are made it!',
+    html: template({ name }),
+  };
+
+  await sendWelcomeMail(emailData);
 
   return res.status(200).json({
     token,

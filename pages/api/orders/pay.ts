@@ -1,8 +1,17 @@
 import axios, { AxiosError } from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import sgMail, { MailDataRequired } from '@sendgrid/mail';
+import { getSession } from 'next-auth/react';
+import { isValidObjectId } from 'mongoose';
+
 import { db } from '../../../database';
 import { IPaypal } from '../../../interfaces';
 import { Order } from '../../../models';
+import path from 'path';
+import { readFileSync } from 'fs';
+import { currency } from '../../../utils';
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY ?? '');
 
 type Data = {
   message: string;
@@ -19,6 +28,15 @@ export default function handler(
       return res.status(400).json({ message: 'Bad request.' });
   }
 }
+
+const sendOrderPaidMail = async (msg: MailDataRequired): Promise<void> => {
+  try {
+    await sgMail.send(msg);
+    console.log('Order Paid email, sent successfully!');
+  } catch (error) {
+    console.log({ error });
+  }
+};
 
 const getPaypalBearerToken = async (): Promise<string | null> => {
   const PAYPAL_CLIENT = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
@@ -55,15 +73,27 @@ const getPaypalBearerToken = async (): Promise<string | null> => {
 };
 
 const payOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  // TODO: validate user session
-  // TODO: validate mongoId
+  const session: any = await getSession({ req });
+  const { transactionId = '', orderId = '' } = req.body;
+
+  if (!session) {
+    return res
+      .status(401)
+      .json({ message: 'You have to be authenticated for this action.' });
+  }
+
+  if (!isValidObjectId(orderId)) {
+    res.status(400).json({
+      message: 'Invalid id.',
+    });
+    return;
+  }
+
   const paypalBearerToken = await getPaypalBearerToken();
 
   if (!paypalBearerToken) {
     return res.status(400).json({ message: 'Paypal token unconfirmed' });
   }
-
-  const { transactionId = '', orderId = '' } = req.body;
 
   const { data } = await axios.get<IPaypal.PaypalOrderStatusResponse>(
     `${process.env.PAYPAL_ORDERS_URL}/${transactionId}`,
@@ -99,6 +129,45 @@ const payOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   dbOrder.isPaid = true;
   dbOrder.save();
   await db.disconnect();
+
+  const pathHandlebars = path.join(
+    __dirname,
+    '../../../views/orderPaid.handlebars'
+  );
+  const fileHandlebars = readFileSync(pathHandlebars, 'utf-8');
+
+  const template = Handlebars.compile(fileHandlebars);
+
+  const items = dbOrder.orderItems.map((item) => ({
+    image: item.image,
+    price: currency.format(item.price),
+    title: item.title,
+    size: item.size,
+    quantity: item.quantity,
+  }));
+
+  const emailData = {
+    to: session.user?.email,
+    from: 'rfjiq1986@gmail.com',
+    subject: 'Your order has been paid!',
+    html: template({
+      order: dbOrder._id,
+      items,
+      name: `${dbOrder.shippingAddress.firstName} ${dbOrder.shippingAddress.lastName}`,
+      address: dbOrder.shippingAddress.address,
+      city: `${dbOrder.shippingAddress.city}, ${
+        dbOrder.shippingAddress?.state as string
+      }, ${dbOrder.shippingAddress.zip}`,
+      country: dbOrder.shippingAddress.country,
+      phoneNumber: `${dbOrder.shippingAddress.code} ${dbOrder.shippingAddress.phone}`,
+      totalItems: dbOrder.numberOfItems,
+      subtotal: currency.format(dbOrder.subTotal),
+      tax: currency.format(dbOrder.tax),
+      total: currency.format(dbOrder.total),
+    }),
+  };
+
+  await sendOrderPaidMail(emailData);
 
   return res.status(200).json({ message: 'Paid order.' });
 };
