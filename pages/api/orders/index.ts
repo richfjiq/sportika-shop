@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios';
 import Handlebars from 'handlebars';
 import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import { readFileSync } from 'fs';
-import path from 'path';
+import { join, resolve } from 'path';
 
 import { db } from '../../../database';
 import { IOrder } from '../../../interfaces';
@@ -85,12 +85,9 @@ const createOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     await newOrder.save();
     await db.disconnect();
 
-    const pathHandlebars = path.join(
-      __dirname,
-      '../../../views/orderConfirmed.handlebars'
-    );
-    const fileHandlebars = readFileSync(pathHandlebars, 'utf-8');
-
+    const viewsDir = resolve(process.cwd(), 'views');
+    const templateHandlebars = join(viewsDir, 'orderConfirmed.handlebars');
+    const fileHandlebars = readFileSync(templateHandlebars, 'utf-8');
     const template = Handlebars.compile(fileHandlebars);
 
     const items = newOrder.orderItems.map((item) => ({

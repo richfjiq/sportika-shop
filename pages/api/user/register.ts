@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
 import sgMail, { MailDataRequired } from '@sendgrid/mail';
-import path from 'path';
+import { join, resolve } from 'path';
 import { readFileSync } from 'fs';
+import Handlebars from 'handlebars';
 
 import { db } from '../../../database';
 import { User } from '../../../models';
@@ -108,10 +109,9 @@ const registerUser = async (
   const { _id, role, type } = newUser as IUser;
   const token = jwt.signToken(_id, email);
 
-  const pathHandlebars = path.join(__dirname, './welcome.handlebars');
-  console.log('+++++++++ pathHandlebars ++++++++++', pathHandlebars);
-  const fileHandlebars = readFileSync(pathHandlebars, 'utf-8');
-  console.log('--------- fileHandlebars ---------', fileHandlebars);
+  const viewsDir = resolve(process.cwd(), 'views');
+  const templateHandlebars = join(viewsDir, 'welcome.handlebars');
+  const fileHandlebars = readFileSync(templateHandlebars, 'utf-8');
   const template = Handlebars.compile(fileHandlebars);
 
   const emailData = {

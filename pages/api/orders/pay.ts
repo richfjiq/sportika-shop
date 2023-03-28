@@ -3,11 +3,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import { getSession } from 'next-auth/react';
 import { isValidObjectId } from 'mongoose';
+import Handlebars from 'handlebars';
 
 import { db } from '../../../database';
 import { IPaypal } from '../../../interfaces';
 import { Order } from '../../../models';
-import path from 'path';
+import path, { join, resolve } from 'path';
 import { readFileSync } from 'fs';
 import { currency } from '../../../utils';
 
@@ -130,12 +131,9 @@ const payOrder = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   dbOrder.save();
   await db.disconnect();
 
-  const pathHandlebars = path.join(
-    __dirname,
-    '../../../views/orderPaid.handlebars'
-  );
-  const fileHandlebars = readFileSync(pathHandlebars, 'utf-8');
-
+  const viewsDir = resolve(process.cwd(), 'views');
+  const templateHandlebars = join(viewsDir, 'orderPaid.handlebars');
+  const fileHandlebars = readFileSync(templateHandlebars, 'utf-8');
   const template = Handlebars.compile(fileHandlebars);
 
   const items = dbOrder.orderItems.map((item) => ({
