@@ -123,13 +123,7 @@ const registerUser = async (
 
   await sendWelcomeMail(emailData);
 
-  return res.status(200).json({
-    token,
-    user: {
-      email,
-      role,
-      name,
-      type,
-    },
-  });
+  return res
+    .status(200)
+    .json({ message: 'User has been registered. Please Log in.' });
 };

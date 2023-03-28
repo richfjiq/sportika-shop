@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import {
   Box,
   Button,
-  Chip,
+  CircularProgress,
   Divider,
   Grid,
   Link,
@@ -11,15 +11,16 @@ import {
   Typography,
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { ErrorOutline } from '@mui/icons-material';
+import { toast } from 'react-toastify';
+import { AxiosError } from 'axios';
 
 import { ShopLayout } from '../../components/layout';
 import { validations } from '../../utils';
-import { useAuth } from '../../store';
 import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
 import { getProviders, getSession, signIn } from 'next-auth/react';
 import { CustomIcon } from '../../components/auth';
+import { sportikaApi } from '../../api';
 
 type FormData = {
   name: string;
@@ -29,13 +30,19 @@ type FormData = {
 
 const RegisterPage = () => {
   const router = useRouter();
-  const { createUser, loading, error, isLoggedIn } = useAuth();
-  const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+    resetField,
+  } = useForm<FormData>({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+  });
   const [providers, setProviders] = useState<any>({});
 
   const destination = router.query.p?.toString() || '/';
@@ -46,40 +53,31 @@ const RegisterPage = () => {
     });
   }, []);
 
-  useEffect(() => {
-    if (error) {
-      setShowError(true);
-      setTimeout(() => {
-        setShowError(false);
-      }, 3000);
-    }
-  }, [error]);
-
   const onRegisterForm = async ({ name, email, password }: FormData) => {
-    const userData = {
-      name,
-      email,
-      password,
-    };
-
-    createUser(userData);
-    router.replace('/auth/login?p=/');
-    // setShowError(false);
-    // try {
-    //   const { data } = await sportikaApi.post('/user/register', {
-    //     name,
-    //     email,
-    //     password,
-    //   });
-    //   const { token, user } = data;
-    //   console.log({ token, user });
-    // } catch (error) {
-    //   console.log('credentials error', { error });
-    //   setShowError(true);
-    //   setTimeout(() => {
-    //     setShowError(false);
-    //   }, 3000);
-    // }
+    try {
+      setLoading(true);
+      const { data } = await sportikaApi.post('/user/register', {
+        name,
+        email,
+        password,
+      });
+      const { message } = data;
+      setLoading(false);
+      resetField('email');
+      resetField('name');
+      resetField('password');
+      toast.success(data.message, {
+        position: 'top-center',
+        onClose: () => router.replace('/auth/login'),
+      });
+    } catch (error) {
+      setLoading(false);
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data.message, {
+          position: 'top-center',
+        });
+      }
+    }
   };
 
   return (
@@ -105,18 +103,6 @@ const RegisterPage = () => {
                 <Typography variant="h1" component="h1">
                   Create an account
                 </Typography>
-                <Chip
-                  label="Email already exists."
-                  color="error"
-                  icon={<ErrorOutline />}
-                  className="fadeIn"
-                  sx={{
-                    width: '100%',
-                    mt: 1,
-                    display: showError ? 'flex' : 'none',
-                  }}
-                  variant="filled"
-                />
               </Grid>
 
               <Grid item xs={12}>
@@ -172,7 +158,11 @@ const RegisterPage = () => {
                   fullWidth
                   disabled={loading}
                 >
-                  Create account
+                  {loading ? (
+                    <CircularProgress size={26} sx={{ color: 'white' }} />
+                  ) : (
+                    'Create account'
+                  )}
                 </Button>
               </Grid>
 
@@ -185,13 +175,7 @@ const RegisterPage = () => {
               </Grid>
             </Grid>
           </form>
-          <Grid
-            item
-            xs={12}
-            display="flex"
-            flexDirection="column"
-            // sx={{ maxWidth: '350px', width: '100%' }}
-          >
+          <Grid item xs={12} display="flex" flexDirection="column">
             <Divider sx={{ width: '100%', mb: 3, mt: 1 }} />
             {Object.values(providers).map((provider: any) => {
               if (provider.id === 'credentials') return;
